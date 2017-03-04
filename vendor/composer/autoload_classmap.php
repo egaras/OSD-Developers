@@ -6,6 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App' => $baseDir . '/core/App.php',
+    'ComposerAutoloaderInit033b00148a03cf13b62a63c9fbf4e519' => $vendorDir . '/composer/autoload_real.php',
+    'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
+    'Composer\\Autoload\\ComposerStaticInit033b00148a03cf13b62a63c9fbf4e519' => $vendorDir . '/composer/autoload_static.php',
+    'Connection' => $baseDir . '/database/Connection.php',
     'Event' => $baseDir . '/assets/global/plugins/fullcalendar/demos/php/utils.php',
+    'QueryBuilder' => $baseDir . '/database/QueryBuilder.php',
     'SSP' => $baseDir . '/assets/global/plugins/datatables/examples/server_side/scripts/ssp.class.php',
 );
