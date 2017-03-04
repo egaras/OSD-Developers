@@ -81,7 +81,7 @@ CREATE TABLE `replies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL,
   `threadid` int(11) NOT NULL,
-  `content` varchar(255) NOT NULL,
+  `content` longtext,
   `replydate` datetime NOT NULL,
   `editdate` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -229,7 +229,7 @@ CREATE TABLE `threads` (
   `userid` int(11) NOT NULL,
   `forumid` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `content` varchar(255) NOT NULL,
+  `content` longtext,
   `postdate` datetime NOT NULL,
   `editdate` datetime NOT NULL,
   `locked` tinyint(1) NOT NULL,
@@ -321,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-04 12:52:33
+-- Dump completed on 2017-03-04 13:18:14
