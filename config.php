@@ -3,7 +3,7 @@ include 'DBManager.php';
 define("DB_HOST", "localhost");
 define("DB_USER", "yasser");
 define("DB_PASS", "");
-define("DB_NAME", "simpleBlog");
+define("DB_NAME", "osddevelopers");
 
 $DB = new DBManager();
 ?>

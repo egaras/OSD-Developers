@@ -21,8 +21,6 @@ class DBManager{
             $this->error = $e->getMessage();
             echo 'I am here';
         }
-
-        
     }
     public function query($query){
         $this->stmt = $this->dbh->prepare($query);
@@ -87,7 +85,7 @@ class DBManager{
         }
         $this->execute();
     }
-    public function select($columns,$table,$where = array(),$limit='ALL',$offset=0){
+    public function select($table,$columns,$where = array(),$limit='ALL',$offset=0){
         $required = implode(', ',$columns);
         if(count($where) > 0){
             $temp = [];
