@@ -112,13 +112,19 @@ var Login = function() {
         });
 
         jQuery('#forget-password').click(function() {
-            jQuery('.login-form').hide();
-            jQuery('.forget-form').show();
+            //jQuery('.login-form').hide();
+            //jQuery('.forget-form').show();
+            jQuery('.login-form').effect('blind','swing',500,function(){
+                jQuery('.forget-form').toggle('blind');
+            });
         });
 
         jQuery('#back-btn').click(function() {
-            jQuery('.login-form').show();
-            jQuery('.forget-form').hide();
+            //jQuery('.login-form').show();
+            //jQuery('.forget-form').hide();
+            jQuery('.forget-form').effect('blind','swing',500,function(){
+                jQuery('.login-form').toggle('blind');
+            });
         });
 
     }
@@ -127,7 +133,7 @@ var Login = function() {
 
         function format(state) {
             if (!state.id) return state.text; // optgroup
-            return "<img class='flag' src='../../assets/global/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
+            return "<img class='flag' src='../assets/global/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
         }
 
         if (jQuery().select2) {
@@ -153,8 +159,10 @@ var Login = function() {
             focusInvalid: false, // do not focus the last invalid input
             ignore: "",
             rules: {
-
-                fullname: {
+                fname: {
+                    required: true
+                },
+                lname: {
                     required: true
                 },
                 email: {
@@ -164,13 +172,6 @@ var Login = function() {
                 address: {
                     required: true
                 },
-                city: {
-                    required: true
-                },
-                country: {
-                    required: true
-                },
-
                 username: {
                     required: true
                 },
@@ -231,13 +232,20 @@ var Login = function() {
         });
 
         jQuery('#register-btn').click(function() {
-            jQuery('.login-form').hide();
-            jQuery('.register-form').show();
+            //jQuery('.login-form').hide();
+            //jQuery('.register-form').fadeIn();
+
+            jQuery('.login-form').effect('blind','swing',500,function(){
+                jQuery('.register-form').toggle('blind');
+            });
         });
 
         jQuery('#register-back-btn').click(function() {
-            jQuery('.login-form').show();
-            jQuery('.register-form').hide();
+            //jQuery('.register-form').hide();
+            //jQuery('.login-form').fadeIn();
+            jQuery('.register-form').effect('blind','swing',500,function(){
+                jQuery('.login-form').toggle('blind');
+            });
         });
     }
 
