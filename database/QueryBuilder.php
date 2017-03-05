@@ -27,6 +27,6 @@ class QueryBuilder
             ':'.implode(', :',array_keys($params))
         );
         $statement = $this->pdo->prepare($sql);
-        return $statement->execute();
+        return $statement->execute($params);
     }
 }

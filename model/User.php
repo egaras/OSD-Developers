@@ -1,6 +1,6 @@
 <?php
-    include_once './config.php';
-    class user{
+    class User
+    {
         private $id;
         private $roleid;
         private $fname;
@@ -76,4 +76,3 @@
         }
         
     }
-?>

@@ -11,3 +11,6 @@ App::bind('database', new QueryBuilder(
     Connection::open(App::get('config')['database'])
 ));
 $db = App::get('database');
+
+$f = new Forum();
+die(var_dump($f->select()));
