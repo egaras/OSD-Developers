@@ -6,5 +6,4 @@
  * Time: 5:51 PM
  */
 require 'core/bootstrap.php';
-
-die(var_dump($db->select('users')));
+die(var_dump($db->select('userstatus',['*'],['"1"'=>'1'],'AND')));
