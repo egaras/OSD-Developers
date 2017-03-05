@@ -46,7 +46,21 @@ var Login = function() {
             },
 
             submitHandler: function(form) {
-                form.submit(); // form validation success, call ajax form submit
+                //form.submit();
+                $('#spinner-bg').show();
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '../controllers/login.php',
+                    data:$('.login-form').serialize(),
+                    success: function(data){
+                        $('#spinner-bg').hide();
+                        if(JSON.parse(data).valid)
+                            window.location = "index.php";
+                        else
+                            $('.alert-danger', $('.login-form')).effect('shake','swing',1000);
+                    }
+                });
             }
         });
 
