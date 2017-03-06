@@ -83,12 +83,6 @@ License: You must have a valid license purchased only from themeforest(the above
         .page-content{
             background-color: white !important;
         }
-        .white{
-            color: white !important;
-        }
-        .fa-angle-down{
-            color: white !important;
-        }
 
 	</style>
 </head>
@@ -438,7 +432,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<img alt="" class="img-circle" src="../../assets/admin/layout2/img/avatar3_small.jpg"/>
 						<span class="username username-hide-on-mobile">
 						Nick </span>
-						<i class="fa fa-angle-down "></i>
+						<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
@@ -495,23 +489,110 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="col-md-12">
 					<!-- BEGIN Portlet PORTLET-->
                     <div class="portlet box blue no_shadow">
-
                         <div class="portlet-title">
 							<div class="caption">
-								<!--i class="fa fa-gift"></i-->
-                                <span class="caption-subject bold uppercase"> secttion 1</span>
-                                <span class="caption-helper white">for new users</span>
+								<!--i class="fa fa-gift"></i-->categorie one
 							</div>
 							<div class="tools">
 								<a href="javascript:;" class="collapse">
 								</a>
-								<a href="javascript:;" class="fullscreen ">
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="fullscreen">
 								</a>
 
 							</div>
 						</div>
                         <div class="portlet-body grey-l padding_c">
-
+                            <!--div class="table-scrollable">
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <i class="fa fa-briefcase"></i> From
+                                        </th>
+                                        <th class="hidden-xs">
+                                            <i class="fa fa-question"></i> Descrition
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-bookmark"></i> Total
+                                        </th>
+                                        <th>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript:;">
+                                                Pixel Ltd </a>
+                                        </td>
+                                        <td class="hidden-xs">
+                                            Server hardware purchase
+                                        </td>
+                                        <td>
+                                            52560.10$ <span class="label label-sm label-success label-mini">
+											Paid </span>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:;" class="btn default btn-xs green-stripe">
+                                                View </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript:;">
+                                                Smart House </a>
+                                        </td>
+                                        <td class="hidden-xs">
+                                            Office furniture purchase
+                                        </td>
+                                        <td>
+                                            5760.00$ <span class="label label-sm label-warning label-mini">
+											Pending </span>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:;" class="btn default btn-xs blue-stripe">
+                                                View </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript:;">
+                                                FoodMaster Ltd </a>
+                                        </td>
+                                        <td class="hidden-xs">
+                                            Company Anual Dinner Catering
+                                        </td>
+                                        <td>
+                                            12400.00$ <span class="label label-sm label-success label-mini">
+											Paid </span>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:;" class="btn default btn-xs blue-stripe">
+                                                View </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript:;">
+                                                WaterPure Ltd </a>
+                                        </td>
+                                        <td class="hidden-xs">
+                                            Payment for Jan 2013
+                                        </td>
+                                        <td>
+                                            610.50$ <span class="label label-sm label-danger label-mini">
+											Overdue </span>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:;" class="btn default btn-xs red-stripe">
+                                                View </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div-->
 							<div class="portlet forum gren no-bpadding ">
 								<div class="portlet-title">
 
