@@ -183,9 +183,6 @@ var Login = function() {
                     required: true,
                     email: true
                 },
-                address: {
-                    required: true
-                },
                 username: {
                     required: true
                 },
@@ -195,7 +192,6 @@ var Login = function() {
                 rpassword: {
                     equalTo: "#register_password"
                 },
-
                 tnc: {
                     required: true
                 }
@@ -203,7 +199,7 @@ var Login = function() {
 
             messages: { // custom messages for radio buttons and checkboxes
                 tnc: {
-                    required: "Please accept TNC first."
+                    required: "Please accept Terms of Service & Privacy Policy first."
                 }
             },
 
@@ -232,7 +228,22 @@ var Login = function() {
             },
 
             submitHandler: function(form) {
-                form.submit();
+                //form.submit();
+                $('#spinner-bg').show();
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '../controllers/login.php',
+                    data:$('.register-form').serialize(),
+                    success: function(data){
+                        $('#spinner-bg').hide();
+                        console.log(JSON.parse(data));
+                        /*if(JSON.parse(data).valid)
+                            window.location = "index.php";
+                        else
+                            $('.alert-danger', $('.register-form')).effect('shake','swing',1000);*/
+                    }
+                });
             }
         });
 
