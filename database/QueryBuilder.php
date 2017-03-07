@@ -18,7 +18,7 @@ class QueryBuilder
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
-    public function select($table,$fields,$condition,$operator)
+    public function select($table,$fields=array("*"),$condition=array("1"=>"1"),$operator="AND",$class="StdClass",$mode=PDO::FETCH_CLASS)
     {
         $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "$k = ".'"'.$v.'"';},$condition));
         $sql=sprintf(
@@ -30,7 +30,7 @@ class QueryBuilder
         try{
             $statement=$this->pdo->prepare($sql);
             $statement->execute();
-            return $statement->fetchAll(PDO::FETCH_CLASS);
+            return $statement->fetchAll($mode,$class);
         }catch(Exception $e){
             die("Whoops!,something went wrong ".$e->getMessage());
         }

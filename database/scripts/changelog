@@ -6,3 +6,7 @@ desc: Base version
 --v1.1
 date: 4 Mar
 desc: added user avatar
+
+--v1.3
+date: 7 Mar
+desc: added more dummy data
