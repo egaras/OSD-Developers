@@ -559,10 +559,6 @@ License: You must have a valid license purchased only from themeforest(the above
                             <i class="fa fa-angle-right"></i>
                         </li>
                         <li>
-                            <a href="section.php/?sex=1">section 1</a>
-                            <i class="fa fa-angle-right"></i>
-                        </li>
-                        <li>
                             <a href="#">form 1</a>
                             <i class="fa fa-angle-right"></i>
                         </li>
