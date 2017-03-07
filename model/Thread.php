@@ -3,19 +3,23 @@
 /**
  * Created by PhpStorm.
  * User: ehab
- * Date: 3/5/17
- * Time: 9:40 AM
+ * Date: 3/7/17
+ * Time: 4:12 PM
  */
-class Forum
+class Thread
 {
     private $id;
-    private $sectionid;
-    private $name;
-    private $desc;
+    private $userid;
+    private $username;
+    private $forumid;
+    private $title;
+    private $content;
+    private $postdate;
+    private $editdate;
     private $locked;
-    private $createdate;
+    private $pinned;
     private $views;
-    private $threads = [];
+    private $replies;
 
     function __get($name){
         return $this->$name;
