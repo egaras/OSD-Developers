@@ -54,13 +54,16 @@ var Login = function() {
                     url: '../controllers/login.php',
                     data:$('.login-form').serialize(),
                     success: function(data){
-                        $('#spinner-bg').hide();
-                        if(JSON.parse(data).valid)
+                        var res = JSON.parse(data);
+                        console.log(res);
+                        if(res.valid)
                             window.location = "index.php";
                         else
-                            $('.alert-danger', $('.login-form')).effect('shake','swing',1000);
+                            console.log("inside else");
+                            //$('.login-form').validate().showErrors(res.errors);
                     }
                 });
+                $('#spinner-bg').hide();
             }
         });
 
@@ -233,17 +236,23 @@ var Login = function() {
                 $.ajax({
                     type: 'POST',
                     cache: false,
-                    url: '../controllers/login.php',
+                    url: '../controllers/login.ph',
                     data:$('.register-form').serialize(),
                     success: function(data){
-                        $('#spinner-bg').hide();
-                        console.log(JSON.parse(data));
-                        /*if(JSON.parse(data).valid)
+                        $('.register-form').validate().resetForm();
+                        console.log(data);
+                        var res = JSON.parse(data);
+                        if(res.valid)
                             window.location = "index.php";
                         else
-                            $('.alert-danger', $('.register-form')).effect('shake','swing',1000);*/
+                            $('.register-form').validate().showErrors(res.errors);
+                    },
+                    error: function(){
+                        $('#connectionModal').modal('show');
+                        console.log('cannot connect to server');
                     }
                 });
+                $('#spinner-bg').hide();
             }
         });
 
