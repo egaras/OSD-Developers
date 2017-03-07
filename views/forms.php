@@ -52,13 +52,17 @@ License: You must have a valid license purchased only from themeforest(the above
 
 			padding: 0px !important;
 		}
-		.forum{
+		.forum,.trr{
+
             box-shadow: none;
-            background-color: white;
-            margin-bottom: 5px;
+            background-color: white !important;
+            margin-bottom: 5px !important;
 
             border-bottom:1px solid #ECF0F1 !important;
 		}
+        tr.trr{
+            margin: 5px !important;
+        }
 		.no_shadow{
 			box-shadow: none;
 
@@ -67,9 +71,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		.noo-margin{
 			margin-bottom: 0px !important;
 		}
-		.no-padding{
-			padding: 0px !important;
-		}
+        .nooo-margin{
+            margin: 0px !important;
+        }
+
+        .padding8{
+            padding: 8px !important;
+        }
         padding_c{
             padding-bottom: 5px !important;
         }
@@ -83,6 +91,62 @@ License: You must have a valid license purchased only from themeforest(the above
         .page-content{
             background-color: white !important;
         }
+        .white{
+            color: white !important;
+        }
+
+        .fa-angle-down{
+            color: white !important;
+        }
+        .whiteb{
+            background-color: white;
+        }
+        .topiclist{
+            margin: 10px;
+            -webkit-padding-start:0px !important;
+            padding: 0px ;
+
+        }
+        ul.topiclist li {
+            display:inline-block !important;
+            vertical-align: middle !important;
+            line-height: normal !important;
+
+        }
+        li.col1{
+            width: 45%;
+            vertical-align: center;
+
+        }
+        li.col2{
+            width: 15%;
+            vertical-align: center !important;
+            position: relative;
+            top: 50% !important;
+
+
+        }
+        li.col3{
+
+
+        }
+        .thread{
+            padding: 20px !important;
+        }
+
+        li span{
+            display: inline-block !important;
+        }
+        li span p{
+            margin-left:10px;
+            margin-bottom: 0px;
+            vertical-align: center;
+        }
+        .no-padding{
+            padding: 0px !important;
+            -webkit-padding-start:0px !important;
+        }
+
 
 	</style>
 </head>
@@ -432,7 +496,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<img alt="" class="img-circle" src="../../assets/admin/layout2/img/avatar3_small.jpg"/>
 						<span class="username username-hide-on-mobile">
 						Nick </span>
-						<i class="fa fa-angle-down"></i>
+						<i class="fa fa-angle-down "></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
@@ -484,115 +548,160 @@ License: You must have a valid license purchased only from themeforest(the above
 				<h2 class="page-title">
 					OS Forums <small>open source forum lab 42</small>
 				</h2>
-				<!--div class="portlet light ">
-					<div class="row ">
-						<div class="col-md-12">
-					<!-- BEGIN Portlet PORTLET-->
+                <div class="page-bar grey-l">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="home.php">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="section.php/?sex=1">section 1</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">form 1</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="portlet box blue no_shadow">
+
+                    <div class="portlet-title">
+                        <ul class="topiclist">
+                            <li class="col1">form 1</li>
+                            <li class="col2"><i class="fa fa-home "></i></li>
+                            <li class="col3"><i class="fa fa-home "></i></li>
+                        </ul>
+                        <!--div class="caption">
+
+                            <span class="caption-subject bold uppercase"> secttion 1</span>
+                            <span class="caption-helper white">for new users</span>
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                            <a href="javascript:;" class="fullscreen ">
+                            </a>
+
+                        </div-->
+                    </div>
+                    <div class="portlet-body grey-l padding_c">
+                        <ul class="topiclist thread forum">
+                            <li class="col1">form 1</li>
+                            <li class="col2"><i class="fa fa-home "></i></li>
+                            <li class="col3"><i class="fa fa-home "></i></li>
+                        </ul>
+                        <ul class="topiclist thread forum">
+                            <li class="col1">form 1</li>
+                            <li class="col2"><i class="fa fa-home "></i></li>
+                            <li class="col3"><i class="fa fa-home "></i></li>
+                        </ul>
+                        <ul class="topiclist thread no-padding forum" style="padding-left: 10px;">
+                            <li class="col1">form 1</li>
+                            <li class="col2"><p class="row"><h2 class="nooo-margin" >20</h2></p><p class="row">comment</p></li>
+                            <li class="col3 ">
+
+                                <span><img alt="" class="img-circle col-sm-4 no-padding" src="../../assets/admin/layout2/img/avatar3_small.jpg">
+                                    <p class="col-sm-6 no-padding">by linah<br>12/3/2017</p></span>
+
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="portlet box blue no_shadow">
+
+
+                            <table class="table table-striped">
+                                <thead class=" portlet-title">
+                                <tr >
+                                    <th>form 1</th>
+                                    <th><i class="fa fa-home"></i></th>
+                                    <th><i class="fa fa-home"></i></th>
+                                </tr>
+                                </thead>
+                                <tbody class="portlet-body whiteb padding_c">
+
+                                <tr class="trr">
+                                    <td>
+                                        <h2 class="nooo-margin" ><b>topic blabla</b></h2><br>fsklfsklfkslfkoefkoefkeo
+                                    </td>
+                                    <td><p><h2 class="nooo-margin" >20</h2><br>comment</p></td>
+                                    <td>
+
+                                        <div class="col-sm-1"><img alt="" class="img-circle" src="../../assets/admin/layout2/img/avatar3_small.jpg"></div>
+                                        <div class="col-sm-8"><p>bloblblo<br>ffsfsdf</p></div>
+                                    </td>
+                                </tr >
+                                <tr class="trr">
+                                    <td>
+                                        <h2><b>topic blabla</b></h2><br>fsklfsklfkslfkoefkoefkeo
+                                    </td>
+                                    <td><p><h2>20</h2><br>comment</p></td>
+                                    <td>
+                                        <div class="col-sm-4"><img alt="" class="img-circle" src="../../assets/admin/layout2/img/avatar3_small.jpg"></div>
+                                        <div class="col-sm-8"><p>bloblblo<br>ffsfsdf</p></div>
+                                    </td>
+                                </tr >
+                                <tr class="trr">
+                                    <td>
+                                        <h2><b>topic blabla</b></h2><br>fsklfsklfkslfkoefkoefkeo
+                                    </td>
+                                    <td><p><h2>20</h2><br>comment</p></td>
+                                    <td>
+                                        <div class="col-sm-4"><img alt="" class="img-circle" src="../../assets/admin/layout2/img/avatar3_small.jpg"></div>
+                                        <div class="col-sm-8"><p>bloblblo<br>ffsfsdf</p></div>
+                                    </td>
+                                </tr >
+                                </tbody>
+                            </table>
+
+
+                    </div>
+
+
+
+
+
+
                     <div class="portlet box blue no_shadow">
+
                         <div class="portlet-title">
 							<div class="caption">
-								<!--i class="fa fa-gift"></i-->categorie one
+								<!--i class="fa fa-gift"></i-->
+                                <span class="caption-subject bold uppercase"> secttion 1</span>
+                                <span class="caption-helper white">for new users</span>
 							</div>
 							<div class="tools">
 								<a href="javascript:;" class="collapse">
 								</a>
-								<a href="javascript:;" class="reload">
-								</a>
-								<a href="javascript:;" class="fullscreen">
+								<a href="javascript:;" class="fullscreen ">
 								</a>
 
 							</div>
 						</div>
                         <div class="portlet-body grey-l padding_c">
-                            <!--div class="table-scrollable">
-                                <table class="table table-striped table-bordered table-advance table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>
-                                            <i class="fa fa-briefcase"></i> From
-                                        </th>
-                                        <th class="hidden-xs">
-                                            <i class="fa fa-question"></i> Descrition
-                                        </th>
-                                        <th>
-                                            <i class="fa fa-bookmark"></i> Total
-                                        </th>
-                                        <th>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="javascript:;">
-                                                Pixel Ltd </a>
-                                        </td>
-                                        <td class="hidden-xs">
-                                            Server hardware purchase
-                                        </td>
-                                        <td>
-                                            52560.10$ <span class="label label-sm label-success label-mini">
-											Paid </span>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:;" class="btn default btn-xs green-stripe">
-                                                View </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="javascript:;">
-                                                Smart House </a>
-                                        </td>
-                                        <td class="hidden-xs">
-                                            Office furniture purchase
-                                        </td>
-                                        <td>
-                                            5760.00$ <span class="label label-sm label-warning label-mini">
-											Pending </span>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:;" class="btn default btn-xs blue-stripe">
-                                                View </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="javascript:;">
-                                                FoodMaster Ltd </a>
-                                        </td>
-                                        <td class="hidden-xs">
-                                            Company Anual Dinner Catering
-                                        </td>
-                                        <td>
-                                            12400.00$ <span class="label label-sm label-success label-mini">
-											Paid </span>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:;" class="btn default btn-xs blue-stripe">
-                                                View </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="javascript:;">
-                                                WaterPure Ltd </a>
-                                        </td>
-                                        <td class="hidden-xs">
-                                            Payment for Jan 2013
-                                        </td>
-                                        <td>
-                                            610.50$ <span class="label label-sm label-danger label-mini">
-											Overdue </span>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:;" class="btn default btn-xs red-stripe">
-                                                View </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div-->
+
 							<div class="portlet forum gren no-bpadding ">
 								<div class="portlet-title">
 
@@ -901,15 +1010,13 @@ License: You must have a valid license purchased only from themeforest(the above
 
 						</div>
 					</div>
-                    <div class="portlet box purple-medium">
+                    <div class="portlet box purple-medium no_shadow">
                         <div class="portlet-title">
                             <div class="caption">
                                 <!--i class="fa fa-gift"></i-->categorie one
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
-                                </a>
-                                <a href="javascript:;" class="reload">
                                 </a>
                                 <a href="javascript:;" class="fullscreen">
                                 </a>
@@ -1006,6 +1113,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </tbody>
                                 </table>
                             </div-->
+
                             <div class="portlet forum gren no-bpadding ">
                                 <div class="portlet-title">
 

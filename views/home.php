@@ -490,6 +490,17 @@ License: You must have a valid license purchased only from themeforest(the above
 				<h2 class="page-title">
 					OS Forums <small>open source forum lab 42</small>
 				</h2>
+                <div class="page-bar grey-l">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="home.php">Home</a>
+                            <!--i class="fa fa-angle-right"></i-->
+                        </li>
+
+                    </ul>
+
+                </div>
 				<!--div class="portlet light ">
 					<div class="row ">
 						<div class="col-md-12">
@@ -820,15 +831,13 @@ License: You must have a valid license purchased only from themeforest(the above
 
 						</div>
 					</div>
-                    <div class="portlet box purple-medium">
+                    <div class="portlet box purple-medium no_shadow">
                         <div class="portlet-title">
                             <div class="caption">
                                 <!--i class="fa fa-gift"></i-->categorie one
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
-                                </a>
-                                <a href="javascript:;" class="reload">
                                 </a>
                                 <a href="javascript:;" class="fullscreen">
                                 </a>
