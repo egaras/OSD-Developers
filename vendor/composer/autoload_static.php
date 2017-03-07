@@ -12,11 +12,14 @@ class ComposerStaticInit033b00148a03cf13b62a63c9fbf4e519
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInit033b00148a03cf13b62a63c9fbf4e519' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Connection' => __DIR__ . '/../..' . '/database/Connection.php',
-        'DBManager' => __DIR__ . '/../..',
+        'DBManager' => __DIR__ . '/../..' . '/database/DBManager.php',
         'Event' => __DIR__ . '/../..' . '/assets/global/plugins/fullcalendar/demos/php/utils.php',
         'Forum' => __DIR__ . '/../..' . '/model/Forum.php',
         'QueryBuilder' => __DIR__ . '/../..' . '/database/QueryBuilder.php',
         'SSP' => __DIR__ . '/../..' . '/assets/global/plugins/datatables/examples/server_side/scripts/ssp.class.php',
+        'Section' => __DIR__ . '/../..' . '/model/Section.php',
+        'Thread' => __DIR__ . '/../..' . '/model/Thread.php',
+        'User' => __DIR__ . '/../..' . '/model/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

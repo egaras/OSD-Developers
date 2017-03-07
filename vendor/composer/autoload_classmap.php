@@ -11,9 +11,12 @@ return array(
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
     'Composer\\Autoload\\ComposerStaticInit033b00148a03cf13b62a63c9fbf4e519' => $vendorDir . '/composer/autoload_static.php',
     'Connection' => $baseDir . '/database/Connection.php',
-    'DBManager' => $baseDir . '/DBManager.php',
+    'DBManager' => $baseDir . '/database/DBManager.php',
     'Event' => $baseDir . '/assets/global/plugins/fullcalendar/demos/php/utils.php',
     'Forum' => $baseDir . '/model/Forum.php',
     'QueryBuilder' => $baseDir . '/database/QueryBuilder.php',
     'SSP' => $baseDir . '/assets/global/plugins/datatables/examples/server_side/scripts/ssp.class.php',
+    'Section' => $baseDir . '/model/Section.php',
+    'Thread' => $baseDir . '/model/Thread.php',
+    'User' => $baseDir . '/model/User.php',
 );
