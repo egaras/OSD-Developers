@@ -7,4 +7,4 @@
  */
 require 'vendor/autoload.php';
 require 'core/bootstrap.php';
-die(var_dump($db->select('userstatus',['*'],['"1"'=>'1'],'AND')));
+die(var_dump($db->select('users',['*'],['"1"'=>'1'],'AND')));

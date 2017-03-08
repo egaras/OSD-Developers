@@ -6,7 +6,8 @@
  * Time: 5:39 PM
  */
 //require 'vendor/autoload.php';
-App::bind('config', require '../config.php');
+
+App::bind('config', require $_SERVER['DOCUMENT_ROOT']."/OSD-Developers/config.php");
 App::bind('database', new QueryBuilder(
     Connection::open(App::get('config')['database'])
 ));
