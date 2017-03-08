@@ -236,6 +236,24 @@ var Login = function() {
                 $.ajax({
                     type: 'POST',
                     cache: false,
+                    url: '../controllers/admin.php',
+                    data:$('.register-form').serialize(),
+                    success: function(data){
+                        $('.register-form').validate().resetForm();
+                        console.log(data);
+                        var res = JSON.parse(data);
+                        if(res.success)
+                            window.location = "index.php";
+                        else
+                            $('.register-form').validate().showErrors(res.errors);
+                    },
+                    error: function(){
+                        $('#connectionModal').modal('show');
+                    }
+                });
+                /*$.ajax({
+                    type: 'POST',
+                    cache: false,
                     url: '../controllers/login.ph',
                     data:$('.register-form').serialize(),
                     success: function(data){
@@ -249,9 +267,8 @@ var Login = function() {
                     },
                     error: function(){
                         $('#connectionModal').modal('show');
-                        console.log('cannot connect to server');
                     }
-                });
+                });*/
                 $('#spinner-bg').hide();
             }
         });
