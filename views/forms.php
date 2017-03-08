@@ -566,7 +566,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     </ul>
 
                 </div>
-
+                <a href="add-thread.php" class="btn blue pull-right">
+                     <i class="fa fa-plus"></i>ADD New Thread
+                </a>
+                <br><br><br>
 
 
 

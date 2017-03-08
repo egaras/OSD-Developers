@@ -19,34 +19,27 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
 <meta charset="utf-8"/>
 <title>Metronic | Portlets - General Portlets</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta content="" name="description"/>
-    <meta content="" name="author"/>
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
-    <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
-    <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
-    <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
-    <!-- END GLOBAL MANDATORY STYLES -->
-    <!-- BEGIN PAGE LEVEL STYLES -->
-    <link href="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
-    <link href="../assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
-    <link href="../assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
-    <link href="../assets/admin/pages/css/news.css" rel="stylesheet" type="text/css"/>
-    <link href="../assets/admin/pages/css/blog.css" rel="stylesheet" type="text/css"/>
-    <!-- END PAGE LEVEL STYLES -->
-    <!-- BEGIN THEME STYLES -->
-    <link href="../assets/global/css/components-md.css" id="style_components" rel="stylesheet" type="text/css"/>
-    <link href="../assets/global/css/plugins-md.css" rel="stylesheet" type="text/css"/>
-    <link href="../assets/admin/layout2/css/layout.css" rel="stylesheet" type="text/css"/>
-    <link id="style_color" href="../assets/admin/layout2/css/themes/dark.css" rel="stylesheet" type="text/css"/>
-    <link href="../assets/admin/layout2/css/custom.css" rel="stylesheet" type="text/css"/>
-    <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="favicon.ico"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
+<link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+<link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="../assets/global/css/components-md.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="../assets/global/css/plugins-md.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/admin/layout2/css/layout.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="../assets/admin/layout2/css/themes/dark.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/admin/layout2/css/custom.css" rel="stylesheet" type="text/css"/>
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
 	<style>
 		.fit{
 
@@ -503,7 +496,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<img alt="" class="img-circle" src="../assets/admin/layout2/img/avatar3_small.jpg"/>
+						<img alt="" class="img-circle" src="../../assets/admin/layout2/img/avatar3_small.jpg"/>
 						<span class="username username-hide-on-mobile">
 						Nick </span>
 						<i class="fa fa-angle-down "></i>
@@ -566,179 +559,35 @@ License: You must have a valid license purchased only from themeforest(the above
                             <i class="fa fa-angle-right"></i>
                         </li>
                         <li>
-                            <a href="forms.php/?form=1">form 1</a>
+                            <a href="forms.php">form 1</a>
                             <i class="fa fa-angle-right"></i>
                         </li>
                         <li>
-                            <a href="#">thread</a>
-                            <i class="fa fa-angle-right"></i>
+                            <a href="#">add thread</a>
+
                         </li>
 
                     </ul>
 
                 </div>
 
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- BEGIN PROFILE SIDEBAR -->
-                        <div class="profile-sidebar" style="width:250px;">
-                            <!-- PORTLET MAIN -->
-                            <div class="portlet light profile-sidebar-portlet no_shadow">
-                                <!-- SIDEBAR USERPIC -->
-                                <div class="profile-userpic">
-                                    <img src="../assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
-                                </div>
-                                <!-- END SIDEBAR USERPIC -->
-                                <!-- SIDEBAR USER TITLE -->
-                                <div class="profile-usertitle">
-                                    <div class="profile-usertitle-name">
-                                        Marcus Doe
-                                    </div>
-                                    <div class="profile-usertitle-job">
-                                        Developer
-                                    </div>
-                                    <div class="profile-usertitle-job">
-                                        12/2/2016
-                                    </div>
-                                </div>
-                                <!-- END SIDEBAR USER TITLE -->
-                                <!-- SIDEBAR BUTTONS -->
-                                <div class="profile-userbuttons">
-                                    <button type="button" class="btn btn-circle green-haze btn-sm">Follow</button>
-                                    <button type="button" class="btn btn-circle btn-danger btn-sm">Message</button>
-                                </div>
-                                <!-- END SIDEBAR BUTTONS -->
-
-                            </div>
-                            <!-- END PORTLET MAIN -->
-
+                <div class="portlet whiteb" style="padding: 30px;">
+                    <h3 class="nooo-margin">ADD new Tread</h3><br><br>
+                    <form role="form" action="#">
+                        <div class="form-group">
+                            <label class="control-label">Title
+                            </label>
+                            <input type="text" class="form-control">
                         </div>
-                        <!-- END BEGIN PROFILE SIDEBAR -->
-                        <!-- BEGIN PROFILE CONTENT -->
-                        <div class="profile-content">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="portlet light grey-l">
-                                        <div class="portlet-title tabbable-line">
-                                            <div class="caption caption-md">
-                                                <i class="icon-globe theme-font hide"></i>
-                                                <span class="caption-subject font-blue-madison bold uppercase">thread titile blblb</span>
-                                            </div>
 
-                                        </div>
-                                        <div class="portlet-body">
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                                                    commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                                                    dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                                    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-                                                    justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-                                                    ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pret
-                                                    ium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulput
-                                                    ate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac
-                                                    , enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                                                    viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ult
-                                                    ricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam
-                                                    rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
-                                                    sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
-                                                    hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien
-                                                    ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus
-                                                    tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
-                                                    Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna
-                                                    mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut,
-                                                    mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu
-                                                    turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et
-                                                    ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium
-                                                    turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis,
-                                                    ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget
-                                                    , posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc.
-                                                    Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros
-                                                    et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id,
-                                                    imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec
-                                                    sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque
-                                                    . Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula
-                                                    sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada.
-                                                    Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputat
-                                                    e arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orc
-                                                    i luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue,
-                                                    elit erat euismod orci, ac</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--comments-->
-                            <div class="col-md-12 news-page blog-page">
-                                <div class="row">
-                                    <div class="col-md-12 blog-tag-data">
-                                        <h3>Comments</h3>
-
-                                        <div class="media">
-                                            <a href="javascript:;" class="pull-left">
-                                                <img alt="" src="../assets/admin/pages/media/blog/6.jpg" class="media-object">
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Media heading <span>
-                                                        July 5,2013
-                                                        </span>
-                                                </h4>
-                                                <p>
-                                                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <a href="javascript:;" class="pull-left">
-                                                <img alt="" src="../assets/admin/pages/media/blog/6.jpg" class="media-object">
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Media heading <span>
-                                                        July 5,2013
-                                                        </span>
-                                                </h4>
-                                                <p>
-                                                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <a href="javascript:;" class="pull-left">
-                                                <img alt="" src="../assets/admin/pages/media/blog/6.jpg" class="media-object">
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Media heading <span>
-                                                        July 5,2013
-                                                        </span>
-                                                </h4>
-                                                <p>
-                                                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!--end media-->
-                                        <hr>
-                                        <div class="post-comment">
-                                            <h3>Leave a Comment</h3>
-                                            <form role="form" action="#">
-                                                <div class="form-group">
-
-                                                    <textarea class="col-md-10 form-control" rows="3"></textarea>
-                                                </div>
-                                                <button class="margin-top-20 btn blue" type="submit">Post a Comment</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end comments-->
-
+                        <div class="form-group">
+                            <label class="control-label">Body
+                            </label>
+                            <textarea class="col-md-10 form-control" rows="12"></textarea>
                         </div>
-                        <!-- END PROFILE CONTENT -->
-                    </div>
+                        <button class="margin-top-20 btn blue" type="submit">Post Thread</button>
+                    </form>
                 </div>
-						<!--/div>
-					</div>
-				</div-->
 
 			</div>
 		</div>
