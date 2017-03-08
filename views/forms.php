@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
 Version: 3.7.0
 Author: KeenThemes
@@ -665,7 +665,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
 <script src="../assets/global/plugins/respond.min.js"></script>
-<script src="../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
 <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -683,7 +683,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/admin/layout2/scripts/layout.js" type="text/javascript"></script>
 <script src="../assets/admin/layout2/scripts/demo.js" type="text/javascript"></script>
 <script>
-jQuery(document).ready(function() {       
+jQuery(document).ready(function() {
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 Demo.init(); // init demo features
