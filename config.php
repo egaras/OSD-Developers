@@ -17,8 +17,8 @@ return [
     'database'=>[
         'host'=>'172.0.0.1',
         'name'=>'osddevelopers',
-        'username'=>'root',
-        'password'=>'root',
+        'username'=>'yasser',
+        'password'=>'',
         'connection' => 'mysql:host=127.0.0.1',
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
