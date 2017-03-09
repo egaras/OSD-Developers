@@ -8,15 +8,17 @@
 require '../vendor/autoload.php';
 require '../core/bootstrap.php';
 
-//$s = User::getAllUsers();
-//$s = User::getUserameById(1);
-
-// $s = new User();
-// $s->id = 1;
-// $s = $s->loadById();
-// $s->username = 'Yasser';
-// $s->update();
-// $ee = $s->getFullname();
-//die(var_dump($ee));;
+session_start();
+$_SESSION['userId'] = 1; //admin
+if(isset($_SESSION['userId'])){
+    $userId = $_SESSION['userId'];
+    $loged_in = true;
+}
+else{
+    $loged_in = false;
+}
+$user = new User();
+$user->id = $userId;
+$user = $user->loadById();
 
 require '../views/profile.php';
