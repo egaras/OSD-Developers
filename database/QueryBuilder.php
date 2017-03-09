@@ -12,11 +12,11 @@ class QueryBuilder
     {
         $this->pdo = $pdo;
     }
-    public function selectAll($table)
+    public function selectAll($table,$class="StdClass",$mode=PDO::FETCH_CLASS)
     {
         $statement = $this->pdo->prepare("SELECT * FROM {$table}");
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_CLASS);
+        return $statement->fetchAll($mode,$class);
     }
     public function select($table,$fields=array("*"),$condition=array("1"=>"1"),$operator="AND",$class="StdClass",$mode=PDO::FETCH_CLASS)
     {
@@ -50,7 +50,7 @@ class QueryBuilder
             die("Whoops!,something went wrong ".$e->getMessage());
         }
     }
-    public function update($table,$fields,$condition,$operator)
+    public function update($table,$fields,$condition,$operator="AND")
     {
         $fieldsKV=implode(',',$this->array_map_assoc(function($k,$v){return "$k =".'"'.$v.'"';},$fields));
         $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "$k = ".'"'.$v.'"';},$condition));
@@ -67,7 +67,7 @@ class QueryBuilder
             die("Whoops!,something went wrong ".$e->getMessage());
         }
     }
-    public function delete($table,$condition,$operator)
+    public function delete($table,$condition,$operator="AND")
     {
         $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "$k = ".'"'.$v.'"';},$condition));
         $sql=sprintf(

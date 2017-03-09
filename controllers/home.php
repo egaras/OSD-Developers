@@ -8,6 +8,19 @@
 require '../vendor/autoload.php';
 require '../core/bootstrap.php';
 
+session_start();
+$_SESSION['userId'] = 1; //admin
+if(isset($_SESSION['userId'])){
+    $userId = $_SESSION['userId'];
+    $loged_in = true;
+}
+else{
+    $loged_in = false;
+}
+$user = new User();
+$user->id = $userId;
+$user = $user->loadById();
+
 $sections = $db->select('sections',['*'],["1"=>"1"],"AND","Section");
 foreach ($sections as $section){
     $forums = $db->select('forums',['*'],['sectionid'=>$section->id],"AND","Forum");
