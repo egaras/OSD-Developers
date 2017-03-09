@@ -72,24 +72,24 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div class="portlet light profile-sidebar-portlet">
 								<!-- SIDEBAR USERPIC -->
 								<div class="profile-userpic">
-									<img src="../assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+									<img src="<?="../assets/profilePics/".$user->avatar?>" class="img-responsive" alt="">
 								</div>
 								<!-- END SIDEBAR USERPIC -->
 								<!-- SIDEBAR USER TITLE -->
 								<div class="profile-usertitle">
 									<div class="profile-usertitle-name">
-										 Yasser Mohsen
+										 <?=$user->getFullname();?>
 									</div>
 									<div class="profile-usertitle-job">
-										 IT Developer
+										 <?=$user->username;?>
 									</div>
 								</div>
 								<!-- END SIDEBAR USER TITLE -->
 								<!-- SIDEBAR BUTTONS -->
-								<div class="profile-userbuttons">
+								<!-- <div class="profile-userbuttons">
 									<button type="button" class="btn btn-circle green-haze btn-sm">Follow</button>
 									<button type="button" class="btn btn-circle btn-danger btn-sm">Message</button>
-								</div>
+								</div> -->
 								<!-- END SIDEBAR BUTTONS -->
 								<!-- SIDEBAR MENU -->
 								<div class="profile-usermenu">
@@ -150,20 +150,20 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
 								<!-- END STAT -->
 								<div>
-									<h4 class="profile-desc-title">About Marcus Doe</h4>
-									<span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
+									<h4 class="profile-desc-title">About:</h4>
+									<span class="profile-desc-text"> new user </span>
 									<div class="margin-top-20 profile-desc-link">
 										<i class="fa fa-globe"></i>
-										<a href="http://www.keenthemes.com">www.keenthemes.com</a>
+										<a href=""><?=$user->email?></a>
 									</div>
-									<div class="margin-top-20 profile-desc-link">
+									<!-- <div class="margin-top-20 profile-desc-link">
 										<i class="fa fa-twitter"></i>
 										<a href="http://www.twitter.com/keenthemes/">@keenthemes</a>
 									</div>
 									<div class="margin-top-20 profile-desc-link">
 										<i class="fa fa-facebook"></i>
 										<a href="http://www.facebook.com/keenthemes/">keenthemes</a>
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<!-- END PORTLET MAIN -->
@@ -201,23 +201,23 @@ License: You must have a valid license purchased only from themeforest(the above
 													<form role="form" action="#">
 														<div class="form-group">
 															<label class="control-label">First Name</label>
-															<input type="text" placeholder="John" class="form-control"/>
+															<input type="text" placeholder="John" class="form-control" value="<?=$user->fname?>"/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">Last Name</label>
-															<input type="text" placeholder="Doe" class="form-control"/>
+															<input type="text" placeholder="Doe" class="form-control" value="<?=$user->lname?>"/>
 														</div>
 														<div class="form-group">
-															<label class="control-label">Mobile Number</label>
-															<input type="text" placeholder="+1 646 580 DEMO (6284)" class="form-control"/>
+															<label class="control-label">Username</label>
+															<input type="text" placeholder="JohnDoe" class="form-control" value="<?=$user->username?>"/>
 														</div>
 														<div class="form-group">
-															<label class="control-label">Interests</label>
-															<input type="text" placeholder="Design, Web etc." class="form-control"/>
+															<label class="control-label">Email</label>
+															<input type="email" placeholder="example@example.com" class="form-control" value="<?=$user->email?>"/>
 														</div>
 														<div class="form-group">
-															<label class="control-label">Occupation</label>
-															<input type="text" placeholder="Web Developer" class="form-control"/>
+															<label class="control-label">Signature</label>
+															<input type="text" placeholder="Web Developer" class="form-control" value="<?=$user->signature?>"/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">About</label>
@@ -241,7 +241,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													<p>
 														 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
 													</p>
-													<form action="#" role="form">
+													<form action="../controllers/upload.php" method="post" role="form" enctype="multipart/form-data">
 														<div class="form-group">
 															<div class="fileinput fileinput-new" data-provides="fileinput">
 																<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
@@ -255,7 +255,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																	Select image </span>
 																	<span class="fileinput-exists">
 																	Change </span>
-																	<input type="file" name="...">
+																	<input type="file" name="myImage">
 																	</span>
 																	<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">
 																	Remove </a>
@@ -267,8 +267,8 @@ License: You must have a valid license purchased only from themeforest(the above
 															</div>
 														</div>
 														<div class="margin-top-10">
-															<a href="javascript:;" class="btn green-haze">
-															Submit </a>
+															<input type="submit" value="Submit" class="btn green-haze"/>
+
 															<a href="javascript:;" class="btn default">
 															Cancel </a>
 														</div>
