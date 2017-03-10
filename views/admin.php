@@ -558,7 +558,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END HEADER INNER -->
 </div>
 <!-- END HEADER -->
-<div class="container">
+<div class="">
 	<div class="page-container page-full-width">
 		<div class="page-content-wrapper">
 			<div class="page-content">
@@ -583,311 +583,517 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="profile-sidebar" style="width:250px;">
-                            <!-- PORTLET MAIN -->
-                            <div class="portlet light profile-sidebar-portlet">
-                                <!-- SIDEBAR USERPIC -->
-                                <div class="profile-userpic">
-                                    <img src="../../assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                    <div class="col-md-12 ">
+                        <!-- BEGIN Portlet PORTLET-->
+                        <div class="portlet light">
+                            <div class="portlet-title tabbable-line">
+                                <div class="caption">
+                                    <span class="caption-subject bold font-blue uppercase">
+									Control Panel </span>
                                 </div>
-                                <!-- END SIDEBAR USERPIC -->
-                                <!-- SIDEBAR USER TITLE -->
-                                <div class="profile-usertitle">
-                                    <div class="profile-usertitle-name">
-                                        Marcus Doe
-                                    </div>
-                                    <div class="profile-usertitle-job">
-                                        Developer
-                                    </div>
-                                </div>
-                                <!-- END SIDEBAR USER TITLE -->
-                                <!-- SIDEBAR MENU -->
-                                <div class="profile-usermenu">
-                                    <ul class="nav nav-tabs">
-                                        <li >
-                                            <a href="#1" data-toggle="tab">
-                                                <i class="icon-users"></i>
-                                                users adminstration</a>
-                                        </li>
-                                        <li class="active">
-                                            <a href="#2" data-toggle="tab">
-                                                <i class="fa fa-files-o"></i>
-                                                  forums</a>
-                                        </li>
-                                        <li>
-                                            <a href="#3">
-                                                <i class="icon-home"></i>
-                                                Overview </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <!-- END MENU -->
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a href="#portlet_tab1" data-toggle="tab"><i class="fa fa-users"></i>
+                                            users </a>
+                                    </li>
+                                    <li>
+                                        <a href="#portlet_tab2" data-toggle="tab"><i class="fa fa-files-o"></i>
+                                            content </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <!-- END PORTLET MAIN -->
-                            <!-- PORTLET MAIN -->
-                            <div class="portlet light">
-                                <!-- STAT -->
-                                <div class="row list-separated profile-stat">
-                                    <div class="col-md-4 col-sm-4 col-xs-6">
-                                        <div class="uppercase profile-stat-title">
-                                            37
-                                        </div>
-                                        <div class="uppercase profile-stat-text">
-                                            Projects
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-6">
-                                        <div class="uppercase profile-stat-title">
-                                            51
-                                        </div>
-                                        <div class="uppercase profile-stat-text">
-                                            Tasks
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-6">
-                                        <div class="uppercase profile-stat-title">
-                                            61
-                                        </div>
-                                        <div class="uppercase profile-stat-text">
-                                            Uploads
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END STAT -->
-                                <div>
-                                    <h4 class="profile-desc-title">About Marcus Doe</h4>
-                                    <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
-                                    <div class="margin-top-20 profile-desc-link">
-                                        <i class="fa fa-globe"></i>
-                                        <a href="http://www.keenthemes.com">www.keenthemes.com</a>
-                                    </div>
-                                    <div class="margin-top-20 profile-desc-link">
-                                        <i class="fa fa-twitter"></i>
-                                        <a href="http://www.twitter.com/keenthemes/">@keenthemes</a>
-                                    </div>
-                                    <div class="margin-top-20 profile-desc-link">
-                                        <i class="fa fa-facebook"></i>
-                                        <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END PORTLET MAIN -->
-                        </div>
-                        <!-- END BEGIN PROFILE SIDEBAR -->
-                        <!-- BEGIN PROFILE CONTENT -->
-                        <div class="tab-content">
-                            <div class=" tab-pane profile-content  row" id="1">
-                                <div class="col-md-12">
-                                    <div class="portlet light">
-                                        <div class="portlet-title">
-                                            <div class="caption font-purple-plum">
-
-                                                <span class="caption-subject bold uppercase"> Users</span>
-                                                <span class="caption-helper"></span>
-                                            </div>
-                                            <div class="actions">
-
-                                                <a href="javascript:;" class="btn btn-circle red-sunglo btn-sm u-add">
-                                                    <i class="fa fa-plus"></i> Add User</a>
-
-                                            </div>
-                                        </div>
-                                        <div class="portlet-body">
-                                            <div class="table-scrollable">
-                                                <table class="table table-hover table-advance">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>
-                                                            #
-                                                        </th>
-                                                        <th>
-                                                            First Name
-                                                        </th>
-                                                        <th>
-                                                            Last Name
-                                                        </th>
-                                                        <th>
-                                                            Username
-                                                        </th>
-                                                        <th>
-                                                            Status
-                                                        </th>
-                                                        <th>action</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                        <td>
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            Mark
-                                                        </td>
-                                                        <td>
-                                                            Otto
-                                                        </td>
-                                                        <td>
-                                                            makr124
-                                                        </td>
-                                                        <td>
-											<span class="label label-sm label-success">
-											Approved </span>
-                                                        </td>
-                                                            <td>
-                                                                <a href="javascript:;" class="btn default btn-xs green u-edit">
-                                                                    <i class="fa fa-edit"></i> Edit </a>
-                                                                <a href="javascript:;" class="btn default btn-xs red u-del">
-                                                                    <i class="fa fa-remove"></i> Del </a>
-                                                                <a href="javascript:;" class="btn default btn-xs purple u-status">
-                                                                    </i> change status </a>
-                                                            </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane profile-content active row" id="2">
-                                <div class="col-md-12">
-                                    <div class="portlet light">
-                                        <div class="portlet-title">
-                                            <div class="caption font-purple-plum">
-
-                                                <span class="caption-subject bold uppercase"> Content</span>
-                                                <span class="caption-helper"></span>
-                                            </div>
-                                            <div class="actions not-s-form">
-
-                                                <a href="javascript:;" class="btn  blue btn-sm s-add">
-                                                    <i class="fa fa-plus"></i> Add section</a>
-
-                                            </div>
-                                        </div>
-                                        <div class="portlet-body">
-
-                                            <div class="portlet box blue no_shadow not-s-form">
+                            <div class="portlet-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="portlet_tab1">
+                                        <div >
+                                            <div class="portlet light no_shadow">
                                                 <div class="portlet-title">
-                                                    <div class="caption">
-                                                        <!--i class="fa fa-gift"></i-->
-                                                        <span class="caption-subject bold uppercase"> secttion 1</span>
-                                                        <span class="caption-helper white">for new users</span>
+                                                    <div class="caption font-blue">
+
+                                                        <span class="caption-subject bold uppercase"> Users</span>
+                                                        <span class="caption-helper"></span>
                                                     </div>
-                                                    <div class="tools">
-                                                        <a href="javascript:;" class="s-edit "><i class="fa fa-edit white"></i>
-                                                        </a>
-                                                        <a href="javascript:;" class="collapse">
-                                                        </a>
-                                                        <a href="javascript:;" class="fullscreen ">
-                                                        </a>
+                                                    <div class="actions">
+
+                                                        <a href="#addu" data-toggle="modal" class="btn blue btn-sm u-add">
+                                                            <i class="fa fa-plus"></i> User</a>
 
                                                     </div>
                                                 </div>
-                                                <div class="portlet-body grey-l padding_c">
-                                                    <a href="javascript:;" class="btn  blue btn-sm f-add pull-right margin-top-10 " >
-                                                        <i class="fa fa-plus"></i> Add Forum</a><br><br><br>
-                                                    <div class="portlet forum gren no-bpadding ">
-                                                        <div class="portlet-title row side-pading">
+                                                <div class="portlet-body">
+                                                    <div class="table-scrollable">
+                                                        <table class="table table-hover table-advance">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    #
+                                                                </th>
+                                                                <th>
+                                                                    First Name
+                                                                </th>
+                                                                <th>
+                                                                    Last Name
+                                                                </th>
+                                                                <th>
+                                                                    Username
+                                                                </th>
+                                                                <th>
+                                                                    Status
+                                                                </th>
+                                                                <th>action</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    1
+                                                                </td>
+                                                                <td>
+                                                                    Mark
+                                                                </td>
+                                                                <td>
+                                                                    Otto
+                                                                </td>
+                                                                <td>
+                                                                    makr124
+                                                                </td>
+                                                                <td>
+                                                                    <span class="label label-sm label-success">
+                                                                    Approved </span>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="#editu" data-toggle="modal" class="btn default btn-circle btn-xs green u-edit">
+                                                                        <i class="fa fa-edit"></i></a>
+                                                                    <a href="#removeu" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
+                                                                        <i class="fa fa-remove"></i></a>
 
-                                                            <div class="">
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                            <ul class="topiclist col-md-10">
-                                                                <li class="col4">forum 1</li>
-                                                                <li class="col4">views: 444</li>
-                                                                <li >threds: 33</li>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="portlet_tab2">
+                                        <div >
+                                            <div class="portlet light no_shadow">
+                                                <div class="portlet-title">
+                                                    <div class="caption font-blue">
 
-                                                            </ul>
+                                                        <span class="caption-subject bold uppercase"> Content</span>
+                                                        <span class="caption-helper"></span>
+                                                    </div>
+                                                    <div class="actions not-s-form">
+
+                                                        <a href="#adds" data-toggle="modal" class="btn  blue btn-sm s-add">
+                                                            <i class="fa fa-plus"></i> section</a>
+
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body">
+
+                                                    <div class="portlet box blue no_shadow not-s-form">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <!--i class="fa fa-gift"></i-->
+                                                                <span class="caption-subject bold uppercase"> secttion 1</span>
+                                                                <span class="caption-helper white">for new users</span>
                                                             </div>
-
-                                                            <div class="tools li-inline col-md-1">
-                                                                <a href="javascript:;" class="f-edit"><i class="fa fa-edit"></i>
+                                                            <div class="tools">
+                                                                <a href="#edits" data-toggle="modal" class="s-edit "><i class="fa fa-edit white"></i>
                                                                 </a>
-                                                                <a href="javascript:;" class="f-del"><i class="fa fa-remove"></i>
+                                                                <a href="javascript:;" class="collapse">
                                                                 </a>
-
-                                                                <a href="javascript:;" class="expand">
+                                                                <a href="javascript:;" class="fullscreen ">
                                                                 </a>
 
                                                             </div>
-
                                                         </div>
-                                                        <div class="portlet-body list grey-light display-hide">
+                                                        <div class="portlet-body grey-l padding_c">
+                                                            <a href="#addf" data-toggle="modal" class="btn  blue btn-sm f-add pull-right margin-top-10 " >
+                                                                <i class="fa fa-plus"></i> Forum</a><br><br><br>
+                                                            <div class="portlet forum gren no-bpadding ">
+                                                                <div class="portlet-title row side-pading">
 
-                                                            <a href="javascript:;" class="btn  blue btn-sm t-add pull-right margin-top-10 " >
-                                                                <i class="fa fa-plus"></i> Add thread</a><br><br><br>
+                                                                    <div class="">
 
-                                                            <div class=" no-padding" >
-                                                                <div class="table-responsive  noo-margin">
-                                                                    <table class="table table-hover table-striped table-light">
-                                                                        <tbody >
-                                                                        <tr>
-                                                                            <td>
-                                                                                <a href="javascript:;">
-                                                                                    theard 1 </a>
-                                                                            </td>
-                                                                            <td>
-                                                                                <i class="fa fa-user"> by: user1</i>
-                                                                            </td>
-                                                                            <td>
-                                                                                comments: 333<br>
-                                                                                views:    444
-                                                                            </td>
-                                                                            <td>
-                                                                                25/5/2017
-                                                                            </td>
-                                                                            <td>
-                                                                                <a href="javascript:;" class="btn default btn-xs green t-edit">
-                                                                                    <i class="fa fa-edit"></i> Edit </a>
-                                                                                <a href="javascript:;" class="btn default btn-xs red t-del">
-                                                                                    <i class="fa fa-remove"></i> Del </a>
+                                                                        <ul class="topiclist col-md-10">
+                                                                            <li class="col4">forum 1</li>
+                                                                            <li class="col4">views: 444</li>
+                                                                            <li >threds: 33</li>
 
-                                                                            </td>
-                                                                        </tr>
+                                                                        </ul>
+                                                                    </div>
+
+                                                                    <div class="tools li-inline col-md-1">
+                                                                        <a href="#editf" data-toggle="modal" class="f-edit"><i class="fa fa-edit"></i>
+                                                                        </a>
+                                                                        <a href="#removef" data-toggle="modal" class="f-del"><i class="fa fa-remove"></i>
+                                                                        </a>
+
+                                                                        <a href="javascript:;" class="expand">
+                                                                        </a>
+
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="portlet-body list grey-light display-hide">
+                                                                    <div class=" no-padding" >
+                                                                        <div class="table-responsive  noo-margin">
+                                                                            <table class="table table-hover table-striped table-light">
+                                                                                <tbody >
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <a href="javascript:;">
+                                                                                            theard 1 </a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <i class="fa fa-user"> by: user1</i>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        comments: 333<br>
+                                                                                        views:    444
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        25/5/2017
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <a href="#editt" data-toggle="modal" class="btn default btn-xs green t-edit">
+                                                                                            <i class="fa fa-edit"></i> Edit </a>
+                                                                                        <a href="#removet" data-toggle="modal" class="btn default btn-xs red t-del">
+                                                                                            <i class="fa fa-remove"></i> Del </a>
+
+                                                                                    </td>
+                                                                                </tr>
 
 
 
-                                                                        </tbody>
-                                                                    </table>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
+
                                                         </div>
                                                     </div>
 
+
+
                                                 </div>
                                             </div>
-                                            <div class="s-form hidden">
-                                                <h3 class="nooo-margin">ADD new section</h3><br><br>
-                                                <form role="form" action="#">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Title
-                                                        </label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="control-label">description
-                                                        </label>
-                                                        <textarea class="col-md-10 form-control" rows="12"></textarea>
-                                                    </div>
-                                                    <button class="margin-top-20 btn blue" type="submit">add section</button>
-                                                </form>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
-
+                            </div>
                         </div>
                     </div>
-                </div>
-						<!--/div>
-					</div>
-				</div-->
+		    	</div>
+                <!------------------ modals ----------------->
+                <div class="modal fade bs-modal-lg" id="adds" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">add new section</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form" action="#">
+                                    <div class="form-group">
+                                        <label class="control-label">Title
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
 
-			</div>
+                                    <div class="form-group">
+                                        <label class="control-label">description
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
+                                <button class="margin-top-20 btn blue" type="submit">add section</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade bs-modal-lg" id="addf" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">add new forum</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form" action="#">
+                                    <div class="form-group">
+                                        <label class="control-label">Title
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">description
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
+                                <button class="margin-top-20 btn blue" type="submit">add forum</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade bs-modal-lg" id="addu" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">add new user</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="admin.php" method="post">
+                                    <input type="hidden" name="action" value="register">
+                                    <p class="hint">
+                                        Enter personal details below:
+                                    </p>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">First Name</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="First Name" name="fname"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Last Name</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Last Name" name="lname"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                                        <label class="control-label visible-ie8 visible-ie9">Email</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+                                    </div>
+                                    <p class="hint">
+                                        Enter account details below:
+                                    </p>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Username</label>
+                                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Password</label>
+                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword"/>
+                                    </div>
+                                    <div class="form-group margin-top-20 margin-bottom-20">
+
+                                        <div id="register_tnc_error">
+                                        </div>
+                                    </div>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
+                                <button type="submit" id="register-submit-btn" class="btn margin-top-20  blue uppercase">Add user</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade bs-modal-lg" id="editu" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">edit user</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="admin.php" method="post">
+                                    <input type="hidden" name="action" value="register">
+                                    <p class="hint">
+                                        personal details :
+                                    </p>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">First Name</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="First Name" name="fname"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Last Name</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Last Name" name="lname"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                                        <label class="control-label visible-ie8 visible-ie9">Email</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+                                    </div>
+                                    <p class="hint">
+                                        account below:
+                                    </p>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Username</label>
+                                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Password</label>
+                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword"/>
+                                    </div>
+                                    <div class="form-group margin-top-20 margin-bottom-20">
+
+                                        <div id="register_tnc_error">
+                                        </div>
+                                    </div>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
+                                <button type="submit" id="edit-user" class="btn margin-top-20  blue uppercase">save</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade bs-modal-lg" id="removeu" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">remove user</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>are you sure you want to remove user</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" btn default" data-dismiss="modal">NO</button>
+                                <button type="button" id="remove-user" class="btn red uppercase">yes</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade bs-modal-lg" id="removef" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">remove forum</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>are you sure you want to remove forum</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" btn default" data-dismiss="modal">NO</button>
+                                <button type="button" id="remove-forum" class="btn red uppercase">yes</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade bs-modal-lg" id="editf" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">edit forum</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form" action="#">
+                                    <div class="form-group">
+                                        <label class="control-label">Title
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">description
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
+                                <button class="margin-top-20 btn blue" type="submit">save</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade bs-modal-lg" id="edits" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">edit section</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form" action="#">
+                                    <div class="form-group">
+                                        <label class="control-label">Title
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">description
+                                        </label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
+                                <button class="margin-top-20 btn blue" type="submit">save</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+
+
+
+
+                <!------------------ modals end ----------------->
 		</div>
 	</div>
 </div>
@@ -920,18 +1126,6 @@ Layout.init(); // init current layout
 Demo.init(); // init demo features
 });
 ///////mu script///////////////
-$(".s-add").click(function () {
-    $(".s-form").removeClass("hidden");
-    $(".not-s-form").addClass("hidden");
-})
-$(".f-add").click(function () {
-    $(".s-form").removeClass("hidden");
-    $(".not-s-form").addClass("hidden");
-})
-$(".t-add").click(function () {
-    $(".s-form").removeClass("hidden");
-    $(".not-s-form").addClass("hidden");
-})
 
 
 </script>
