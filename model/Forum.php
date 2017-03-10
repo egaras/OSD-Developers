@@ -37,14 +37,20 @@ class Forum
       return $forums;
     }
     public function insert(){
-        $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createDate'=>$this->createDate,'views'=>$this->views,'sectionid'=>$this->sectionid);
+        $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createdate'=>$this->createdate,'views'=>$this->views,'sectionid'=>$this->sectionid);
         $GLOBALS['db']->insert(self::$table,$values);
     }
     public function delete(){
         $GLOBALS['db']->delete(self::$table,['id'=>$this->id]);
     }
     public function update(){
-        $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createDate'=>$this->createDate,'views'=>$this->views,'sectionid'=>$this->sectionid);
-        $GLOBALS['db']->update(self::$table,$sets,['id'=>$this->id]);
+        $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createdate'=>$this->createdate,'views'=>$this->views,'sectionid'=>$this->sectionid);
+        $GLOBALS['db']->update(self::$table,$values,['id'=>$this->id]);
+    }
+    public function toggleLock(){
+        $GLOBALS['db']->toggle(self::$table,'locked',['id'=>$this->id]);
+    }
+    public function addView(){
+        $GLOBALS['db']->increment(self::$table,'views',['id'=>$this->id]);
     }
 }

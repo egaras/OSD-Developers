@@ -31,15 +31,17 @@ class Section
       return $sections;
     }
     public function insert(){
-        $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createDate'=>$this->createDate);
+        $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createdate'=>$this->createDate);
         $GLOBALS['db']->insert(self::$table,$values);
     }
     public function delete(){
         $GLOBALS['db']->delete(self::$table,['id'=>$this->id]);
     }
     public function update(){
-        $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createDate'=>$this->createDate);
-        $GLOBALS['db']->update(self::$table,$sets,['id'=>$this->id]);
+        $values = array('name'=>$this->name,'desc'=>$this->desc);
+        $GLOBALS['db']->update(self::$table,$values,['id'=>$this->id]);
     }
-
+    public function toggleLock(){
+        $GLOBALS['db']->toggle(self::$table,'locked',['id'=>$this->id]);
+    }
 }
