@@ -47,6 +47,7 @@ var Login = function() {
 
             submitHandler: function(form) {
                 //form.submit();
+                console.log($('.login-form').serialize());
                 $('#spinner-bg').show();
                 $.ajax({
                     type: 'POST',
@@ -57,7 +58,7 @@ var Login = function() {
                         var res = JSON.parse(data);
                         console.log(res);
                         if(res.valid)
-                            window.location = "index.php";
+                            console.log("success");//window.location = "index.php";
                         else
                             console.log("inside else");
                             //$('.login-form').validate().showErrors(res.errors);
@@ -236,7 +237,7 @@ var Login = function() {
                 $.ajax({
                     type: 'POST',
                     cache: false,
-                    url: '../controllers/admin.php',
+                    url: '../controllers/osdapi.php',
                     data:$('.register-form').serialize(),
                     success: function(data){
                         $('.register-form').validate().resetForm();

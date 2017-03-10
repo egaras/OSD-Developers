@@ -54,25 +54,25 @@ $request_body = json_decode('{
     {
       "to": [
         {
-          "email": "yassermohsen101010@gmail.com"
+          "email": "ehab.g.sh@gmail.com"
         }
       ],
-      "subject": "Hello man!"
+      "subject": "Hello man! again 2"
     }
   ],
   "from": {
-    "email": "hell@osd-developers.com"
+    "email": "support@osd-developers.com"
   },
   "content": [
     {
       "type": "text/plain",
-      "value": "visit facebook http://www.facebook.com"
+      "value": "visit facebook"
     }
   ]
 }');
 
 //$apiKey = getenv('SENDGRID_API_KEY');
-$apiKey = "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";
+$apiKey = "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";
 $sg = new \SendGrid($apiKey);
 
 $response = $sg->client->mail()->send()->post($request_body);
