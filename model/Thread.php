@@ -41,14 +41,39 @@ class Thread
       return $threads;
     }
     public function insert(){
-        $values = array('userid'=>$this->userid,'username'=>$this->username,'forumid'=>$this->forumid,'title'=>$this->title,'locked'=>$this->locked,'postDate'=>$this->postDate,'editDate'=>$this->editDate,'pinned'=>$this->pinned,'views'=>$this->views,'replies'=>$this->replies);
+        $values = array(
+            'userid'=>$this->userid,
+            'forumid'=>$this->forumid,
+            'title'=>$this->title,
+            'content'=>$this->content,
+            'postdate'=>$this->postdate,
+            'editdate'=>$this->editdate,
+            'locked'=>$this->locked,
+            'pinned'=>$this->pinned,
+            'views'=>$this->views
+        );
         $GLOBALS['db']->insert(self::$table,$values);
     }
     public function delete(){
         $GLOBALS['db']->delete(self::$table,['id'=>$this->id]);
     }
     public function update(){
-        $values = array('userid'=>$this->userid,'username'=>$this->username,'forumid'=>$this->forumid,'title'=>$this->title,'locked'=>$this->locked,'postDate'=>$this->postDate,'editDate'=>$this->editDate,'pinned'=>$this->pinned,'views'=>$this->views,'replies'=>$this->replies);
-        $GLOBALS['db']->update(self::$table,$sets,['id'=>$this->id]);
+        $values = array(
+            'forumid'=>$this->forumid,
+            'title'=>$this->title,
+            'content'=>$this->content,
+            'editdate'=>$this->editdate,
+            'views'=>$this->views
+        );
+        $GLOBALS['db']->update(self::$table,$values,['id'=>$this->id]);
+    }
+    public function toggleLock(){
+        $GLOBALS['db']->toggle(self::$table,'locked',['id'=>$this->id]);
+    }
+    public function togglePin(){
+        $GLOBALS['db']->toggle(self::$table,'pinned',['id'=>$this->id]);
+    }
+    public function addView(){
+        $GLOBALS['db']->increment(self::$table,'views',['id'=>$this->id]);
     }
 }

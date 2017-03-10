@@ -10,3 +10,11 @@ desc: added user avatar
 --v1.3
 date: 7 Mar
 desc: added more dummy data
+
+--v2.0
+date: 10 Mar
+desc: added user gender enum and tokens table
+
+--v2.1
+date: 10 Mar
+desc: added sysconfigs table and on delete cascade
