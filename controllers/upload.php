@@ -1,19 +1,14 @@
 <?php
 require '../vendor/autoload.php';
 require '../core/bootstrap.php';
-////////////////////////////
-session_start();
-if(isset($_SESSION['userId'])){
-    $userId = $_SESSION['userId'];
-    $loged_in = true;
-}
-else{
-    $loged_in = false;
+
+if(!isLoggedIn()){
+  header("location: home.php");
+  exit;
 }
 $user = new User();
-$user->id = $userId;
+$user->id = $_SESSION['userId'];
 $user = $user->loadById();
-/////////////////////////////
 
 $targetDir = "../assets/profilePics/";
 $targetName = time().basename($_FILES["myImage"]["name"]);

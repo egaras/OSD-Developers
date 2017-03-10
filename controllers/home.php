@@ -7,31 +7,19 @@
  */
 require '../vendor/autoload.php';
 require '../core/bootstrap.php';
-
-session_start();
-$_SESSION['userId'] = 1; //admin
-if(isset($_SESSION['userId'])){
-    $userId = $_SESSION['userId'];
-    $loged_in = true;
-}
-else{
-    $loged_in = false;
-}
-$user = new User();
-$user->id = $userId;
-$user = $user->loadById();
-
-$sections = $db->select('sections',['*'],["1"=>"1"],"AND","Section");
+$_SESSION['userId'] = 1;
+$sections = Section::getSections();
 foreach ($sections as $section){
-    $forums = $db->select('forums',['*'],['sectionid'=>$section->id],"AND","Forum");
+    $forums = Forum::getForumsBySectionId($section->id);
     $section->forums = $forums;
-    foreach ($forums as $forum){
-        $threads = $db->select('threads',['*'],['forumid'=>$forum->id],"AND","Thread");
+    foreach ($forums as $forum) {
+        $threads = Thread::getThreadsByForumId($forum->id);
         $forum->threads = $threads;
         foreach ($threads as $thread){
+            $thread->username = $thread->getOwnerUsername();
             $thread->replies = count($db->select('replies',['threadid'=>$thread->id]));
-            $thread->username = $db->select('users',['username'],['id'=>$thread->userid])[0]->username;
         }
     }
 }
+
 require '../views/home.php';

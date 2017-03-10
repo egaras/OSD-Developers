@@ -40,6 +40,9 @@ class Thread
       $threads = $GLOBALS['db']->select(self::$table,['*'],['forumid'=>$id],"AND","Thread");
       return $threads;
     }
+    public function getOwnerUsername(){
+      return $GLOBALS['db']->select('users',['username'],['id'=>$this->userid])[0]->username;
+    }
     public function insert(){
         $values = array('userid'=>$this->userid,'username'=>$this->username,'forumid'=>$this->forumid,'title'=>$this->title,'locked'=>$this->locked,'postDate'=>$this->postDate,'editDate'=>$this->editDate,'pinned'=>$this->pinned,'views'=>$this->views,'replies'=>$this->replies);
         $GLOBALS['db']->insert(self::$table,$values);
