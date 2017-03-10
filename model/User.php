@@ -62,7 +62,7 @@
             return $errorsArray;
         }
         public static function register($data){
-            
+
         }
         function getFullname(){
             return $this->fname." ".$this->lname;
@@ -92,5 +92,14 @@
         public static function getAllUsers(){
             $users = $GLOBALS['db']->select(self::$table,['*'],["1"=>"1"],"AND","User");
             return $users;
+        }
+        public static function selectUser($field,$value){
+            $user = $GLOBALS['db']->select(self::$table,['*'],[$field=>$value],"AND","User");
+            if($user){
+              return $user[0];
+            }
+            else{
+              return new User();
+            }
         }
     }
