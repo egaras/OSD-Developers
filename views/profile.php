@@ -41,10 +41,15 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="../assets/global/css/components-md.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="../assets/global/css/plugins-md.css" rel="stylesheet" type="text/css"/>
 <link href="../assets/admin/layout2/css/layout.css" rel="stylesheet" type="text/css"/>
-<link id="style_color" href="../assets/admin/layout2/css/themes/grey.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="../assets/admin/layout2/css/themes/dark.css" rel="stylesheet" type="text/css"/>
 <link href="../assets/admin/layout2/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
+<style >
+	.page-container{
+		margin-top: 0px !important;
+	}
+</style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -58,9 +63,29 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-md page-boxed page-header-fixed page-container-bg-solid page-sidebar-closed page-sidebar-closed-hide-logo">
-	<div class="container">
+	<!-- BEGIN HEADER -->
+
+	    <div class="page-header md-shadow-z-1-i navbar ">
+	    <!-- BEGIN HEADER INNER -->
+	    <div class="page-header-inner">
+	    	<!-- BEGIN LOGO -->
+	    	<div class="page-logo ">
+	    		<a href="index.html">
+	    			<img src="../assets/admin/layout2/img/logo-default.png" alt="logo" class="logo-default fit"/>
+	    		</a>
+
+	    	</div>
+	    	<!-- END LOGO -->
+				<div class="page-top">
+	    	<?php include 'header.php'; ?>
+				</div>
+	    </div>
+	    <!-- END HEADER INNER -->
+	    </div>
+	    <!-- END HEADER -->
 	<!-- BEGIN CONTAINER -->
-		<div class="page-container">
+	<div class="">
+		<div class="page-container page-full-width">
 			<div class="page-content-wrapper">
 			<div class="page-content">
 
@@ -77,11 +102,11 @@ License: You must have a valid license purchased only from themeforest(the above
 								<!-- END SIDEBAR USERPIC -->
 								<!-- SIDEBAR USER TITLE -->
 								<div class="profile-usertitle">
-									<div class="profile-usertitle-name">
+									<div class="profile-usertitle-name" id="fullname">
 										 <?=$user->getFullname();?>
 									</div>
-									<div class="profile-usertitle-job">
-										 <?=$user->username;?>
+									<div class="profile-usertitle-job" id="sig">
+										 <?=$user->signature;?>
 									</div>
 								</div>
 								<!-- END SIDEBAR USER TITLE -->
@@ -95,22 +120,22 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="profile-usermenu">
 									<ul class="nav">
 										<li>
-											<a href="extra_profile.html">
+											<a href="profile.php">
 											<i class="icon-home"></i>
 											Overview </a>
 										</li>
 										<li class="active">
-											<a href="extra_profile_account.html">
+											<a href="profile.php">
 											<i class="icon-settings"></i>
 											Account Settings </a>
 										</li>
 										<li>
-											<a href="page_todo.html" target="_blank">
+											<a href="#">
 											<i class="icon-check"></i>
 											Threads </a>
 										</li>
 										<li>
-											<a href="extra_profile_help.html">
+											<a href="#">
 											<i class="icon-info"></i>
 											Help </a>
 										</li>
@@ -120,9 +145,9 @@ License: You must have a valid license purchased only from themeforest(the above
 							</div>
 							<!-- END PORTLET MAIN -->
 							<!-- PORTLET MAIN -->
-							<div class="portlet light">
+							<!-- <div class="portlet light"> -->
 								<!-- STAT -->
-								<div class="row list-separated profile-stat">
+								<!-- <div class="row list-separated profile-stat">
 									<div class="col-md-4 col-sm-4 col-xs-6">
 										<div class="uppercase profile-stat-title">
 											 37
@@ -147,15 +172,15 @@ License: You must have a valid license purchased only from themeforest(the above
 											 Likes
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<!-- END STAT -->
-								<div>
+								<!-- <div>
 									<h4 class="profile-desc-title">About:</h4>
-									<span class="profile-desc-text"> new user </span>
-									<div class="margin-top-20 profile-desc-link">
+									<span class="profile-desc-text"> new user </span> -->
+									<!-- <div class="margin-top-20 profile-desc-link">
 										<i class="fa fa-globe"></i>
-										<a href=""><?=$user->email?></a>
-									</div>
+										<a href=""></a>
+									</div> -->
 									<!-- <div class="margin-top-20 profile-desc-link">
 										<i class="fa fa-twitter"></i>
 										<a href="http://www.twitter.com/keenthemes/">@keenthemes</a>
@@ -164,8 +189,8 @@ License: You must have a valid license purchased only from themeforest(the above
 										<i class="fa fa-facebook"></i>
 										<a href="http://www.facebook.com/keenthemes/">keenthemes</a>
 									</div> -->
-								</div>
-							</div>
+								<!-- </div> -->
+							<!-- </div> -->
 							<!-- END PORTLET MAIN -->
 						</div>
 						<!-- END BEGIN PROFILE SIDEBAR -->
@@ -189,47 +214,45 @@ License: You must have a valid license purchased only from themeforest(the above
 												<li>
 													<a href="#tab_1_3" data-toggle="tab">Change Password</a>
 												</li>
-												<li>
+												<!-- <li>
 													<a href="#tab_1_4" data-toggle="tab">Privacy Settings</a>
-												</li>
+												</li> -->
 											</ul>
 										</div>
 										<div class="portlet-body">
 											<div class="tab-content">
 												<!-- PERSONAL INFO TAB -->
 												<div class="tab-pane active" id="tab_1_1">
-													<form role="form" action="#">
+													<form role="form" action="#" id="edit-form">
 														<div class="form-group">
 															<label class="control-label">First Name</label>
-															<input type="text" placeholder="John" class="form-control" value="<?=$user->fname?>"/>
+															<input type="text" placeholder="John" class="form-control" name="fname" value="<?=$user->fname?>"/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">Last Name</label>
-															<input type="text" placeholder="Doe" class="form-control" value="<?=$user->lname?>"/>
+															<input type="text" placeholder="Doe" class="form-control" name="lname" value="<?=$user->lname?>"/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">Username</label>
-															<input type="text" placeholder="JohnDoe" class="form-control" value="<?=$user->username?>"/>
+															<input type="text" placeholder="JohnDoe" class="form-control" name="username" value="<?=$user->username?>"/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">Email</label>
-															<input type="email" placeholder="example@example.com" class="form-control" value="<?=$user->email?>"/>
+															<input type="email" placeholder="example@example.com" class="form-control" name="email" value="<?=$user->email?>" required/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">Signature</label>
-															<input type="text" placeholder="Web Developer" class="form-control" value="<?=$user->signature?>"/>
+															<input type="text" placeholder="Web Developer" class="form-control" name="signature" value="<?=$user->signature?>"/>
 														</div>
-														<div class="form-group">
+														<!-- <div class="form-group">
 															<label class="control-label">About</label>
 															<textarea class="form-control" rows="3" placeholder="We are KeenThemes!!!"></textarea>
-														</div>
+														</div>-->
 														<div class="form-group">
-															<label class="control-label">Website Url</label>
-															<input type="text" placeholder="http://www.mywebsite.com" class="form-control"/>
+															<input type="hidden" name='action' value='edit'/>
 														</div>
 														<div class="margiv-top-10">
-															<a href="javascript:;" class="btn green-haze">
-															Save Changes </a>
+															<input type="submit" name="edit" id="update" value="Save Changes" class="btn green-haze"/>
 															<a href="javascript:;" class="btn default">
 															Cancel </a>
 														</div>
@@ -399,11 +422,37 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {
-//    // initiate layout and plugins
-//    Metronic.init(); // init metronic core components
-// Layout.init(); // init current layout
-// Demo.init(); // init demo features\
-// Profile.init(); // init page demo
+   // initiate layout and plugins
+   Metronic.init(); // init metronic core components
+Layout.init(); // init current layout
+Demo.init(); // init demo features\
+Profile.init(); // init page demo
+});
+//submit (save changes) button
+$("#edit-form").submit(function(e){
+
+	$.ajax({
+			type: 'post',
+			cache: false,
+			url: '../controllers/editProfile.php',
+			data: $("#edit-form").serialize(),
+			success: function(data){
+					console.log(data);
+					var res = JSON.parse(data);
+					console.log(res);
+					if(res.valid){
+							console.log("valid");
+							$("#fullname").text(res.data.fname + " " + res.data.lname);
+							$("#sig").text(res.data.signature);
+							$("#username-header").text(res.data.username);
+						}
+					else{
+							console.log("not valid");
+							//$('.login-form').validate().showErrors(res.errors);
+						}
+				}
+	});
+	e.preventDefault();
 });
 </script>
 <!-- END JAVASCRIPTS -->
