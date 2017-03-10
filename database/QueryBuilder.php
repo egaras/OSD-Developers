@@ -40,7 +40,7 @@ class QueryBuilder
         $sql=sprintf(
             'insert into %s (%s) values (%s)',
             $table,
-            implode(', ',array_keys($parameters)),
+            '`'.implode('`,`',array_keys($parameters)).'`',
             ':'.implode(', :',array_keys($parameters))
         );
         try{
@@ -52,8 +52,8 @@ class QueryBuilder
     }
     public function update($table,$fields,$condition,$operator="AND")
     {
-        $fieldsKV=implode(',',$this->array_map_assoc(function($k,$v){return "$k =".'"'.$v.'"';},$fields));
-        $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "$k = ".'"'.$v.'"';},$condition));
+        $fieldsKV=implode(',',$this->array_map_assoc(function($k,$v){return "`$k` =".'"'.$v.'"';},$fields));
+        $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "`$k` = ".'"'.$v.'"';},$condition));
         $sql=sprintf(
             'update %s set %s where %s',
             $table,
@@ -73,6 +73,36 @@ class QueryBuilder
         $sql=sprintf(
             'delete from %s where %s',
             $table,
+            $conditionKV
+        );
+        try{
+            $statement=$this->pdo->prepare($sql);
+            $statement->execute();
+        }catch(Exception $e){
+            die("Whoops!,something went wrong ".$e->getMessage());
+        }
+    }
+    public function toggle($table,$column,$condition,$operator="AND")
+    {
+        $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "`$k` = ".'"'.$v.'"';},$condition));
+        $sql=sprintf(
+            'update `%s` set `%s` = ! `%s` where %s',
+            $table, $column, $column,
+            $conditionKV
+        );
+        try{
+            $statement=$this->pdo->prepare($sql);
+            $statement->execute();
+        }catch(Exception $e){
+            die("Whoops!,something went wrong ".$e->getMessage());
+        }
+    }
+    public function increment($table,$column,$condition,$operator="AND")
+    {
+        $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "`$k` = ".'"'.$v.'"';},$condition));
+        $sql=sprintf(
+            'update `%s` set `%s` = `%s` + 1 where %s',
+            $table, $column, $column,
             $conditionKV
         );
         try{
