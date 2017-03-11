@@ -195,7 +195,7 @@ function updateUser(){
     if(!empty($_POST['gender']))
         $user->gender = $_POST['gender'];
     if(!empty($_POST['password'])){
-        if(!empty(!empty($_POST['rpassword']))){
+        if(!empty($_POST['rpassword'])){
             //$values['password'] = $_POST['password'];
             if($_POST['password'] == $_POST['rpassword']){
                 $user->password = password_hash($_POST['password'],PASSWORD_BCRYPT);
@@ -413,7 +413,7 @@ function addThread(){
         $thread->userid = 1; //to be changed with session
         $thread->forumid = $_POST['forumid'];
         $thread->title = $_POST['threadtitle'];
-        $thread->content = htmlspecialchars($_POST['threadcontent']); html
+        $thread->content = htmlspecialchars($_POST['threadcontent']);
         $thread->postdate = date("Y-m-d H:i:s");
         $thread->editdate = date("Y-m-d H:i:s");
         $thread->locked = 0;

@@ -549,7 +549,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="page-content-wrapper">
 			<div class="page-content">
 				<h2 class="page-title">
-					OS Forums <small>open source forum lab 42</small>
+					OS Forums <small>open source forum lab 42 </small>
 				</h2>
                 <div class="page-bar grey-l">
                     <ul class="page-breadcrumb">
@@ -559,7 +559,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <i class="fa fa-angle-right"></i>
                         </li>
                         <li>
-                            <a href="forms.php">form 1</a>
+                            <a href="forums.php?forumid=<?=$forum_id ?>">form 1</a>
                             <i class="fa fa-angle-right"></i>
                         </li>
                         <li>
@@ -573,11 +573,11 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 <div class="portlet whiteb" style="padding: 30px;">
                     <h3 class="nooo-margin">ADD new Tread</h3><br><br>
-                    <form role="form" onsubmit="submitThread()">
+                    <form role="form" >
                         <div class="form-group">
                             <label class="control-label">Title
                             </label>
-                            <input name="title" type="text" class="form-control">
+                            <input name="title" id="title" type="text" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -585,7 +585,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </label>
                             <textarea name="ckeditor" id="ckeditor" class="col-md-10 form-control" rows="12"></textarea>
                         </div>
-                        <button class="margin-top-20 btn blue " type="submit">Post Thread</button>
+                        <button class="margin-top-20 btn blue " type="submit" id="add-thread" forum-id="<?=$forum_id ?>">Post Thread</button>
                     </form>
                 </div>
 
@@ -629,6 +629,38 @@ function submitThread(){
 }
 
 });
+$("#add-thread").click(function (e) {
+    e.preventDefault();
+    var forum_id=e.target.getAttribute("forum-id") ;
+    var title =$("#title").val();
+    var body=CKEDITOR.instances.ckeditor.getData();
+
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'addThread',
+            forumid: forum_id,
+            threadtitle:title,
+            threadcontent:body
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            console.log(res);
+            if(res.success)
+            {window.location.href = "forums.php?forumid="+forum_id;
+            console.log("success")}
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
 
 
 </script>
