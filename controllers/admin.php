@@ -20,6 +20,6 @@ foreach ($sections as $section){
         }
     }
 }
-$users = User::getAllUsersJoin();
+//$users = User::getAllUsersJoin();
 
 require '../views/admin.php';

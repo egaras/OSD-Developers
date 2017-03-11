@@ -47,6 +47,9 @@ if (isset($_POST['action'])){
         case 'updateForum':
             $response =updateForum();
             break;
+        case 'getforumData':
+            $response=getforumData();
+            break;
         case 'deleteForum':
             $response = deleteForum();
             break;
@@ -369,6 +372,19 @@ function deleteForum(){
         }
     }else
         $response["errors"]["forumid"] = "Please specify forum id!";
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
+function getforumData(){
+    $response = [];
+    if(isset($_POST['forumid'])) {
+        $forum = $GLOBALS['db']->select('forums', ['*'], ['id' => $_POST['forumid']], 'AND');
+        if (count($forum) > 0) {
+            $response['data'] = $forum[0];
+        }else
+            $response["errors"]["forumid"] = "Invalid forumid";
+    }else
+        $response["errors"]["forumid"] = "Empty forumid";
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }

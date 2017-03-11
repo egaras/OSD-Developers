@@ -639,7 +639,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <td><?=$user->getFullName();?></td>
                                                                 <td><?=$user->username;?></td>
                                                                 <td>
-                                                                    <span class="label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
+                                                                    <span class="label label-sm label- <?=$user->cssclass?>"><?=$user->name?></span>
                                                                 </td>
                                                                 <td>
                                                                     <a href="#editu" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
@@ -669,22 +669,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
                                                     <div class="actions not-s-form">
 
-                                                        <a href="#adds" data-toggle="modal" class="btn  blue btn-sm s-add">
+                                                        <a href="#adds" data-toggle="modal" class="btn  blue btn-sm add-section">
                                                             <i class="fa fa-plus"></i> section</a>
 
                                                     </div>
                                                 </div>
                                                 <div class="portlet-body">
-
-                                                    <div class="portlet box blue no_shadow not-s-form">
+                                                    <?php foreach($sections as $section): ?>
+                                                    <div class="portlet box blue no_shadow not-s-form" section_id="<?=$section->id?>">
                                                         <div class="portlet-title">
                                                             <div class="caption">
                                                                 <!--i class="fa fa-gift"></i-->
-                                                                <span class="caption-subject bold uppercase"> secttion 1</span>
-                                                                <span class="caption-helper white">for new users</span>
+                                                                <span class="caption-subject bold uppercase"><?=$section->name?></span>
+                                                                <span class="caption-helper white"><?=$section->desc?></span>
                                                             </div>
                                                             <div class="tools">
-                                                                <a href="#edits" data-toggle="modal" class="s-edit "><i class="fa fa-edit white"></i>
+                                                                <a href="#edits" data-toggle="modal" class="edit-section " ><i class="fa fa-edit white"></i>
                                                                 </a>
                                                                 <a href="javascript:;" class="collapse">
                                                                 </a>
@@ -694,73 +694,48 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </div>
                                                         </div>
                                                         <div class="portlet-body grey-l padding_c">
-                                                            <a href="#addf" data-toggle="modal" class="btn  blue btn-sm f-add pull-right margin-top-10 " >
+                                                            <a href="#addf" data-toggle="modal" class="btn  blue btn-sm add-forum pull-right margin-top-10 " >
                                                                 <i class="fa fa-plus"></i> Forum</a><br><br><br>
-                                                            <div class="portlet forum gren no-bpadding ">
-                                                                <div class="portlet-title row side-pading">
-                                                                    <div class="col-md-10">
-                                                                        <ul class="topiclist">
-                                                                            <li>forum 1asdn asd asd,m a,sd ma,s dm,asd am,sd ams,ld asdlk </li>
-                                                                            <li>
-                                                                                <span class="label label-sm label-success">
-                                                                                    <i class="fa fa-eye"></i> 444
-                                                                                </span>
-                                                                            </li>
-                                                                            <li>
-                                                                                <span class="label label-sm label-success">
-                                                                                    <i class="fa fa-list-alt"></i> 444
-                                                                                </span>
-                                                                            </li>
+                                                            <?php foreach($section->forums as $forum): ?>
+                                                                <div class=" no-padding" >
+                                                                    <div class="table-responsive  noo-margin">
+                                                                        <table class="table table-hover table-striped table-light" forum_id="<?=$forum->id?>">
+                                                                            <tbody >
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <a href="javascript:;">
+                                                                                        <?=$forum->name?> </a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <i class="fa fa-eye"> &nbsp;&nbsp;  <?=$forum->views?></i>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <i class="fa fa-list-alt">  &nbsp;&nbsp; <?=count($forum->threads)?></i>
 
-                                                                        </ul>
-                                                                    </div>
-
-                                                                    <div class="tools">
-                                                                        <a href="#editf" data-toggle="modal" class="f-edit"><i class="fa fa-edit"></i></a>
-                                                                        <a href="#removef" data-toggle="modal" class="f-del"><i class="fa fa-remove"></i></a>
-                                                                        <a href="javascript:;" class="expand"></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="portlet-body list grey-light display-hide">
-                                                                    <div class=" no-padding" >
-                                                                        <div class="table-responsive  noo-margin">
-                                                                            <table class="table table-hover table-striped table-light">
-                                                                                <tbody >
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <a href="javascript:;">
-                                                                                            theard 1 </a>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <i class="fa fa-user"> by: user1</i>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <i class="fa fa-comments"> 333</i>
-                                                                                        <i class="fa fa-eye"> 444</i>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        25/5/2017
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <a href="#editt" data-toggle="modal" class="btn default btn-circle btn-xs green t-edit"><i class="fa fa-edit"></i></a>
-                                                                                        <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-remove"></i></a>
-                                                                                        <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-lock"></i></a>
-                                                                                        <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-thumb-tack"></i></a>
-                                                                                    </td>
-                                                                                </tr>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?=$forum->createdate?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="#editf" data-toggle="modal" class="btn default btn-circle btn-xs green edit-forum"><i class="fa fa-edit"></i></a>
+                                                                                    <a href="#removef" data-toggle="modal" class="btn default btn-circle btn-xs red del-forum"><i class="fa fa-remove"></i></a>
+                                                                                    <!--a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-lock"></i></a>
+                                                                                    <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-thumb-tack"></i></a-->
+                                                                                </td>
+                                                                            </tr>
 
 
 
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
+                                                                            </tbody>
+                                                                        </table>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            <?php endforeach; ?>
+
 
                                                         </div>
                                                     </div>
-
+                                                    <?php endforeach; ?>
 
 
                                                 </div>
@@ -1013,13 +988,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="form-group">
                                         <label class="control-label">Title
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="title" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">description
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="desc" class="form-control">
                                     </div>
                             </div>
                             <div class="modal-footer">
@@ -1131,9 +1106,35 @@ $('.edit-user').on('click',function(e){
     });
     //$('#spinner-bg').hide();
 });
+$('.edit-forum').click(function (e) {
+    var forumid=e.target.closest('table').getAttribute('forum_id');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'getforumData',
+            forumid: forumid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            console.log(res);
+            if(res.success)
+
+                loadForumData(res.data);
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
 
 function loadUSerData(data){
-    $('#editu input[name="fname"]').val(data.fname);
+    $('#editu input[name="title"]').val(data.fname);
     $('#editu input[name="lname"]').val(data.lname);
     $('#editu input[name="username"]').val(data.username);
     $('#editu input[name="email"]').val(data.email);
@@ -1142,6 +1143,10 @@ function loadUSerData(data){
     else
         $('#editu #female').prop('checked',true);
 
+}
+function loadForumData(data){
+    $('#editf input[name="title"]').val(data.name);
+    $('#editf input[name="desc"]').val(data.desc);
 }
 </script>
 <!-- END JAVASCRIPTS -->
