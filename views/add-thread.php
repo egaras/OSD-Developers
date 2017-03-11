@@ -573,19 +573,19 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 <div class="portlet whiteb" style="padding: 30px;">
                     <h3 class="nooo-margin">ADD new Tread</h3><br><br>
-                    <form role="form" action="#">
+                    <form role="form" onsubmit="submitThread()">
                         <div class="form-group">
                             <label class="control-label">Title
                             </label>
-                            <input type="text" class="form-control">
+                            <input name="title" type="text" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">Body
                             </label>
-                            <textarea class="col-md-10 form-control" rows="12"></textarea>
+                            <textarea name="ckeditor" id="ckeditor" class="col-md-10 form-control" rows="12"></textarea>
                         </div>
-                        <button class="margin-top-20 btn blue" type="submit">Post Thread</button>
+                        <button class="margin-top-20 btn blue " type="submit">Post Thread</button>
                     </form>
                 </div>
 
@@ -615,13 +615,24 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="../assets/admin/layout2/scripts/layout.js" type="text/javascript"></script>
 <script src="../assets/admin/layout2/scripts/demo.js" type="text/javascript"></script>
+<script src="../templates/ckeditor/ckeditor.js"></script>
 <script>
 jQuery(document).ready(function() {       
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 Demo.init(); // init demo features
+    CKEDITOR.replace( 'ckeditor' );
+function submitThread(){
+    var data = CKEDITOR.instances.ckeditor.getData();
+    $('body').appendChild(data);
+    alert("The form was submitted");
+}
+
 });
+
+
 </script>
+
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
