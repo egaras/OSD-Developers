@@ -226,7 +226,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </ul>
 
                 </div>
-                <a href="add-thread.php" class="btn blue pull-right">
+                <a href="" class="btn blue pull-right add-thread " forum-id=<?=$forum->name ?> >
                      <i class="fa fa-plus"></i>ADD New Thread
                 </a>
                 <br><br><br>
@@ -299,6 +299,10 @@ jQuery(document).ready(function() {
 Layout.init(); // init current layout
 Demo.init(); // init demo features
 });
+$(".add-thread").click.(function (e) {
+    alert(e.target);
+    window.location.href = "add-thread.php?forum-id=e.target"
+})
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
