@@ -3,7 +3,7 @@ require '../vendor/autoload.php';
 require '../core/bootstrap.php';
 if(isLoggedIn()){
   $user = new User();
-  $user->id = $_SESSION['userId'];
+  $user->id = $_SESSION['userid'];
   $user = $user->loadById();
 }
 if(!isset($_GET['threadid'])){
@@ -26,7 +26,6 @@ $forum = $forum->loadById();
 $threadUser = new User();
 $threadUser->id = $thread->userid;
 $threadUser = $threadUser->loadById();
-
 $replies = Reply::getOrderedRepliesByThreadId($thread->id);
 $thread->replies = $replies;
 foreach ($replies as $reply){

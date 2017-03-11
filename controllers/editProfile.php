@@ -6,7 +6,7 @@ if(!isLoggedIn()){
   exit;
 }
 $user = new User();
-$user->id = $_SESSION['userId'];
+$user->id = $_SESSION['userid'];
 $user = $user->loadById();
 
 if(isset($_POST['action'])){

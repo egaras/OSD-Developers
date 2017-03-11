@@ -429,8 +429,7 @@ function addThread(){
         $response["errors"]["forumid"] = "Empty forum id not allowd!";
     if(count(@$response["errors"])==0){
         $thread = new Thread();
-        //$thread->userid = $_SESSION['userid'];
-        $thread->userid = 1; //to be changed with session
+        $thread->userid = $_SESSION['userid'];
         $thread->forumid = $_POST['forumid'];
         $thread->title = $_POST['threadtitle'];
         $thread->content = htmlspecialchars($_POST['threadcontent']);

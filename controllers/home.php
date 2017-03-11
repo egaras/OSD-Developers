@@ -7,10 +7,9 @@
  */
 require '../vendor/autoload.php';
 require '../core/bootstrap.php';
-$_SESSION['userId'] = 1;
 if(isLoggedIn()){
   $user = new User();
-  $user->id = $_SESSION['userId'];
+  $user->id = $_SESSION['userid'];
   $user = $user->loadById();
 }
 $sections = Section::getSections();
@@ -22,7 +21,7 @@ foreach ($sections as $section){
         $forum->threads = $threads;
         foreach ($threads as $thread){
             $thread->username = $thread->getOwnerUsername();
-            $thread->replies = count($db->select('replies',['threadid'=>$thread->id]));
+            $thread->replies = Reply::countRepliesByThreadId($thread->id);
         }
     }
 }
