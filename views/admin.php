@@ -629,10 +629,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     #
                                                                 </th>
                                                                 <th>
-                                                                    First Name
-                                                                </th>
-                                                                <th>
-                                                                    Last Name
+                                                                    Full Name
                                                                 </th>
                                                                 <th>
                                                                     Username
@@ -644,31 +641,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <tr>
+                                                            <?php foreach($users as $index=>$user): ?>
+                                                            <tr userid="<?=$user->id?>">
+                                                                <td><?=$index+1;?></td>
+                                                                <td><?=$user->getFullName();?></td>
+                                                                <td><?=$user->username;?></td>
                                                                 <td>
-                                                                    1
+                                                                    <span class="label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
                                                                 </td>
                                                                 <td>
-                                                                    Mark
-                                                                </td>
-                                                                <td>
-                                                                    Otto
-                                                                </td>
-                                                                <td>
-                                                                    makr124
-                                                                </td>
-                                                                <td>
-                                                                    <span class="label label-sm label-success">
-                                                                    Approved </span>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="#editu" data-toggle="modal" class="btn default btn-circle btn-xs green u-edit">
+                                                                    <a href="#editu" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
                                                                         <i class="fa fa-edit"></i></a>
                                                                     <a href="#removeu" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
                                                                         <i class="fa fa-remove"></i></a>
 
                                                                 </td>
                                                             </tr>
+                                                            <?php endforeach; ?>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -717,28 +706,28 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <i class="fa fa-plus"></i> Forum</a><br><br><br>
                                                             <div class="portlet forum gren no-bpadding ">
                                                                 <div class="portlet-title row side-pading">
-
-                                                                    <div class="">
-
-                                                                        <ul class="topiclist col-md-10">
-                                                                            <li class="col4">forum 1</li>
-                                                                            <li class="col4">views: 444</li>
-                                                                            <li >threds: 33</li>
+                                                                    <div class="col-md-10">
+                                                                        <ul class="topiclist">
+                                                                            <li>forum 1asdn asd asd,m a,sd ma,s dm,asd am,sd ams,ld asdlk </li>
+                                                                            <li>
+                                                                                <span class="label label-sm label-success">
+                                                                                    <i class="fa fa-eye"></i> 444
+                                                                                </span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="label label-sm label-success">
+                                                                                    <i class="fa fa-list-alt"></i> 444
+                                                                                </span>
+                                                                            </li>
 
                                                                         </ul>
                                                                     </div>
 
-                                                                    <div class="tools li-inline col-md-1">
-                                                                        <a href="#editf" data-toggle="modal" class="f-edit"><i class="fa fa-edit"></i>
-                                                                        </a>
-                                                                        <a href="#removef" data-toggle="modal" class="f-del"><i class="fa fa-remove"></i>
-                                                                        </a>
-
-                                                                        <a href="javascript:;" class="expand">
-                                                                        </a>
-
+                                                                    <div class="tools">
+                                                                        <a href="#editf" data-toggle="modal" class="f-edit"><i class="fa fa-edit"></i></a>
+                                                                        <a href="#removef" data-toggle="modal" class="f-del"><i class="fa fa-remove"></i></a>
+                                                                        <a href="javascript:;" class="expand"></a>
                                                                     </div>
-
                                                                 </div>
                                                                 <div class="portlet-body list grey-light display-hide">
                                                                     <div class=" no-padding" >
@@ -754,18 +743,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         <i class="fa fa-user"> by: user1</i>
                                                                                     </td>
                                                                                     <td>
-                                                                                        comments: 333<br>
-                                                                                        views:    444
+                                                                                        <i class="fa fa-comments"> 333</i>
+                                                                                        <i class="fa fa-eye"> 444</i>
                                                                                     </td>
                                                                                     <td>
                                                                                         25/5/2017
                                                                                     </td>
                                                                                     <td>
-                                                                                        <a href="#editt" data-toggle="modal" class="btn default btn-xs green t-edit">
-                                                                                            <i class="fa fa-edit"></i> Edit </a>
-                                                                                        <a href="#removet" data-toggle="modal" class="btn default btn-xs red t-del">
-                                                                                            <i class="fa fa-remove"></i> Del </a>
-
+                                                                                        <a href="#editt" data-toggle="modal" class="btn default btn-circle btn-xs green t-edit"><i class="fa fa-edit"></i></a>
+                                                                                        <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-remove"></i></a>
+                                                                                        <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-lock"></i></a>
+                                                                                        <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-thumb-tack"></i></a>
                                                                                     </td>
                                                                                 </tr>
 
@@ -865,8 +853,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <h4 class="modal-title">add new user</h4>
                             </div>
                             <div class="modal-body">
-                                <form action="admin.php" method="post">
-                                    <input type="hidden" name="action" value="register">
+                                <form action="admin.php" method="post" class="register-form">
+                                    <input type="hidden" name="action" value="addUser">
                                     <p class="hint">
                                         Enter personal details below:
                                     </p>
@@ -898,19 +886,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
                                         <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword"/>
                                     </div>
-                                    <div class="form-group margin-top-20 margin-bottom-20">
-
-                                        <div id="register_tnc_error">
-                                        </div>
-                                    </div>
-
-
-
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
-                                <button type="submit" id="register-submit-btn" class="btn margin-top-20  blue uppercase">Add user</button>
-
+                                <button type="button" class=" btn default" data-dismiss="modal">Cancle</button>
+                                <button type="submit" id="register-submit-btn" class="btn  blue uppercase">Add user</button>
                                 </form>
 
                             </div>
@@ -1116,18 +1095,44 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
+<script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="../assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="../assets/admin/layout2/scripts/layout.js" type="text/javascript"></script>
 <script src="../assets/admin/layout2/scripts/demo.js" type="text/javascript"></script>
+<script src="../assets/admin/pages/scripts/login.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {       
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
+    Login.init();
 Demo.init(); // init demo features
 });
 ///////mu script///////////////
-
-
+$('.edit-user').on('click',function(e){
+    var userid = e.target.closest('tr').getAttribute('userid');
+    //$('#spinner-bg').show();
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'getUser',
+            userid: userid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            console.log(res);
+            if(res.success)
+                console.log(res.data);
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+    //$('#spinner-bg').hide();
+});
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
