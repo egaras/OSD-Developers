@@ -581,6 +581,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="modal fade bs-modal-lg" id="removef" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
+                           <span></span>
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                                 <h4 class="modal-title">remove forum</h4>
@@ -590,7 +591,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class=" btn default" data-dismiss="modal">NO</button>
-                                <button type="button" id="remove-forum" class="btn red uppercase">yes</button>
+                                <button type="button" id="del-forum" class="btn red uppercase">yes</button>
 
                                 </form>
 
@@ -613,6 +614,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <label class="control-label">Title
                                         </label>
                                         <input type="text" name="title" class="form-control">
+                                        <input type="hidden" name="forumid">
+                                        <input type="hidden" name="sectionid">
+
                                     </div>
 
                                     <div class="form-group">
@@ -623,7 +627,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
-                                <button class="margin-top-20 btn blue" type="submit">save</button>
+                                <button class="margin-top-20 btn blue" type="submit" id="edit-forum">save</button>
                                 </form>
 
                             </div>
@@ -756,6 +760,70 @@ $('.edit-forum').click(function (e) {
 
 
 })
+$('.del-forum').click(function (e) {
+    var forumid=e.target.closest('table').getAttribute('forum_id');
+   $('#removef #del-forum').attr('forumid',forumid);
+})
+
+$('#edit-forum').click(function (e) {
+    e.preventDefault();
+    var forumid=$('#editf input[name="forumid"]').val();
+    var sectionid=$('#editf input[name="sectionid"]').val();
+    var title =$('#editf input[name="title"]').val();
+    var desc= $('#editf input[name="desc"]').val();
+
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'updateForum',
+            forumid: forumid,
+            forumname:title,
+            forumdesc:desc,
+            sectionid:sectionid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success)
+                window.location.href = "admin.php";
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+$('#del-forum').click(function (e) {
+    e.preventDefault();
+    var forumid=e.target.getAttribute('forumid');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'deleteForum',
+            forumid: forumid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success)
+                console.log('success')
+               // window.location.href = "admin.php";
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+
 
 function loadUSerData(data){
     $('#editu input[name="title"]').val(data.fname);
@@ -771,6 +839,8 @@ function loadUSerData(data){
 function loadForumData(data){
     $('#editf input[name="title"]').val(data.name);
     $('#editf input[name="desc"]').val(data.desc);
+   $('#editf input[name="forumid"]').val(data.id);
+    $('#editf input[name="sectionid"]').val(data.sectionid);
 }
 </script>
 <!-- END JAVASCRIPTS -->
