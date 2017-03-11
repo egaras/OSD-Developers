@@ -52,13 +52,17 @@ License: You must have a valid license purchased only from themeforest(the above
 
 			padding: 0px !important;
 		}
-		.forum{
+		.forum,.trr{
+
             box-shadow: none;
-            background-color: white;
-            margin-bottom: 5px;
+            background-color: white !important;
+            margin-bottom: 5px !important;
 
             border-bottom:1px solid #ECF0F1 !important;
 		}
+        tr.trr{
+            margin: 5px !important;
+        }
 		.no_shadow{
 			box-shadow: none;
 
@@ -67,9 +71,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		.noo-margin{
 			margin-bottom: 0px !important;
 		}
-		.no-padding{
-			padding: 0px !important;
-		}
+        .nooo-margin{
+            margin: 0px !important;
+        }
+
+        .padding8{
+            padding: 8px !important;
+        }
         padding_c{
             padding-bottom: 5px !important;
         }
@@ -86,9 +94,62 @@ License: You must have a valid license purchased only from themeforest(the above
         .white{
             color: white !important;
         }
+
         .fa-angle-down{
             color: white !important;
         }
+        .whiteb{
+            background-color: white;
+        }
+        .topiclist{
+            margin: 10px;
+            -webkit-padding-start:0px !important;
+            padding: 0px ;
+
+        }
+        ul.topiclist li {
+            display:inline-block !important;
+            vertical-align: middle !important;
+            line-height: normal !important;
+
+        }
+        li.col1{
+            width: 45%;
+            vertical-align: center;
+
+        }
+        li.col2{
+            width: 15%;
+            vertical-align: center !important;
+            position: relative;
+            top: 50% !important;
+
+
+        }
+        li.col3{
+
+
+        }
+        .thread{
+            padding: 20px !important;
+        }
+
+        li span{
+            display: inline-block !important;
+        }
+        li span p{
+            margin-left:10px;
+            margin-bottom: 0px;
+            vertical-align: center;
+        }
+        .no-padding{
+            padding: 0px !important;
+            -webkit-padding-start:0px !important;
+        }
+        .lpad{
+            padding-left: 10px !important;
+        }
+
 
 	</style>
 </head>
@@ -105,34 +166,40 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class=" page-md  page-container-bg-solid page-sidebar-closed-hide-logo  ">
 <!-- BEGIN HEADER -->
+<div class="page-header md-shadow-z-1-i navbar ">
+<!-- BEGIN HEADER INNER -->
+<div class="page-header-inner">
+	<!-- BEGIN LOGO -->
+	<div class="page-logo ">
+		<a href="index.html">
+			<img src="../assets/admin/layout2/img/logo-default.png" alt="logo" class="logo-default fit"/>
+		</a>
 
-    <div class="page-header md-shadow-z-1-i navbar ">
-    <!-- BEGIN HEADER INNER -->
-    <div class="page-header-inner">
-    	<!-- BEGIN LOGO -->
-    	<div class="page-logo ">
-    		<a href="index.html">
-    			<img src="../assets/admin/layout2/img/logo-default.png" alt="logo" class="logo-default fit"/>
-    		</a>
+	</div>
+	<!-- END LOGO -->
+	<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 
-    	</div>
-    	<!-- END LOGO -->
-    	<!-- END PAGE ACTIONS -->
-    	<!-- BEGIN PAGE TOP -->
-    	<div class="page-top">
-    		<!-- BEGIN HEADER SEARCH BOX -->
-    		<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-    		<!-- END HEADER SEARCH BOX -->
-    		<!-- BEGIN TOP NAVIGATION MENU -->
-    		<?php include 'header.php' ?>
-    	</div>
-    	<!-- END PAGE TOP -->
-    </div>
-    <!-- END HEADER INNER -->
-    </div>
-    <!-- END HEADER -->
+	<!-- END RESPONSIVE MENU TOGGLER -->
+	<!-- BEGIN PAGE ACTIONS -->
+	<!-- DOC: Remove "hide" class to enable the page header actions -->
+	<div class="page-actions hide">
 
 
+	</div>
+	<!-- END PAGE ACTIONS -->
+	<!-- BEGIN PAGE TOP -->
+	<div class="page-top">
+		<!-- BEGIN HEADER SEARCH BOX -->
+		<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
+		<!-- END HEADER SEARCH BOX -->
+		<!-- BEGIN TOP NAVIGATION MENU -->
+		<?php include 'header.php' ?>
+	</div>
+	<!-- END PAGE TOP -->
+</div>
+<!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
 <div class="">
 	<div class="page-container page-full-width">
 		<div class="page-content-wrapper">
@@ -142,75 +209,60 @@ License: You must have a valid license purchased only from themeforest(the above
 				</h2>
                 <div class="page-bar grey-l">
                     <ul class="page-breadcrumb">
-                        <li>
-                            <i class="fa fa-home"></i>
-                            <a href="home.php">Home</a>
-                            <!--i class="fa fa-angle-right"></i-->
-                        </li>
-
+											<li>
+													<i class="fa fa-home"></i>
+													<a href="home.php">Home</a>
+													<i class="fa fa-angle-right"></i>
+												</li>
+												<li>
+													<i class="icon-section"></i>
+													<a href="home.php"><?=Section::getSectionNameById($forum->sectionid) ?></a>
+													<i class="fa fa-angle-right"></i>
+												</li>
+												<li>
+													<i class="fa fa-forum"></i>
+													<a href="#"><?=$forum->name ?></a>
+											</li>
                     </ul>
 
                 </div>
-				<!--div class="portlet light ">
-					<div class="row ">
-						<div class="col-md-12">
-					<!-- BEGIN Portlet PORTLET-->
-                    <?php foreach($sections as $section): ?>
-                    <div class="portlet box blue no_shadow">
-                        <div class="portlet-title">
-							<div class="caption">
-								<!--i class="fa fa-gift"></i-->
-                                <span class="caption-subject bold uppercase"><?=$section->name?></span>
-                                <span class="caption-helper white"><?=$section->desc?></span>
-							</div>
-							<div class="tools">
-								<a href="javascript:;" class="collapse"></a>
-								<a href="javascript:;" class="fullscreen "></a>
-							</div>
-						</div>
-                        <div class="portlet-body grey-l padding_c">
-                            <?php foreach($section->forums as $forum): ?>
-							<div class="portlet forum gren no-bpadding ">
-								<div class="portlet-title">
-									<div class="caption">
-										<i class="fa fa-gift"></i>
-										<a href="forums.php?forumid=<?=$forum->id ?>"><span class="caption-subject"><?=$forum->name?></span></a>
-										<span style="display:inline-block; width: 600px;"></span>
-										<span class="caption-helper">views:  <b><?=$forum->views?></b></span>
-										<span style="display:inline-block; width: 100px;"></span>
-										<span class="caption-helper">threads:  <b><?=count($forum->threads)?></b></span>
-									</div>
-									<div class="tools">
-										<a href="javascript:;" class="expand"></a>
-									</div>
-								</div>
-								<div class="portlet-body list grey-light display-hide">
-									<div class=" no-padding" >
-										<div class="table-responsive  noo-margin">
-											<table class="table table-hover table-striped table-light">
-												<tbody >
-                                                    <?php foreach($forum->threads as $thread):?>
-												    <tr>
-                                                        <td>
-                                                            <a href="thread.php?threadid=<?=$thread->id ?>"><?=$thread->title?></a>
-                                                        </td>
-                                                        <td>
-                                                            <i class="fa fa-user"> by: <?=$thread->username?></i>
-                                                        </td>
-                                                        <td>Replies: <?=$thread->replies?> Views: <?=$thread->views?></td>
-                                                        <td><?=$thread->postdate?></td>
-												    </tr>
-                                                    <?php endforeach; ?>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-                            <?php endforeach; ?>
-						</div>
-					</div>
-                    <?php endforeach; ?>
+                <a href="add-thread.php" class="btn blue pull-right">
+                     <i class="fa fa-plus"></i>ADD New Thread
+                </a>
+                <br><br><br>
+
+                <div class="portlet box blue no_shadow">
+
+                    <div class="portlet-title">
+                        <ul class="topiclist">
+                            <li class="col1 bold font-lg"><?=$forum->name ?></li>
+                            <li class="col2 "><i class="fa fa-comment white fa-2x"></i></li>
+                            <li class="col3 "><i class="fa fa-clock-o white fa-2x"></i></li>
+                        </ul>
+                    </div>
+                    <div class="portlet-body grey-l padding_c">
+											<?php foreach ($threads as $thread): ?>
+                        <ul class="topiclist thread no-padding forum lpad" onclick="Demo">
+                            <li class="col1">
+															<div class="caption"><a href="thread.php?threadid=<?=$thread->id ?>"><?=$thread->title?></a></div>
+															<!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
+														</li>
+                            <li class="col2">
+															<p class="row">
+																<h2 class="nooo-margin" ><?=$thread->replies?></h2>
+															</p>
+															<p class="row">replies</p>
+														</li>
+                            <li class="col3 ">
+                                <span>
+																	<img alt="" class="img-circle col-sm-4 no-padding " src="../assets/profilePics/<?=$thread->avatar ?>">
+                                    <p class="col-sm-6 no-padding">by: <?=$thread->username ?><br>On: <?=$thread->postdate ?></p>
+																	</span>
+                            </li>
+                        </ul>
+											<?php endforeach; ?>
+                    </div>
+                </div>
 						<!--/div>
 					</div>
 				</div-->

@@ -8,12 +8,17 @@
 require '../vendor/autoload.php';
 require '../core/bootstrap.php';
 $_SESSION['userId'] = 1;
+if(isLoggedIn()){
+  $user = new User();
+  $user->id = $_SESSION['userId'];
+  $user = $user->loadById();
+}
 $sections = Section::getSections();
 foreach ($sections as $section){
     $forums = Forum::getForumsBySectionId($section->id);
     $section->forums = $forums;
     foreach ($forums as $forum) {
-        $threads = Thread::getThreadsByForumId($forum->id);
+        $threads = Thread::getOrderedThreadsByForumId($forum->id);
         $forum->threads = $threads;
         foreach ($threads as $thread){
             $thread->username = $thread->getOwnerUsername();
