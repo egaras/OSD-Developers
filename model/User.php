@@ -9,8 +9,10 @@
         private $status;
         private $email;
         private $password;
+        private $gender;
         private $signature;
         private $avatar;
+        private $regdate;
         //private $userData;
         //private $db;
         public static $table = 'users';
@@ -79,14 +81,36 @@
             return $user;
         }
         public function insert(){
-            $values = array('roleid'=>$this->roleid,'fname'=>$this->fname,'lname'=>$this->lname,'email'=>$this->email,'password'=>$this->password,'username'=>$this->username,'status'=>$this->status,'signature'=>$this->signature,'avatar'=>$this->avatar);
+            $values = array(
+                'status'=>$this->status,
+                'roleid'=>$this->roleid,
+                'fname'=>$this->fname,
+                'lname'=>$this->lname,
+                'email'=>$this->email,
+                'username'=>$this->username,
+                'password'=>$this->password,
+                'gender'=>$this->gender,
+                'signature'=>$this->signature,
+                'regdate'=>$this->regdate,
+                'avatar'=>$this->avatar
+            );
             $GLOBALS['db']->insert(self::$table,$values);
         }
         public function delete(){
             $GLOBALS['db']->delete(self::$table,['id'=>$this->id]);
         }
         public function update(){
-            $sets = array('roleid'=>$this->roleid,'fname'=>$this->fname,'lname'=>$this->lname,'email'=>$this->email,'password'=>$this->password,'username'=>$this->username,'status'=>$this->status,'signature'=>$this->signature,'avatar'=>$this->avatar);
+            $sets = array(
+                'roleid'=>$this->roleid,
+                'fname'=>$this->fname,
+                'lname'=>$this->lname,
+                'email'=>$this->email,
+                'password'=>$this->password,
+                'status'=>$this->status,
+                'gender'=>$this->gender,
+                'signature'=>$this->signature,
+                'avatar'=>$this->avatar
+            );
             $GLOBALS['db']->update(self::$table,$sets,['id'=>$this->id]);
         }
         public static function getAllUsers(){

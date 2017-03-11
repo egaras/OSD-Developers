@@ -47,6 +47,7 @@ var Login = function() {
 
             submitHandler: function(form) {
                 //form.submit();
+                console.log($('.login-form').serialize());
                 $('#spinner-bg').show();
                 $.ajax({
                     type: 'POST',
@@ -57,7 +58,7 @@ var Login = function() {
                         var res = JSON.parse(data);
                         console.log(res);
                         if(res.valid)
-                            window.location = "index.php";
+                            console.log("success");//window.location = "index.php";
                         else
                             console.log("inside else");
                             //$('.login-form').validate().showErrors(res.errors);
@@ -236,6 +237,24 @@ var Login = function() {
                 $.ajax({
                     type: 'POST',
                     cache: false,
+                    url: '../controllers/osdapi.php',
+                    data:$('.register-form').serialize(),
+                    success: function(data){
+                        $('.register-form').validate().resetForm();
+                        console.log(data);
+                        var res = JSON.parse(data);
+                        if(res.success)
+                            window.location = "index.php";
+                        else
+                            $('.register-form').validate().showErrors(res.errors);
+                    },
+                    error: function(){
+                        $('#connectionModal').modal('show');
+                    }
+                });
+                /*$.ajax({
+                    type: 'POST',
+                    cache: false,
                     url: '../controllers/login.ph',
                     data:$('.register-form').serialize(),
                     success: function(data){
@@ -249,9 +268,8 @@ var Login = function() {
                     },
                     error: function(){
                         $('#connectionModal').modal('show');
-                        console.log('cannot connect to server');
                     }
-                });
+                });*/
                 $('#spinner-bg').hide();
             }
         });

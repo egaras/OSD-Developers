@@ -17,6 +17,29 @@ if(isset($_POST['action'])){
             if (count($user) > 0) {
                 if (!password_verify($_POST['password'], $user[0]->password))
                     $response["errors"]["password"] = "Invalid password";
+                else{
+                    //code here
+                    $to      = 'ehab.g.sh@gmail.com'; // Send email to our user
+                    $subject = 'Signup | Verification'; // Give the email a subject
+                    $message = '
+ 
+                        Thanks for signing up!
+                        Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+ 
+                        ------------------------
+                        Username: name
+                        Password: password
+                        ------------------------
+ 
+                        Please click this link to activate your account:
+                        http://www.yourwebsite.com/verify.php?email=123
+ 
+                        '; // Our message above including the link
+
+                    $headers = 'From:ehab.gamal.sh@gmail.com' . "\r\n"; // Set from headers
+                    mail($to, $subject, $message, $headers); // Send our email
+                    header("Location: ../index.php");
+                }
             }else
                 $response["errors"]["username"] = "Invalid username";
         }
