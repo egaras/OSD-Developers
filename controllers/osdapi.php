@@ -14,8 +14,14 @@ $response = array('success'=>false);
 
 if (isset($_POST['action'])){
     switch ($_POST['action']){
+        case 'login':
+            $response = userLogin();
+            break;
         case 'addUser':
             $response = addUser();
+            break;
+        case 'getUser':
+            $response = getUserData();
             break;
         case 'updateUser':
             $response = updateUser();
@@ -81,6 +87,40 @@ if (isset($_POST['action'])){
 }
 echo json_encode($response);
 
+function userLogin(){
+    $response = [];
+    if(isset($_POST['username']) && isset($_POST['password'])) {
+        $user = $GLOBALS['db']->select('users', ['*'], ['username' => $_POST['username']], 'AND');
+        if (count($user) > 0) {
+            if (!password_verify($_POST['password'], $user[0]->password))
+                $response["errors"]["password"] = "Invalid password";
+            else{
+                $_SESSION['username'] = $user[0]->username;
+                $_SESSION['userid'] = $user[0]->id;
+                $_SESSION['userrole'] = $user[0]->roleid;
+            }
+        }else
+            $response["errors"]["username"] = "Invalid username";
+    }else{
+        $response["errors"]["username"] = "Empty username";
+        $response["errors"]["password"] = "Empty password";
+    }
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
+function getUserData(){
+    $response = [];
+    if(isset($_POST['userid'])) {
+        $user = $GLOBALS['db']->select('users', ['*'], ['id' => $_POST['userid']], 'AND');
+        if (count($user) > 0) {
+            $response['data'] = $user[0];
+        }else
+            $response["errors"]["userid"] = "Invalid userid";
+    }else
+        $response["errors"]["userid"] = "Empty userid";
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
 function addUser(){
     $response = [];
 
@@ -191,6 +231,7 @@ function deleteUser(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+
 function addSection(){
     $response = [];
     if(empty($_POST['sectionname']))
@@ -264,6 +305,7 @@ function toggleSectionLock(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+
 function addForum(){
     $response = [];
     if(empty($_POST['forumname']))
@@ -356,6 +398,7 @@ function incrementForumViews(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+
 function addThread(){
     $response = [];
     if(empty($_POST['threadtitle']))
@@ -370,7 +413,7 @@ function addThread(){
         $thread->userid = 1; //to be changed with session
         $thread->forumid = $_POST['forumid'];
         $thread->title = $_POST['threadtitle'];
-        $thread->content = $_POST['threadcontent'];
+        $thread->content = htmlspecialchars($_POST['threadcontent']); html
         $thread->postdate = date("Y-m-d H:i:s");
         $thread->editdate = date("Y-m-d H:i:s");
         $thread->locked = 0;
@@ -470,6 +513,7 @@ function incrementThreadViews(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+
 function addReply(){
     $response = [];
     if(empty($_POST['threadid']))
