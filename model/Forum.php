@@ -25,8 +25,9 @@ class Forum
         $this->$name = $value;
     }
     public function loadById(){
-        $forum = $GLOBALS['db']->select(self::$table,['*'],['id'=>$this->id],"AND",'Forum')[0];
-        return $forum;
+        $forum = $GLOBALS['db']->select(self::$table,['*'],['id'=>$this->id],"AND",'Forum');
+        if($forum){return $forum[0];}
+        else {return new Forum();}
     }
     public static function getForums(){
       $forums = $GLOBALS['db']->select(self::$table,['*'],["1"=>"1"],"AND","Forum");

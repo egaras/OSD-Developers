@@ -30,6 +30,9 @@ class Section
       $sections = $GLOBALS['db']->select(self::$table,['*'],["1"=>"1"],"AND","Section");
       return $sections;
     }
+    public static function getSectionNameById($id){
+      return $GLOBALS['db']->select(self::$table,['name'],['id'=>$id])[0]->name;
+    }
     public function insert(){
         $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createdate'=>$this->createDate);
         $GLOBALS['db']->insert(self::$table,$values);

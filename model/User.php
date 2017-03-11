@@ -105,6 +105,7 @@
                 'fname'=>$this->fname,
                 'lname'=>$this->lname,
                 'email'=>$this->email,
+                'username'=>$this->username,
                 'password'=>$this->password,
                 'status'=>$this->status,
                 'gender'=>$this->gender,

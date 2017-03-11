@@ -55,4 +55,7 @@ class Reply
         );
         $GLOBALS['db']->update(self::$table,$values,['id'=>$this->id]);
     }
+    public static function getRepliesByUserId($i){
+        return count($GLOBALS['db']->select(self::$table,['*'],['userid'=>$i],"AND","Reply"));
+    }
 }

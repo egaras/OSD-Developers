@@ -40,8 +40,18 @@ class Thread
       $threads = $GLOBALS['db']->select(self::$table,['*'],['forumid'=>$id],"AND","Thread");
       return $threads;
     }
+    public static function getOrderedThreadsByForumId($id,$order='postdate',$orderForm="DESC",$limit='5',$offset='0'){
+      $threads = $GLOBALS['db']->selectOrderLimitOffset(self::$table,['*'],['forumid'=>$id],"AND","Thread",$order,$orderForm,$limit,$offset);
+      return $threads;
+    }
+    public static function getThreadsByUserId($i){
+        return count($GLOBALS['db']->select(self::$table,['*'],['userid'=>$i],"AND","Thread"));
+    }
     public function getOwnerUsername(){
       return $GLOBALS['db']->select('users',['username'],['id'=>$this->userid])[0]->username;
+    }
+    public function getOwnerPic(){
+      return $GLOBALS['db']->select('users',['avatar'],['id'=>$this->userid])[0]->avatar;
     }
     public function insert(){
         $values = array(
@@ -79,4 +89,5 @@ class Thread
     public function addView(){
         $GLOBALS['db']->increment(self::$table,'views',['id'=>$this->id]);
     }
+
 }
