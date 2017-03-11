@@ -194,9 +194,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     </ul>
 
                 </div>
-                <a href="add-thread.php" class="btn blue pull-right">
+                <button class="btn blue pull-right add-thread " forum-id="<?=$forum->id ?>" >
                      <i class="fa fa-plus"></i>ADD New Thread
-                </a>
+                </button>
                 <br><br><br>
 
                 <div class="portlet box blue no_shadow">
@@ -209,26 +209,28 @@ License: You must have a valid license purchased only from themeforest(the above
                         </ul>
                     </div>
                     <div class="portlet-body grey-l padding_c">
-											<?php foreach ($threads as $thread): ?>
-                        <ul class="topiclist thread no-padding forum lpad" onclick="Demo">
-                            <li class="col1">
-															<div class="caption"><a href="thread.php?threadid=<?=$thread->id ?>"><?=$thread->title?></a></div>
-															<!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
-														</li>
-                            <li class="col2">
-															<p class="row">
-																<h2 class="nooo-margin" ><?=$thread->replies?></h2>
-															</p>
-															<p class="row">replies</p>
-														</li>
-                            <li class="col3 ">
+                        <?php foreach ($threads as $thread): ?>
+                            <ul class="topiclist thread no-padding forum lpad" onclick="Demo">
+                                <li class="col1">
+                                    <div class="caption">
+                                        <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+                                    </div>
+                                    <!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
+                                </li>
+                                <li class="col2">
+                                    <p class="row">
+                                    <h2 class="nooo-margin"><?= $thread->replies ?></h2>
+                                    </p>
+                                    <p class="row">replies</p>
+                                </li>
+                                <li class="col3 ">
                                 <span>
-																	<img alt="" class="img-circle col-sm-4 no-padding " src="../assets/profilePics/<?=$thread->avatar ?>">
-                                    <p class="col-sm-6 no-padding">by: <?=$thread->username ?><br>On: <?=$thread->postdate ?></p>
-																	</span>
-                            </li>
-                        </ul>
-											<?php endforeach; ?>
+                                    <img alt="" class="img-circle col-sm-4 no-padding img-responsive" style="width: 50px !important;" src="../assets/profilePics/<?= $thread->avatar ?>">
+                                    <p class="col-sm-6 no-padding">by: <?= $thread->username ?><br>On: <?= $thread->postdate ?></p>
+                                </span>
+                                </li>
+                            </ul>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 						<!--/div>
@@ -267,6 +269,10 @@ jQuery(document).ready(function() {
 Layout.init(); // init current layout
 Demo.init(); // init demo features
 });
+$(".add-thread").click(function (e) {
+
+    window.location.href = "add-thread.php?forum-id="+e.target.getAttribute('forum-id');
+})
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

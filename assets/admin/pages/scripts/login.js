@@ -52,16 +52,18 @@ var Login = function() {
                 $.ajax({
                     type: 'POST',
                     cache: false,
-                    url: '../controllers/login.php',
+                    url: '../controllers/osdapi.php',
                     data:$('.login-form').serialize(),
                     success: function(data){
                         var res = JSON.parse(data);
                         console.log(res);
-                        if(res.valid)
-                            console.log("success");//window.location = "index.php";
+                        if(res.success)
+                            window.location = "test.php";
                         else
-                            console.log("inside else");
-                            //$('.login-form').validate().showErrors(res.errors);
+                            $('.login-form').validate().showErrors(res.errors);
+                    },
+                    error: function(){
+                        $('#connectionModal').modal('show');
                     }
                 });
                 $('#spinner-bg').hide();
@@ -244,7 +246,7 @@ var Login = function() {
                         console.log(data);
                         var res = JSON.parse(data);
                         if(res.success)
-                            window.location = "index.php";
+                            window.location = "controllers/home.php";
                         else
                             $('.register-form').validate().showErrors(res.errors);
                     },
@@ -252,24 +254,6 @@ var Login = function() {
                         $('#connectionModal').modal('show');
                     }
                 });
-                /*$.ajax({
-                    type: 'POST',
-                    cache: false,
-                    url: '../controllers/login.ph',
-                    data:$('.register-form').serialize(),
-                    success: function(data){
-                        $('.register-form').validate().resetForm();
-                        console.log(data);
-                        var res = JSON.parse(data);
-                        if(res.valid)
-                            window.location = "index.php";
-                        else
-                            $('.register-form').validate().showErrors(res.errors);
-                    },
-                    error: function(){
-                        $('#connectionModal').modal('show');
-                    }
-                });*/
                 $('#spinner-bg').hide();
             }
         });

@@ -7,8 +7,8 @@
  */
 require 'vendor/autoload.php';
 require 'core/bootstrap.php';
-$u = Thread::getThreadsByUserId(1);
-die(var_dump($u));
+//$u = Thread::getThreadsByUserId(1);
+//die(var_dump($u));
 //$user = new User();
 //$user->username = "ehabgamal";
 //$user->reg_date = date("Y-m-d H:i:s");
@@ -16,5 +16,10 @@ die(var_dump($u));
 //die();
 //die(var_dump($db->select('users',['*'],['"1"'=>'1'],'AND')));
 
+//echo bin2hex(random_bytes(64)).'<br>';
+//die(hash('sha256',uniqid('ehab')));
+
+var_dump($_SESSION);
+die();
 var_dump($db->select('sections',['*'],['name'=>'testsec','id'=>"7"]," OR "));
 die();

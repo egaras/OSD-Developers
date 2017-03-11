@@ -118,6 +118,11 @@
             $users = $GLOBALS['db']->select(self::$table,['*'],["1"=>"1"],"AND","User");
             return $users;
         }
+        public static function getAllUsersJoin(){
+            $query = 'SELECT `users`.*, `userstatus`.name, `userstatus`.cssclass FROM `users` JOIN `userstatus` ON `users`.`status` = `userstatus`.`id`';
+            $users = $GLOBALS['db']->rawSQL($query,"User");
+            return $users;
+        }
         public static function selectUser($field,$value){
             $user = $GLOBALS['db']->select(self::$table,['*'],[$field=>$value],"AND","User");
             if($user){

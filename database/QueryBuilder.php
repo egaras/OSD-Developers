@@ -134,6 +134,16 @@ class QueryBuilder
             die("Whoops!,something went wrong ".$e->getMessage());
         }
     }
+    public function rawSQL($sql,$class="StdClass")
+    {
+        try{
+            $statement=$this->pdo->prepare($sql);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_CLASS,$class);
+        }catch(Exception $e){
+            die("Whoops!,something went wrong ".$e->getMessage());
+        }
+    }
     protected function array_map_assoc( $callback , $array ){
         $r = array();
         foreach ($array as $key=>$value)

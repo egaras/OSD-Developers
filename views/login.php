@@ -126,7 +126,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- END FORGOT PASSWORD FORM -->
 	<!-- BEGIN REGISTRATION FORM -->
 	<form class="register-form" action="index.html" method="post">
-        <input type="hidden" name="action" value="updateUser">
+        <input type="hidden" name="action" value="addUser">
 		<h3>Sign Up</h3>
 		<p class="hint">
 			 Enter your personal details below:
@@ -144,6 +144,14 @@ License: You must have a valid license purchased only from themeforest(the above
 			<label class="control-label visible-ie8 visible-ie9">Email</label>
 			<input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
 		</div>
+        <div class="form-group">
+            <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                <input type="radio" name="gender" value="m" checked/> Male
+            </label>
+            <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                <input type="radio" name="gender" value="f"/> Female
+            </label>
+        </div>
 		<p class="hint">
 			 Enter your account details below:
 		</p>
