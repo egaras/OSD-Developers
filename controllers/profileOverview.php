@@ -10,5 +10,5 @@ $user = new User();
 $user->id = $_SESSION['userId'];
 $user = $user->loadById();
 
-require '../views/profile.php';
+require '../views/profileOverview.php';
 ?>

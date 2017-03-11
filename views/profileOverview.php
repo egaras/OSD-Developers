@@ -94,13 +94,15 @@ License: You must have a valid license purchased only from themeforest(the above
 										<i class="fa fa-home"></i>
 										<a href="home.php">Home</a>
 										<i class="fa fa-angle-right"></i>
-
+									</li>
+									<li>
 										<i class="icon-user"></i>
 										<a href="profileOverview.php">Profile</a>
 										<i class="fa fa-angle-right"></i>
-
-										<i class="icon-settings"></i>
-										<a href="profile.php">Settings</a>
+									</li>
+									<li>
+										<i class="fa fa-book"></i>
+										<a href="profileOverview.php">Overview</a>
 								</li>
 						</ul>
 				</div>
@@ -134,12 +136,12 @@ License: You must have a valid license purchased only from themeforest(the above
 								<!-- SIDEBAR MENU -->
 								<div class="profile-usermenu">
 									<ul class="nav">
-										<li>
+										<li class="active">
 											<a href="profileOverview.php">
 											<i class="icon-home"></i>
 											Overview </a>
 										</li>
-										<li class="active">
+										<li >
 											<a href="profile.php">
 											<i class="icon-settings"></i>
 											Account Settings </a>
@@ -211,190 +213,71 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!-- END BEGIN PROFILE SIDEBAR -->
 						<!-- BEGIN PROFILE CONTENT -->
 						<div class="profile-content">
+
 							<div class="row">
-								<div class="col-md-12">
-									<div class="portlet light">
-										<div class="portlet-title tabbable-line">
+								<div class="col-md-6">
+                  <div class="portlet light">
+                    <div class="portlet-title tabbable-line">
 											<div class="caption caption-md">
 												<i class="icon-globe theme-font hide"></i>
-												<span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+												<span class="caption-subject font-blue-madison bold uppercase">Profile Information</span>
 											</div>
-											<ul class="nav nav-tabs">
-												<li class="active">
-													<a href="#tab_1_1" data-toggle="tab">Personal Info</a>
-												</li>
-												<li>
-													<a href="#tab_1_2" data-toggle="tab">Change Avatar</a>
-												</li>
-												<li>
-													<a href="#tab_1_3" data-toggle="tab">Change Password</a>
-												</li>
-												<!-- <li>
-													<a href="#tab_1_4" data-toggle="tab">Privacy Settings</a>
-												</li> -->
-											</ul>
-										</div>
-										<div class="portlet-body">
-											<div class="tab-content">
-												<!-- PERSONAL INFO TAB -->
-												<div class="tab-pane active" id="tab_1_1">
-													<form role="form" action="#" id="edit-form">
-														<div class="form-group">
-															<label class="control-label">First Name</label>
-															<input type="text" placeholder="John" class="form-control" name="fname" value="<?=$user->fname?>"/>
-														</div>
-														<div class="form-group">
-															<label class="control-label">Last Name</label>
-															<input type="text" placeholder="Doe" class="form-control" name="lname" value="<?=$user->lname?>"/>
-														</div>
-														<div class="form-group">
-															<label class="control-label">Username</label>
-															<input type="text" placeholder="JohnDoe" class="form-control" name="username" value="<?=$user->username?>"/>
-														</div>
-														<div class="form-group">
-															<label class="control-label">Email</label>
-															<input type="email" placeholder="example@example.com" class="form-control" name="email" value="<?=$user->email?>" required/>
-														</div>
-														<div class="form-group">
-															<label class="control-label">Signature</label>
-															<input type="text" placeholder="Web Developer" class="form-control" name="signature" value="<?=$user->signature?>"/>
-														</div>
-														<!-- <div class="form-group">
-															<label class="control-label">About</label>
-															<textarea class="form-control" rows="3" placeholder="We are KeenThemes!!!"></textarea>
-														</div>-->
-														<div class="form-group">
-															<input type="hidden" name='action' value='edit'/>
-														</div>
-														<div class="margiv-top-10">
-															<input type="submit" name="edit" id="update" value="Save Changes" class="btn green-haze"/>
-															<a href="javascript:;" class="btn default">
-															Cancel </a>
-														</div>
-													</form>
-												</div>
-												<!-- END PERSONAL INFO TAB -->
-												<!-- CHANGE AVATAR TAB -->
-												<div class="tab-pane" id="tab_1_2">
-													<p>
-														 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-													</p>
-													<form action="../controllers/upload.php" method="post" role="form" enctype="multipart/form-data">
-														<div class="form-group">
-															<div class="fileinput fileinput-new" data-provides="fileinput">
-																<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-																	<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>
-																</div>
-																<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-																</div>
-																<div>
-																	<span class="btn default btn-file">
-																	<span class="fileinput-new">
-																	Select image </span>
-																	<span class="fileinput-exists">
-																	Change </span>
-																	<input type="file" name="myImage">
-																	</span>
-																	<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">
-																	Remove </a>
-																</div>
-															</div>
-															<div class="clearfix margin-top-10">
-																<span class="label label-danger">NOTE! </span>
-																<span>Attached image thumbnail is supported in Latest Firefox, Chrome, Opera, Safari and Internet Explorer 10 only </span>
-															</div>
-														</div>
-														<div class="margin-top-10">
-															<input type="submit" value="Submit" class="btn green-haze"/>
+                    </div>
+                    <div class="portlet-body">
+                      	<h4 class="profile-desc-title">Full Name:</h4>
+												<span class="profile-desc-text"> <?=$user->fname." ".$user->lname ?> </span>
+												<h4 class="profile-desc-title">Username:</h4>
+												<span class="profile-desc-text"> <?=$user->username ?> </span>
+												<h4 class="profile-desc-title">Email:</h4>
+												<i class="fa fa-globe"> </i>
+												<span class="profile-desc-text"> <?=$user->email ?> </span>
+												<h4 class="profile-desc-title">Gender:</h4>
+												<span class="profile-desc-text"> <?=$user->gender ?> </span>
+												<h4 class="profile-desc-title">Signature:</h4>
+												<span class="profile-desc-text"> <?=$user->signature ?> </span>
+												<h4 class="profile-desc-title">Registration Date:</h4>
+												<span class="profile-desc-text"> <?=$user->regdate ?> </span>
+                    </div>
+                  </div>
+								</div>
+								<div class="col-md-6">
+                  <div class="portlet light">
+                    <div class="portlet-title tabbable-line">
+											<div class="caption caption-md">
+												<i class="icon-globe theme-font hide"></i>
+												<span class="caption-subject font-blue-madison bold uppercase">Activity</span>
+											</div>
+                    </div>
+                    <div class="portlet-body">
+											<div class="row list-separated profile-stat">
+												<div class="col-md-4 col-sm-4 col-xs-6">
+													<div class="uppercase profile-stat-title">
+														 <h1><?=Thread::getThreadsByUserId($user->id) ?></h1>
+													</div>
+													<div class="uppercase large profile-stat-text">
+														<i class="fa fa-envelope fa-3x"> </i><h3 class="bold">Threads</h3>
+													</div>
 
-															<a href="javascript:;" class="btn default">
-															Cancel </a>
-														</div>
-													</form>
 												</div>
-												<!-- END CHANGE AVATAR TAB -->
-												<!-- CHANGE PASSWORD TAB -->
-												<div class="tab-pane" id="tab_1_3">
-													<form action="#">
-														<div class="form-group">
-															<label class="control-label">Current Password</label>
-															<input type="password" class="form-control"/>
-														</div>
-														<div class="form-group">
-															<label class="control-label">New Password</label>
-															<input type="password" class="form-control"/>
-														</div>
-														<div class="form-group">
-															<label class="control-label">Re-type New Password</label>
-															<input type="password" class="form-control"/>
-														</div>
-														<div class="margin-top-10">
-															<a href="javascript:;" class="btn green-haze">
-															Change Password </a>
-															<a href="javascript:;" class="btn default">
-															Cancel </a>
-														</div>
-													</form>
+												<div class="col-md-4 col-sm-4 col-xs-6">
+													<div class="uppercase profile-stat-title">
+														 <h1><?=Reply::getRepliesByUserId($user->id) ?></h1>
+													</div>
+													<div class="uppercase profile-stat-text">
+														 <i class="fa fa-comment fa-3x"> </i><h3 class="bold">Replies</h3>
+													</div>
 												</div>
-												<!-- END CHANGE PASSWORD TAB -->
-												<!-- PRIVACY SETTINGS TAB -->
-												<div class="tab-pane" id="tab_1_4">
-													<form action="#">
-														<table class="table table-light table-hover">
-														<tr>
-															<td>
-																 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus..
-															</td>
-															<td>
-																<label class="uniform-inline">
-																<input type="radio" name="optionsRadios1" value="option1"/>
-																Yes </label>
-																<label class="uniform-inline">
-																<input type="radio" name="optionsRadios1" value="option2" checked/>
-																No </label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-															</td>
-															<td>
-																<label class="uniform-inline">
-																<input type="checkbox" value=""/> Yes </label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-															</td>
-															<td>
-																<label class="uniform-inline">
-																<input type="checkbox" value=""/> Yes </label>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																 Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-															</td>
-															<td>
-																<label class="uniform-inline">
-																<input type="checkbox" value=""/> Yes </label>
-															</td>
-														</tr>
-														</table>
-														<!--end profile-settings-->
-														<div class="margin-top-10">
-															<a href="javascript:;" class="btn green-haze">
-															Save Changes </a>
-															<a href="javascript:;" class="btn default">
-															Cancel </a>
-														</div>
-													</form>
+												<div class="col-md-4 col-sm-4 col-xs-6">
+													<div class="uppercase profile-stat-title">
+														 <h1><?=0 ?></h1>
+													</div>
+													<div class="uppercase profile-stat-text">
+														 <i class="fa fa-heart fa-3x"> </i><h3 class="bold">Likes</h3>
+													</div>
 												</div>
-												<!-- END PRIVACY SETTINGS TAB -->
 											</div>
-										</div>
-									</div>
+                    </div>
+                  </div>
 								</div>
 							</div>
 						</div>
@@ -442,32 +325,6 @@ jQuery(document).ready(function() {
 Layout.init(); // init current layout
 Demo.init(); // init demo features\
 Profile.init(); // init page demo
-});
-//submit (save changes) button
-$("#edit-form").submit(function(e){
-
-	$.ajax({
-			type: 'post',
-			cache: false,
-			url: '../controllers/editProfile.php',
-			data: $("#edit-form").serialize(),
-			success: function(data){
-					console.log(data);
-					var res = JSON.parse(data);
-					console.log(res);
-					if(res.valid){
-							console.log("valid");
-							$("#fullname").text(res.data.fname + " " + res.data.lname);
-							$("#sig").text(res.data.signature);
-							$("#username-header").text(res.data.username);
-						}
-					else{
-							console.log("not valid");
-							//$('.login-form').validate().showErrors(res.errors);
-						}
-				}
-	});
-	e.preventDefault();
 });
 </script>
 <!-- END JAVASCRIPTS -->
