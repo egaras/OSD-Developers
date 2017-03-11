@@ -625,18 +625,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <table class="table table-hover table-advance">
                                                             <thead>
                                                             <tr>
-                                                                <th>
-                                                                    #
-                                                                </th>
-                                                                <th>
-                                                                    Full Name
-                                                                </th>
-                                                                <th>
-                                                                    Username
-                                                                </th>
-                                                                <th>
-                                                                    Status
-                                                                </th>
+                                                                <th>#</th>
+                                                                <th>Full Name</th>
+                                                                <th>Username</th>
+                                                                <th>Status</th>
                                                                 <th>action</th>
                                                             </tr>
                                                             </thead>
@@ -924,6 +916,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <label class="control-label visible-ie8 visible-ie9">Email</label>
                                         <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                                            <input type="radio" name="gender" value="m" id="editmale"/> Male
+                                        </label>
+                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                                            <input type="radio" name="gender" value="f" id="editfemale"/> Female
+                                        </label>
+                                    </div>
                                     <p class="hint">
                                         account below:
                                     </p>
@@ -944,9 +944,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div id="register_tnc_error">
                                         </div>
                                     </div>
-
-
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
@@ -1110,6 +1107,7 @@ Demo.init(); // init demo features
 ///////mu script///////////////
 $('.edit-user').on('click',function(e){
     var userid = e.target.closest('tr').getAttribute('userid');
+    console.log(userid);
     //$('#spinner-bg').show();
     $.ajax({
         type: 'POST',
@@ -1123,7 +1121,7 @@ $('.edit-user').on('click',function(e){
             var res = JSON.parse(data);
             console.log(res);
             if(res.success)
-                console.log(res.data);
+                loadUSerData(res.data);
             else
                 console.log(res.errors)
         },
@@ -1133,6 +1131,18 @@ $('.edit-user').on('click',function(e){
     });
     //$('#spinner-bg').hide();
 });
+
+function loadUSerData(data){
+    $('#editu input[name="fname"]').val(data.fname);
+    $('#editu input[name="lname"]').val(data.lname);
+    $('#editu input[name="username"]').val(data.username);
+    $('#editu input[name="email"]').val(data.email);
+    if(data.gender == 'm')
+        $('#editu #male').prop('checked',true);
+    else
+        $('#editu #female').prop('checked',true);
+
+}
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
