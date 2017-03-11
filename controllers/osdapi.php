@@ -478,8 +478,7 @@ function addReply(){
         $response["errors"]["replycontent"] = "Empty reply content not allowd!";
     if(count(@$response["errors"])==0){
         $reply = new Reply();
-        //$reply->userid = $_SESSION['userid'];
-        $reply->userid = 1; //to be changed with session
+        $reply->userid = $_SESSION['userid'];
         $reply->threadid = $_POST['threadid'];
         $reply->content = $_POST['replycontent'];
         $reply->replydate = date("Y-m-d H:i:s");

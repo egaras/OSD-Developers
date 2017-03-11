@@ -38,6 +38,7 @@ class QueryBuilder
     public function selectOrderLimitOffset($table,$fields=array("*"),$condition=array("1"=>"1"),$operator="AND",$class="StdClass",$order,$orderForm="DESC",$limit='ALL',$offset='0',$mode=PDO::FETCH_CLASS)
     {
         $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "$k = ".'"'.$v.'"';},$condition));
+        if($limit == 'ALL'){$limit='18446744073709551615';}
         $sql=sprintf(
             'select %s from %s where %s order by %s %s limit %s offset %s',
             implode(', ',$fields),
