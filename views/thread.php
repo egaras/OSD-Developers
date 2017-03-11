@@ -256,7 +256,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         </div>
                                         <div class="portlet-body">
-                                                <p><?=$thread->content ?></p>
+                                                <p><?=htmlspecialchars_decode($thread->content) ?></p>
                                                 <hr size="40">
                                                 <p><?=$threadUser->signature ?></p>
                                         </div>
@@ -287,7 +287,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <?=$reply->content ?>
                                                     </p>
                                                 </div>
-                                                <?php if($reply->userid == $user->id || isAdmin()): ?>
+                                                <?php if(isLoggedIn() && ($reply->userid == $user->id || isAdmin())): ?>
                                                 <div class="col-md-2 ">
                                                     <a href="javascript:;" class="btn btn-circle btn-sm btn-primary">
                                                     <i class="fa fa-pencil"></i></a>

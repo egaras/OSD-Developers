@@ -33,6 +33,10 @@ class Section
     public static function getSectionNameById($id){
       return $GLOBALS['db']->select(self::$table,['name'],['id'=>$id])[0]->name;
     }
+    public static function getSectionNameByForumId($id){
+      $myId = $GLOBALS['db']->select('forums',['sectionid'],['id'=>$id])[0]->sectionid;
+      return $GLOBALS['db']->select(self::$table,['name'],['id'=>$myId])[0]->name;
+    }
     public function insert(){
         $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createdate'=>$this->createDate);
         $GLOBALS['db']->insert(self::$table,$values);

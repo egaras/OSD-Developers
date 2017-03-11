@@ -17,23 +17,29 @@
         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
           <img alt="" class="img-circle" src="../assets/profilePics/<?=$user->avatar ?>"/>
           <span class="username username-hide-on-mobile" id="username-header">
-          <?=User::getUserameById($_SESSION['userId'])?> </span>
+          <?=User::getUserameById($_SESSION['userid'])?> </span>
           <i class="fa fa-angle-down "></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-default">
+        <?php if(isAdmin()): ?>
           <li>
-            <a href="profile.php">
+            <a href="admin.php">
+              <i class="icon-magic-wand"></i> Administration </a>
+          </li>
+        <?php endif; ?>
+          <li>
+            <a href="profileOverview.php">
               <i class="icon-user"></i> My Profile </a>
           </li>
           <li>
-            <a href="logout.php">
+            <a href="../views/login.php">
               <i class="icon-key"></i> Log Out </a>
           </li>
         </ul>
       </li>
     <?php else: ?>
       <li class="btn">
-        <a href="login.php">
+        <a href="../views/login.php">
           <span class="bold"> Login </span>
         </a>
       </li>

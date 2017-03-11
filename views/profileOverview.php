@@ -214,7 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												<i class="fa fa-globe"> </i>
 												<span class="profile-desc-text"> <?=$user->email ?> </span>
 												<h4 class="profile-desc-title">Gender:</h4>
-												<span class="profile-desc-text"> <?=$user->gender ?> </span>
+												<span class="profile-desc-text"> <?php if($user->gender == "m") {echo 'Male';} else {echo 'Female';} ?> </span>
 												<h4 class="profile-desc-title">Signature:</h4>
 												<span class="profile-desc-text"> <?=$user->signature ?> </span>
 												<h4 class="profile-desc-title">Registration Date:</h4>

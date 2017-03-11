@@ -36,6 +36,9 @@ class Reply
       $replies = $GLOBALS['db']->select(self::$table,['*'],['threadid'=>$id],"AND","Reply");
       return $replies;
     }
+    public static function countRepliesByThreadId($id){
+      return count($GLOBALS['db']->select(self::$table,['*'],['threadid'=>$id],"AND","Reply"));
+    }
     public static function getOrderedRepliesByThreadId($id,$order='replydate',$orderForm="ASC",$limit="ALL",$offset='0'){
       $replies = $GLOBALS['db']->selectOrderLimitOffset(self::$table,['*'],['threadid'=>$id],"AND","Reply",$order,$orderForm,$limit,$offset);
       return $replies;
