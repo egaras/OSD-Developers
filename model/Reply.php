@@ -24,15 +24,20 @@ class Reply
         $this->$name = $value;
     }
     public function loadById(){
-        $thread = $GLOBALS['db']->select(self::$table,['*'],['id'=>$this->id],"AND",'Reply')[0];
-        return $thread;
+        $reply = $GLOBALS['db']->select(self::$table,['*'],['id'=>$this->id],"AND",'Reply');
+        if($reply){return $reply[0];}
+        else {return new Reply();}
     }
     public static function getReplies(){
-      $threads = $GLOBALS['db']->select(self::$table,['*'],["1"=>"1"],"AND","Reply");
-      return $threads;
+      $replies = $GLOBALS['db']->select(self::$table,['*'],["1"=>"1"],"AND","Reply");
+      return $replies;
     }
     public static function getRepliesByThreadId($id){
       $replies = $GLOBALS['db']->select(self::$table,['*'],['threadid'=>$id],"AND","Reply");
+      return $replies;
+    }
+    public static function getOrderedRepliesByThreadId($id,$order='replydate',$orderForm="ASC",$limit="ALL",$offset='0'){
+      $replies = $GLOBALS['db']->selectOrderLimitOffset(self::$table,['*'],['threadid'=>$id],"AND","Reply",$order,$orderForm,$limit,$offset);
       return $replies;
     }
     public function insert(){

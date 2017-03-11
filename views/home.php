@@ -104,35 +104,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class=" page-md  page-container-bg-solid page-sidebar-closed-hide-logo  ">
-<!-- BEGIN HEADER -->
-
-    <div class="page-header md-shadow-z-1-i navbar ">
-    <!-- BEGIN HEADER INNER -->
-    <div class="page-header-inner">
-    	<!-- BEGIN LOGO -->
-    	<div class="page-logo ">
-    		<a href="index.html">
-    			<img src="../assets/admin/layout2/img/logo-default.png" alt="logo" class="logo-default fit"/>
-    		</a>
-
-    	</div>
-    	<!-- END LOGO -->
-    	<!-- END PAGE ACTIONS -->
-    	<!-- BEGIN PAGE TOP -->
-    	<div class="page-top">
-    		<!-- BEGIN HEADER SEARCH BOX -->
-    		<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-    		<!-- END HEADER SEARCH BOX -->
-    		<!-- BEGIN TOP NAVIGATION MENU -->
-    		<?php include 'header.php' ?>
-    	</div>
-    	<!-- END PAGE TOP -->
-    </div>
-    <!-- END HEADER INNER -->
-    </div>
-    <!-- END HEADER -->
-
-
+<!-- HEADER -->    
+<?php include 'header.php' ?>
 <div class="">
 	<div class="page-container page-full-width">
 		<div class="page-content-wrapper">
