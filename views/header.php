@@ -1,3 +1,15 @@
+<div class="page-header md-shadow-z-1-i navbar ">
+<!-- BEGIN HEADER INNER -->
+<div class="page-header-inner">
+  <!-- BEGIN LOGO -->
+  <div class="page-logo ">
+    <a href="index.html">
+      <img src="../assets/admin/layout2/img/logo-default.png" alt="logo" class="logo-default fit"/>
+    </a>
+
+  </div>
+  <!-- END LOGO -->
+  <div class="page-top">
 <div class="top-menu">
   <ul class="nav navbar-nav pull-right">
     <?php if(isLoggedIn()): ?>
@@ -28,3 +40,8 @@
     <?php endif; ?>
   </ul>
 </div>
+</div>
+</div>
+<!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
