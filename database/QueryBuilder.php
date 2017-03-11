@@ -35,6 +35,27 @@ class QueryBuilder
             die("Whoops!,something went wrong ".$e->getMessage());
         }
     }
+    public function selectOrderLimitOffset($table,$fields=array("*"),$condition=array("1"=>"1"),$operator="AND",$class="StdClass",$order,$orderForm="DESC",$limit='ALL',$offset='0',$mode=PDO::FETCH_CLASS)
+    {
+        $conditionKV=implode($operator, $this->array_map_assoc(function($k,$v){return "$k = ".'"'.$v.'"';},$condition));
+        $sql=sprintf(
+            'select %s from %s where %s order by %s %s limit %s offset %s',
+            implode(', ',$fields),
+            $table,
+            $conditionKV,
+            $order,
+            $orderForm,
+            $limit,
+            $offset
+        );
+        try{
+            $statement=$this->pdo->prepare($sql);
+            $statement->execute();
+            return $statement->fetchAll($mode,$class);
+        }catch(Exception $e){
+            die("Whoops!,something went wrong ".$e->getMessage());
+        }
+    }
     public function insert($table,$parameters)
     {
         $sql=sprintf(
