@@ -7,7 +7,7 @@
  */
 //require 'vendor/autoload.php';
 session_start();
-App::bind('config', require $_SERVER['DOCUMENT_ROOT']."/OSD-Developers/config.php");
+App::bind('config', require $_SERVER['DOCUMENT_ROOT']."/config.php");
 
 App::bind('database', new QueryBuilder(
     Connection::open(App::get('config')['database'])
@@ -15,15 +15,9 @@ App::bind('database', new QueryBuilder(
 $db = App::get('database');
 
 function isLoggedIn(){
-  if(isset($_SESSION['userId'])){
-      return true;
-  }
-  return false;
+    return isset($_SESSION['userid']);
 }
 
 function isAdmin(){
-  if($user->roleid == 0){
-    return true;
-  }
-  return false;
+    return $_SESSION['userrole'] == 1;
 }
