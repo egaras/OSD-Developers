@@ -192,8 +192,12 @@ function updateUser(){
         $user->roleid = $_POST['roleid'];
     if(!empty($_POST['avatar']))
         $user->avatar = $_POST['avatar'];
-    if(!empty($_POST['gender']))
-        $user->gender = $_POST['gender'];
+    if(!empty($_POST['gender'])){
+        if($_POST['gender'] != 'm' || $_POST['gender'] != 'f')
+            $response["errors"]["gender"] = "Invalid gender!";
+        else
+            $user->gender = $_POST['gender'];
+    }
     if(!empty($_POST['password'])){
         if(!empty(!empty($_POST['rpassword']))){
             //$values['password'] = $_POST['password'];
@@ -413,7 +417,7 @@ function addThread(){
         $thread->userid = 1; //to be changed with session
         $thread->forumid = $_POST['forumid'];
         $thread->title = $_POST['threadtitle'];
-        $thread->content = htmlspecialchars($_POST['threadcontent']); html
+        $thread->content = htmlspecialchars($_POST['threadcontent']);
         $thread->postdate = date("Y-m-d H:i:s");
         $thread->editdate = date("Y-m-d H:i:s");
         $thread->locked = 0;
