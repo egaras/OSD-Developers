@@ -18,3 +18,8 @@ desc: added user gender enum and tokens table
 --v2.1
 date: 10 Mar
 desc: added sysconfigs table and on delete cascade
+
+--v2.2
+date: 11 Mar
+desc: username and user email are now unique
+
