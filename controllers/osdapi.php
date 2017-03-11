@@ -192,8 +192,12 @@ function updateUser(){
         $user->roleid = $_POST['roleid'];
     if(!empty($_POST['avatar']))
         $user->avatar = $_POST['avatar'];
-    if(!empty($_POST['gender']))
-        $user->gender = $_POST['gender'];
+    if(!empty($_POST['gender'])){
+        if($_POST['gender'] != 'm' || $_POST['gender'] != 'f')
+            $response["errors"]["gender"] = "Invalid gender!";
+        else
+            $user->gender = $_POST['gender'];
+    }
     if(!empty($_POST['password'])){
         if(!empty($_POST['rpassword'])){
             //$values['password'] = $_POST['password'];

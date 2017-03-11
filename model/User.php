@@ -119,7 +119,7 @@
             return $users;
         }
         public static function getAllUsersJoin(){
-            $query = 'SELECT * FROM `users` JOIN `userstatus` ON `users`.`status` = `userstatus`.`id`';
+            $query = 'SELECT `users`.*, `userstatus`.name, `userstatus`.cssclass FROM `users` JOIN `userstatus` ON `users`.`status` = `userstatus`.`id`';
             $users = $GLOBALS['db']->rawSQL($query,"User");
             return $users;
         }

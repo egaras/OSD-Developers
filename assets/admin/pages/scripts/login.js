@@ -246,7 +246,7 @@ var Login = function() {
                         console.log(data);
                         var res = JSON.parse(data);
                         if(res.success)
-                            window.location = "index.php";
+                            window.location = "controllers/home.php";
                         else
                             $('.register-form').validate().showErrors(res.errors);
                     },
