@@ -263,12 +263,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <td><?=$user->getFullName();?></td>
                                                                 <td><?=$user->username;?></td>
                                                                 <td>
-                                                                    <span class="label label-sm label- <?=$user->cssclass?>"><?=$user->name?></span>
+                                                                    <span class="label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
                                                                 </td>
                                                                 <td>
-                                                                    <a href="#editu" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
+                                                                    <a href="#editu" id="edituser" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
                                                                         <i class="fa fa-edit"></i></a>
-                                                                    <a href="#removeu" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
+                                                                    <a href="#removeu" id="deleteuser" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
                                                                         <i class="fa fa-remove"></i></a>
 
                                                                 </td>
@@ -446,7 +446,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="modal-body">
                                 <form action="admin.php" method="post" class="register-form">
                                     <input type="hidden" name="action" value="addUser">
-                                    <input type="redirect" name="action" value="false">
+                                    <input type="hidden" name="redirect" value="false">
                                     <p class="hint">
                                         Enter personal details below:
                                     </p>
@@ -506,8 +506,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <h4 class="modal-title">edit user</h4>
                             </div>
                             <div class="modal-body">
-                                <form action="admin.php" method="post">
-                                    <input type="hidden" name="action" value="register">
+                                <form action="admin.php" method="post" id="edituser-form">
+                                    <input type="hidden" name="action" value="updateUser">
+                                    <input type="hidden" name="userid">
                                     <p class="hint">
                                         personal details :
                                     </p>
@@ -555,7 +556,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
-                                <button type="submit" id="edit-user" class="btn margin-top-20  blue uppercase">save</button>
+                                <button type="submit" id="edituser" class="btn margin-top-20  blue uppercase">save</button>
 
                                 </form>
 
@@ -566,18 +567,24 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- /.modal-dialog -->
                 </div>
                 <div class="modal fade bs-modal-lg" id="removeu" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                                 <h4 class="modal-title">remove user</h4>
                             </div>
-                            <div class="modal-body">
-                                <p>are you sure you want to remove user</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center font-red-thunderbird">
+                                        <i class="fa fa-trash" style="font-size: 130px; margin-top: 60px"></i>
+                                        <h2>Are you sure you wanna delete <span class="username">User</span>?</h2>
+                                        <h4>This action will delete all threads<br/>and replies of this user and it can <b>NOT</b> be reversed</h4>
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class=" btn default" data-dismiss="modal">NO</button>
-                                <button type="button" id="remove-user" class="btn red uppercase">yes</button>
+                                <button type="button" id="remove-user" class="btn red uppercase" userid="">yes</button>
 
                                 </form>
 
@@ -685,7 +692,18 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 	</div>
 </div>
-
+    <div id="spinner-bg">
+        <div id="spinner">
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+            <div class="cssload-dot"></div>
+        </div>
+    </div>
 <!-- BEGIN JAVASCRIPTS(Loadjavascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
@@ -711,10 +729,11 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/admin/pages/scripts/login.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {
-   Metronic.init(); // init metronic core components
-Layout.init(); // init current layout
+    Metronic.init(); // init metronic core components
+    Layout.init(); // init current layout
     Login.init();
-Demo.init(); // init demo features
+    Demo.init(); // init demo features
+    $('#spinner-bg').hide();
 });
 ///////mu script///////////////
 $('.edit-user').on('click',function(e){
@@ -733,7 +752,32 @@ $('.edit-user').on('click',function(e){
             var res = JSON.parse(data);
             console.log(res);
             if(res.success)
-                loadUSerData(res.data);
+                loadUserData(res.data);
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+    //$('#spinner-bg').hide();
+});
+$('#editu #edituser').on('click',function(e){
+    var userid = e.target.getAttribute('userid');
+    e.preventDefault();
+    console.log(userid);
+    //$('#spinner-bg').show();
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data: $('#edituser-form').serialize(),
+        success: function(data){
+            console.log(data);
+            var res = JSON.parse(data);
+            console.log(res);
+            if(res.success)
+                console.log(res);
             else
                 console.log(res.errors)
         },
@@ -772,6 +816,10 @@ $('.edit-forum').click(function (e) {
 $('.del-forum').click(function (e) {
     var forumid=e.target.closest('table').getAttribute('forum_id');
    $('#removef #del-forum').attr('forumid',forumid);
+})
+$('.u-del').click(function (e) {
+    var userid = e.target.closest('tr').getAttribute('userid');
+    $('#removeu #remove-user').attr('userid',userid);
 })
 
 $('#edit-forum').click(function (e) {
@@ -832,10 +880,38 @@ $('#del-forum').click(function (e) {
 
 
 })
+$('#remove-user').click(function(e){
+    e.preventDefault();
+    $('#spinner-bg').show();
+    var userid = e.target.getAttribute('userid');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'deleteUser',
+            userid: userid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success){
+                console.log('success')
+            }
+            else{
+                console.log(res.errors)
+            }
+            $('#spinner-bg').hide();
+        },
+        error: function(){
+            $('#spinner-bg').hide();
+            $('#connectionModal').modal('show');
+        }
+    });
+})
 
-
-function loadUSerData(data){
-    $('#editu input[name="title"]').val(data.fname);
+function loadUserData(data){
+    $('#editu input[name="userid"]').val(data.id);
+    $('#editu input[name="fname"]').val(data.fname);
     $('#editu input[name="lname"]').val(data.lname);
     $('#editu input[name="username"]').val(data.username);
     $('#editu input[name="email"]').val(data.email);
