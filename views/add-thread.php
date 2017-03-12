@@ -195,7 +195,8 @@
                         <div class="form-group">
                             <label class="control-label">Title
                             </label>
-                            <input name="title" id="title" type="text" class="form-control">
+                            <input name="title" id="title" type="text" class="form-control"  ?>
+                            <?php if(isset($thread_id)) echo "<input id=\"threadid\" type=\"hidden\"  name=\'threadid\' value=\"$thread_id\" ?>";?>
                         </div>
 
                         <div class="form-group">
@@ -236,15 +237,57 @@
 <script src="../templates/ckeditor/ckeditor.js"></script>
 <script>
 jQuery(document).ready(function() {
-   Metronic.init(); // init metronic core components
-Layout.init(); // init current layout
-Demo.init(); // init demo features
-    CKEDITOR.replace( 'ckeditor' );
-function submitThread(){
-    var data = CKEDITOR.instances.ckeditor.getData();
-    $('body').appendChild(data);
-    alert("The form was submitted");
-}
+    Metronic.init(); // init metronic core components
+    Layout.init(); // init current layout
+    Demo.init(); // init demo features
+        CKEDITOR.replace( 'ckeditor' );
+    function submitThread(){
+        var data = CKEDITOR.instances.ckeditor.getData();
+        $('body').appendChild(data);
+        alert("The form was submitted");
+
+
+    }
+    function loadTreadData(data){
+        console.log("data:"+data);
+            $('form input[name="title"]').val(data.title);
+            $('form input[name="threadid"]').val(data.id);
+        CKEDITOR.instances.ckeditor.setData(data.content)
+
+
+
+        }
+
+
+    if($('#threadid').length!=0){
+    console.log('if cond')
+            var threadid=$('#threadid').val();
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '../controllers/osdapi.php',
+                data:{
+                    action: 'getThreadData',
+                    threadid: threadid
+                },
+                success: function(data){
+                    console.log(data);
+                    var res = JSON.parse(data);
+
+                    if(res.success)
+
+                        loadTreadData(res.data);
+                    else
+                        console.log(res.errors)
+                },
+                error: function(){
+                    $('#connectionModal').modal('show');
+                }
+            });
+
+
+
+        }
 
 });
 $("#add-thread").click(function (e) {
@@ -252,8 +295,36 @@ $("#add-thread").click(function (e) {
     var forum_id=e.target.getAttribute("forum-id") ;
     var title =$("#title").val();
     var body=CKEDITOR.instances.ckeditor.getData();
+    var threadid=$('#threadid').val();
 
-    $.ajax({
+    if($('#threadid').length!=0)
+        $.ajax({
+            type: 'POST',
+            cache: false,
+            url: '../controllers/osdapi.php',
+            data:{
+                action: 'updateThread',
+                threadid: threadid,
+                forumid: forum_id,
+                threadtitle:title,
+                threadcontent:body
+            },
+            success: function(data){
+                console.log(data);
+                var res = JSON.parse(data);
+                console.log(res);
+                if(res.success)
+                {window.location.href = "forums.php?forumid="+forum_id;
+                    console.log("success")}
+                else
+                    console.log(res.errors)
+            },
+            error: function(){
+                $('#connectionModal').modal('show');
+            }
+        });
+    else
+        $.ajax({
         type: 'POST',
         cache: false,
         url: '../controllers/osdapi.php',
@@ -279,6 +350,7 @@ $("#add-thread").click(function (e) {
 
 
 })
+
 
 
 </script>
