@@ -16,10 +16,10 @@
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 return [
     'database'=>[
-        'name'=>substr($url["path"], 1),
-        'username'=>$url["user"],
-        'password'=>$url["pass"],
-        'connection' => 'mysql:host='.$url["host"].';',
+        'name'=>'heroku_eb8c565d31ce2cb',
+        'username'=>'b54dd2bdf3fbad',
+        'password'=>'d6a19bf0',
+        'connection' => 'mysql:host=us-cdbr-iron-east-03.cleardb.net;',
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'options'=>[

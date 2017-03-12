@@ -55,6 +55,7 @@ var Login = function() {
                     url: '../controllers/osdapi.php',
                     data:$('.login-form').serialize(),
                     success: function(data){
+                        console.log(data);
                         var res = JSON.parse(data);
                         console.log(res);
                         if(res.success)
