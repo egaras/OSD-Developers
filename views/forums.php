@@ -214,7 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														<ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
 																<li class="col1">
 																		<div class="caption">
-																				<i class="fa fa-thumb-tack"></i> <span class="label label-sm label-danger">pinned</span> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+																				<i class="icon-note"> </i> <span class="label label-sm label-danger"><i class="fa fa-thumb-tack"></i> pinned </span> <?php if($thread->locked): ?> <span class="label label-sm label-default"><i class="fa fa-lock"></i> locked </span><?php endif;?> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
 																		</div>
 																		<!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
 																</li>
@@ -234,6 +234,8 @@ License: You must have a valid license purchased only from themeforest(the above
 																		<li>
 																				<div>
 																						<?php if(@$user->roleid==1):?>
+                                                                                            <a href="#" class="btn default btn-circle btn-xs toggle-pin-thread yellow-lemon"  ><i class="fa fa-thumb-tack  white"></i>
+                                                                                            </a>
 																								<a href="#" class="btn default btn-circle btn-xs toggle-lock-thread <?php if($thread->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($thread->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
 																								</a>
 																						<?php endif; ?>
@@ -252,7 +254,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
                                 <li class="col1">
                                     <div class="caption">
-                                        <i class="icon-note"> </i> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+                                        <i class="icon-note"> </i> <?php if($thread->locked): ?> <span class="label label-sm label-default"><i class="fa fa-lock"></i> locked </span><?php endif;?> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
                                     </div>
                                     <!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
                                 </li>
@@ -272,6 +274,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <li>
                                         <div>
                                             <?php if(@$user->roleid==1):?>
+                                                <a href="#" class="btn default btn-circle btn-xs toggle-pin-thread"  ><i class="fa fa-thumb-tack  white"></i>
+                                                </a>
                                                 <a href="#" class="btn default btn-circle btn-xs toggle-lock-thread <?php if($thread->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($thread->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
                                                 </a>
                                             <?php endif; ?>
@@ -420,6 +424,37 @@ $('.toggle-lock-thread').click(function (e) {
 
 
 })
+$('.toggle-pin-thread').click(function (e) {
+    e.preventDefault();
+    var threadid=e.target.closest('ul').getAttribute('thread_id');
+    var forumid=$('div.portlet').attr('forum_id');
+    var obj=$(this).find('i');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'toggleThreadPin',
+            threadid: threadid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success){
+                console.log("success")
+                window.location.href = "forums.php?forumid="+forumid;
+
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+
 
 
 
