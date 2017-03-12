@@ -241,8 +241,8 @@
                                                                 <th>#</th>
                                                                 <th>Full Name</th>
                                                                 <th>Username</th>
-                                                                <th>Status</th>
-                                                                <th>action</th>
+                                                                <th>Role</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -252,17 +252,18 @@
                                                                     <td><?=$user->getFullName();?></td>
                                                                     <td><?=$user->username;?></td>
                                                                     <td>
-                                                                        <span class="username label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
+                                                                        <?php if($user->roleid==1): ?>
+                                                                        <span class="username label label-sm label-danger">Admin</span>
+                                                                        <?php else: ?>
+                                                                        <span class="username label label-sm label-info">User</span>
+                                                                        <?php endif; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <a href="#" class="btn default btn-circle btn-xs toggle-ban-user <?php if($user->status==2)echo " red-haze";?>"  ><i class="fa <?php if($user->status==2)echo "fa-ban"; else echo "fa-circle-o"?>  white"></i>
-                                                                        </a>
-
-                                                                        <a href="#editu" id="edituser" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
-                                                                            <i class="fa fa-edit"></i></a>
-                                                                        <a href="#removeu" id="deleteuser" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
-                                                                            <i class="fa fa-remove"></i></a>
-
+                                                                        <a href="#editu" id="edituser" data-toggle="modal" class="btn default btn-circle btn-xs yellow-lemon edit-user"><i class="fa fa-edit"></i></a>
+                                                                        <?php if($user->id!=$_SESSION['userid']): ?>
+                                                                        <a href="#" class="btn default btn-circle btn-xs toggle-ban-user <?php if($user->status==2)echo " red-haze"; else echo " green";?>"  ><i class="fa <?php if($user->status==2)echo "fa-ban"; else echo "fa-check"?>  white"></i></a>
+                                                                        <a href="#removeu" id="deleteuser" data-toggle="modal" class="btn default btn-circle btn-xs red u-del"><i class="fa fa-remove"></i></a>
+                                                                        <?php endif; ?>
                                                                     </td>
                                                                 </tr>
                                                             <?php endforeach; ?>
@@ -601,11 +602,20 @@
                                         <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                                        <label class="control-label visible-ie8 visible-ie9">Role</label>
+                                        <select class="form-control"  name="roleid">
+                                            <?php $roles=$db->select('roles'); foreach($roles as $role): ?>
+                                            <option value="<?=$role->id;?>"><?=$role->role;?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="radio radio-inline margin-top-20 margin-bottom-20">
                                             <input type="radio" name="gender" value="m" id="editmale"/> Male
                                         </label>
-                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
-                                            <input type="radio" name="gender" value="f" id="editfemale"/> Female
+                                        <label class="radio radio-inline margin-top-20 margin-bottom-20">
+                                            <input type="radio" name="gender" value="f"/> Female
                                         </label>
                                     </div>
                                     <p class="hint">
@@ -716,6 +726,7 @@ $('.edit-user').on('click',function(e){
 $('#editu #edituser').on('click',function(e){
     var userid = e.target.getAttribute('userid');
     e.preventDefault();
+    console.log($('#edituser-form').serialize());
     //$('#spinner-bg').show();
     $.ajax({
         type: 'POST',
@@ -1094,8 +1105,9 @@ $('.toggle-ban-user').click(function (e) {
             if(res.success){
                 console.log("success")
                 obj.toggleClass("fa-ban");
-                obj.toggleClass("fa-circle-o");
+                obj.toggleClass("fa-check");
                 obj.parent().toggleClass("red-haze");
+                obj.parent().toggleClass("green");
             }
             else
                 console.log(res.errors)
@@ -1114,10 +1126,10 @@ function loadUserData(data){
     $('#editu input[name="lname"]').val(data.lname);
     $('#editu input[name="username"]').val(data.username);
     $('#editu input[name="email"]').val(data.email);
-    if(data.gender == 'm')
-        $('#editu #male').prop('checked',true);
-    else
-        $('#editu #female').prop('checked',true);
+    $('#editu select[name="roleid"]').val(data.roleid);
+    $('#editu input[name="gender"][value='+data.gender+']').prop('checked',true);
+    $('#editu input[name="gender"][value='+data.gender+']').addClass('checked');
+    Metronic.init();
 }
 function loadForumData(data){
     $('#editf input[name="title"]').val(data.name);

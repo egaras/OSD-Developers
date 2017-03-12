@@ -204,8 +204,6 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="portlet-title">
                         <ul class="topiclist">
                             <li class="col1 bold font-lg"><?=$forum->name ?></li>
-                            <li class="col2 "><i class="fa fa-comment white fa-2x"></i></li>
-                            <li class="col3 "><i class="fa fa-clock-o white fa-2x"></i></li>
                         </ul>
                     </div>
                     <div class="portlet-body grey-l padding_c">
@@ -219,10 +217,8 @@ License: You must have a valid license purchased only from themeforest(the above
 																		<!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
 																</li>
 																<li class="col2">
-																		<p class="row">
-																		<h2 class="nooo-margin"><?= $thread->replies ?></h2>
-																		</p>
-																		<p class="row">replies</p>
+                                                                    <span class="nooo-margin"> <i class="fa fa-comments"></i> <?= $thread->replies ?></span>
+                                                                    <span class="nooo-margin"> <i class="fa fa-eye"></i> <?= $thread->views ?></span>
 																</li>
 																<li class="col3 ">
 																<span>
@@ -259,10 +255,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
                                 </li>
                                 <li class="col2">
-                                    <p class="row">
-                                    <h2 class="nooo-margin"><?= $thread->replies ?></h2>
-                                    </p>
-                                    <p class="row">replies</p>
+                                    <span class="nooo-margin"> <i class="fa fa-comments"></i> <?= $thread->replies ?></span>
+                                    <span class="nooo-margin"> <i class="fa fa-eye"></i> <?= $thread->views ?></span>
                                 </li>
                                 <li class="col3 ">
                                 <span>
