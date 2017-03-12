@@ -8,7 +8,7 @@
 require '../vendor/autoload.php';
 require '../core/bootstrap.php';
 
-$isAdmin = true;
+$isAdmin = isAdmin();
 
 $response = array('success'=>false);
 
@@ -167,9 +167,14 @@ function addUser(){
                 $user->avatar = "defaultfemale.png";
             $user->regdate = date("Y-m-d H:i:s");
             $user->roleid = $GLOBALS['db']->select('roles',['*'],['role'=>"User"])[0]->id;
-            $user->status = $GLOBALS['db']->select('userstatus',['*'],['name'=>"Pending"])[0]->id;
+            $user->status = $GLOBALS['db']->select('userstatus',['*'],['name'=>"Active"])[0]->id;
             $user->insert();
             $response['redirect'] = $_POST['redirect'];
+            if($_POST['redirect'] == "true"){
+                $_SESSION['username'] = $user->username;
+                $_SESSION['userid'] = $user->id;
+                $_SESSION['userrole'] = $user->roleid;
+            }
         }
     }
     $response["success"] = count(@$response["errors"]) ? false : true;
@@ -186,6 +191,9 @@ function updateUser(){
         $user = $user->loadById();
     }else
         $response["errors"]["username"] = "Please specify username!";
+    if(!empty($_POST['username'])){
+        $user->username = $_POST['username'];
+    }
     if(!empty($_POST['fname']))
         $user->fname = $_POST['fname'];
     if(!empty($_POST['lname']))
@@ -214,8 +222,8 @@ function updateUser(){
     }
 
     if(count(@$response["errors"])==0){
-        if(count($GLOBALS['db']->select('users',['*'],["username"=>$_POST['username']])) == 0){
-            $response["errors"]["username"] = "Username does not exist!";
+        if(count($GLOBALS['db']->select('users',['*'],["userid"=>$_POST['userid']])) == 0){
+            $response["errors"]["username"] = "Userid does not exist!";
         }else{
             $user->update();
         }
@@ -226,11 +234,11 @@ function updateUser(){
 function deleteUser(){
     $response = [];
     $user = new User();
-    if(empty($_POST['username']))
-        $response["errors"]["username"] = "Please specify username!";
+    if(empty($_POST['userid']))
+        $response["errors"]["userid"] = "Please specify userid!";
     if(count(@$response["errors"])==0){
-        if(count($GLOBALS['db']->select('users',['*'],["username"=>$_POST['username']])) == 0){
-            $response["errors"]["username"] = "Username does not exist!";
+        if(count($GLOBALS['db']->select('users',['*'],["id"=>$_POST['userid']])) == 0){
+            $response["errors"]["userid"] = "Userid does not exist!";
         }else{
             $user->id = $_POST['userid'];
             $user->delete();
