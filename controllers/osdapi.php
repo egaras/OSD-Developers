@@ -26,6 +26,9 @@ if (isset($_POST['action'])){
         case 'updateUser':
             $response = updateUser();
             break;
+        case 'toggleUserBan':
+            $response=toggleUserBan();
+            break;
         case 'deleteUser':
             $response = deleteUser();
             break;
@@ -253,6 +256,25 @@ function deleteUser(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+function toggleUserBan(){
+    $response = [];
+    $user = new User();
+    if(!empty($_POST['userid'])){
+        if(count($GLOBALS['db']->select('users',['*'],['id'=>$_POST['userid']]))==0)
+            $response["errors"]["userid"] = "user does not exist!";
+        else{
+            $user->id = $_POST['userid'];
+            $user= $user->loadById();
+            if($user->status==1)$user->status=2;
+            else $user->status=1;
+            $user->update();
+        }
+    }else
+        $response["errors"]["forumid"] = "Please specify forum id!";
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
+
 
 function addSection(){
     $response = [];
@@ -528,7 +550,6 @@ function getThreadData(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
-
 function toggleThreadLock(){
     $response = [];
     $thread = new Thread();
@@ -559,6 +580,7 @@ function toggleThreadPin(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+
 function incrementThreadViews(){
     $response = [];
     $thread = new Thread();
