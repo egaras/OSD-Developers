@@ -199,7 +199,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </button>
                 <br><br><br>
 
-                <div class="portlet box blue no_shadow">
+                <div class="portlet box blue no_shadow" forum_id="<?=$forum->id ?>">
 
                     <div class="portlet-title">
                         <ul class="topiclist">
@@ -210,7 +210,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <div class="portlet-body grey-l padding_c">
                         <?php foreach ($threads as $thread): ?>
-                            <ul class="topiclist thread no-padding forum lpad " onclick="Demo">
+                            <ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
                                 <li class="col1">
                                     <div class="caption">
                                         <i class="fa fa-circle-o font-grey"></i><a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
@@ -229,16 +229,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <p class="col-sm-6 no-padding">by: <?= $thread->username ?><br>On: <?= $thread->postdate ?></p>
                                 </span>
                                 </li>
-                                <li>
-                                    <div>
-                                            <a href="#" class="btn default btn-circle btn-xs toggle-lock-forum <?php if($forum->locked)echo "blue-ebonyclay ";?>edit-forum"  ><i class="fa <?php if($forum->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
-                                            </a>
-                                            <a href="#editf" data-toggle="modal" class="btn default btn-circle btn-xs green edit-forum"><i class="fa fa-edit"></i></a>
-                                            <a href="#removef" data-toggle="modal" class="btn default btn-circle btn-xs red del-forum"><i class="fa fa-remove"></i></a>
-                                            <!--a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-lock"></i></a>
-                                            <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-thumb-tack"></i></a-->
-                                    </div>
-                                </li>
+                                <?php if($user->roleid==1 || $user->id== $thread->userid): ?>
+                                    <li>
+                                        <div>
+                                            <?php if($user->roleid==1):?>
+                                                <a href="#" class="btn default btn-circle btn-xs toggle-lock-thread <?php if($thread->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($thread->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
+                                                </a>
+                                            <?php endif; ?>
+
+                                            <a href="#editt" data-toggle="modal" class="btn default btn-circle btn-xs green edit-thread"><i class="fa fa-edit"></i></a>
+                                                <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red del-thread"><i class="fa fa-remove"></i></a>
+
+                                        </div>
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         <?php endforeach; ?>
                     </div>
@@ -249,7 +253,27 @@ License: You must have a valid license purchased only from themeforest(the above
 
 			</div>
 		</div>
-	</div>
+        <div class="modal fade bs-modal-lg" id="removet" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <span></span>
+                    <div class="modal-body">
+                        <p>are you sure you want to remove thread</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class=" btn default" data-dismiss="modal">NO</button>
+                        <button type="button" id="del-thread" class="btn red uppercase">yes</button>
+
+                        </form>
+
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+    </div>
 </div>
 
 <!-- BEGIN JAVASCRIPTS(Loadjavascripts at bottom, this will reduce page load time) -->
@@ -279,10 +303,86 @@ jQuery(document).ready(function() {
 Layout.init(); // init current layout
 Demo.init(); // init demo features
 });
+/////////////////
 $(".add-thread").click(function (e) {
 
     window.location.href = "add-thread.php?forum-id="+e.target.getAttribute('forum-id');
 })
+$('#del-thread').click(function (e) {
+    e.preventDefault();
+    var threadid=e.target.getAttribute('threadid');
+    var obj=$(this);
+    console.log("del\n"+threadid)
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'deleteThread',
+            threadid: threadid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success){
+                $( "[thread_id="+threadid+"]" ).remove();
+                obj.prev().trigger('click');
+
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+$('.del-thread').click(function (e) {
+    var threadid=e.target.closest('ul').getAttribute('thread_id');
+    console.log(e.target);
+    $('#removet #del-thread').attr('threadid',threadid);
+})
+$('.edit-thread').click(function (e) {
+    e.preventDefault();
+    var threadid=e.target.closest('ul').getAttribute('thread_id');
+    var forumid=$('div.portlet').attr('forum_id');
+    window.location.href = "add-thread.php?forum-id="+forumid+"&thread-id="+threadid;
+
+});
+$('.toggle-lock-thread').click(function (e) {
+    e.preventDefault();
+    var threadid=e.target.closest('ul').getAttribute('thread_id');
+    var obj=$(this).find('i');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'toggleThreadLock',
+            threadid: threadid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success){
+                console.log("success")
+                obj.toggleClass("fa-lock");
+                obj.toggleClass("fa-unlock");
+                obj.parent().toggleClass("blue-ebonyclay");
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+
+
+
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

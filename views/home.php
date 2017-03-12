@@ -211,16 +211,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                                  <a href="forums.php?forumid=<?=$forum->id ?>"><span class="ftitle font-blue"><?=$forum->name?></span></a>
                                             </li>
                                             <li class="col4 finfo" >views:  <b><?=$forum->views?></b></li>
-                                            <li class="finfo">threads:  <b><?=count($forum->threads)?></b></li>
+                                            <li class="finfo">threads:  <b><?=$forum->threadsNum?></b></li>
 
                                         </ul>
                                     </div>
 									<div class="tools col-md-1">
-										<a href="javascript:;" class="expand pull-right margin-right-10"></a>
+										<a href="javascript:;" class="collapse pull-right margin-right-10"></a>
 
 									</div>
 								</div>
-								<div class="portlet-body list grey-light display-hide">
+								<div class="portlet-body list grey-light ">
 									<div class=" no-padding" >
 										<div class="table-responsive  noo-margin">
 											<table class="table table-hover table-striped table-light">

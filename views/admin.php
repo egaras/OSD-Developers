@@ -348,7 +348,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                     <?=$forum->createdate?>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <a href="#" class="btn default btn-circle btn-xs toggle-lock-forum <?php if($forum->locked)echo "blue-ebonyclay ";?>edit-forum"  ><i class="fa <?php if($forum->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
+                                                                                    <a href="#" class="btn default btn-circle btn-xs toggle-lock-forum <?php if($forum->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($forum->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
                                                                                     </a>
                                                                                     <a href="#editf" data-toggle="modal" class="btn default btn-circle btn-xs green edit-forum"><i class="fa fa-edit"></i></a>
                                                                                     <a href="#removef" data-toggle="modal" class="btn default btn-circle btn-xs red del-forum"><i class="fa fa-remove"></i></a>
@@ -997,7 +997,7 @@ $('.toggle-lock-section').click(function (e) {
 })
 $('.toggle-lock-forum').click(function (e) {
     e.preventDefault();
-    var forumid=e.target.closest('table').getAttribute('forum_id');
+    var forumid=e.target.closest('tr').getAttribute('forum_id');
     var obj=$(this).find('i');
     $.ajax({
         type: 'POST',

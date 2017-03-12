@@ -68,6 +68,9 @@ if (isset($_POST['action'])){
         case 'updateThread':
             $response =updateThread();
             break;
+        case 'getThreadData':
+            $response=getThreadData();
+            break;
         case 'deleteThread':
             $response = deleteThread();
             break;
@@ -483,7 +486,7 @@ function updateThread(){
     if(!empty($_POST['threadtitle']))
         $thread->title = $_POST['threadtitle'];
     if(!empty($_POST['threadcontent']))
-        $thread->content = $_POST['threadcontent'];
+        $thread->content =htmlspecialchars( $_POST['threadcontent']);
     if(!empty($_POST['forumid']))
         $thread->forumid = $_POST['forumid'];
     if(count(@$response["errors"])==0){
@@ -512,6 +515,20 @@ function deleteThread(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+function getThreadData(){
+    $response = [];
+    if(isset($_POST['threadid'])) {
+        $thread = $GLOBALS['db']->select('threads', ['*'], ['id' => $_POST['threadid']], 'AND');
+        if (count($thread) > 0) {
+            $response['data'] = array("id"=>$thread[0]->id,'title'=>$thread[0]->title,'content'=>htmlspecialchars_decode($thread[0]->content)) ;
+        }else
+            $response["errors"]["threadid"] = "Invalid threadid";
+    }else
+        $response["errors"]["threadid"] = "Empty threadid";
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
+
 function toggleThreadLock(){
     $response = [];
     $thread = new Thread();

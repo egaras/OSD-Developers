@@ -10,6 +10,7 @@ require '../vendor/autoload.php';
 require '../core/bootstrap.php';
 
 $forum_id=$_GET['forum-id'];
+$thread_id=$_GET['thread-id'];
 
 
 require '../views/add-thread.php';
