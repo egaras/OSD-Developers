@@ -58,7 +58,7 @@ var Login = function() {
                         var res = JSON.parse(data);
                         console.log(res);
                         if(res.success)
-                            window.location = "test.php";
+                            window.location = "../controllers/home.php";
                         else
                             $('.login-form').validate().showErrors(res.errors);
                     },
