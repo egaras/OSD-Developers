@@ -89,6 +89,50 @@ License: You must have a valid license purchased only from themeforest(the above
         .fa-angle-down{
             color: white !important;
         }
+        .topiclist{
+            margin: 10px;
+            -webkit-padding-start:0px !important;
+            padding: 0px ;
+
+        }
+        ul.topiclist li {
+            display:inline-block !important;
+            vertical-align: middle !important;
+            line-height: normal !important;
+
+        }
+
+        li.col1{
+            width: 45%;
+            vertical-align: center;
+
+        }
+        li.col2{
+            width: 15%;
+            vertical-align: center !important;
+            position: relative;
+            top: 50% !important;
+
+
+        }
+
+        li.col4{
+            width: 30%;
+        }
+        .side-pading{
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+        .ftitle{
+            font-size: 18px;
+            line-height: 18px;
+        }
+        .finfo{
+            line-height: 13px;
+            color: #9eacb4;
+            font-size: 13px;
+            font-weight: 400;
+        }
 
 	</style>
 </head>
@@ -144,17 +188,36 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-body grey-l padding_c">
                             <?php foreach($section->forums as $forum): ?>
 							<div class="portlet forum gren no-bpadding ">
-								<div class="portlet-title">
-									<div class="caption">
-										<i class="fa fa-gift"></i>
-										<a href="forums.php?forumid=<?=$forum->id ?>"><span class="caption-subject"><?=$forum->name?></span></a>
-										<span style="display:inline-block; width: 600px;"></span>
-										<span class="caption-helper">views:  <b><?=$forum->views?></b></span>
-										<span style="display:inline-block; width: 100px;"></span>
-										<span class="caption-helper">threads:  <b><?=$forum->threadsNum ?></b></span>
-									</div>
-									<div class="tools">
-										<a href="javascript:;" class="expand"></a>
+
+                                <!--div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-gift"></i>
+                                        <a href="forums.php?forumid=<?=$forum->id ?>"><span class="caption-subject"><?=$forum->name?></span></a>
+                                        <span style="display:inline-block; width: 600px;"></span>
+                                        <span class="caption-helper">views:  <b><?=$forum->views?></b></span>
+                                        <span style="display:inline-block; width: 100px;"></span>
+                                        <span class="caption-helper">threads:  <b><?=count($forum->threads)?></b></span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="expand"></a>
+                                    </div>
+                                </div-->
+								<div class="portlet-title row side-pading">
+                                    <div class="">
+
+                                        <ul class="topiclist col-md-10">
+                                            <li class="col4">
+                                                <i class="fa fa-circle-o font-grey">  </i>
+                                                 <a href="forums.php?forumid=<?=$forum->id ?>"><span class="ftitle font-blue"><?=$forum->name?></span></a>
+                                            </li>
+                                            <li class="col4 finfo" >views:  <b><?=$forum->views?></b></li>
+                                            <li class="finfo">threads:  <b><?=count($forum->threads)?></b></li>
+
+                                        </ul>
+                                    </div>
+									<div class="tools col-md-1">
+										<a href="javascript:;" class="expand pull-right margin-right-10"></a>
+
 									</div>
 								</div>
 								<div class="portlet-body list grey-light display-hide">

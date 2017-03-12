@@ -147,7 +147,7 @@ License: You must have a valid license purchased only from themeforest(the above
             -webkit-padding-start:0px !important;
         }
         .lpad{
-            padding-left: 10px !important;
+            padding-left: 15px !important;
         }
 
 
@@ -210,10 +210,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <div class="portlet-body grey-l padding_c">
                         <?php foreach ($threads as $thread): ?>
-                            <ul class="topiclist thread no-padding forum lpad" onclick="Demo">
+                            <ul class="topiclist thread no-padding forum lpad " onclick="Demo">
                                 <li class="col1">
                                     <div class="caption">
-                                        <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+                                        <i class="fa fa-circle-o font-grey"></i><a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
                                     </div>
                                     <!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
                                 </li>
@@ -228,6 +228,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <img alt="" class="img-circle col-sm-4 no-padding img-responsive" style="width: 50px !important;" src="../assets/profilePics/<?= $thread->avatar ?>">
                                     <p class="col-sm-6 no-padding">by: <?= $thread->username ?><br>On: <?= $thread->postdate ?></p>
                                 </span>
+                                </li>
+                                <li>
+                                    <div>
+                                            <a href="#" class="btn default btn-circle btn-xs toggle-lock-forum <?php if($forum->locked)echo "blue-ebonyclay ";?>edit-forum"  ><i class="fa <?php if($forum->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
+                                            </a>
+                                            <a href="#editf" data-toggle="modal" class="btn default btn-circle btn-xs green edit-forum"><i class="fa fa-edit"></i></a>
+                                            <a href="#removef" data-toggle="modal" class="btn default btn-circle btn-xs red del-forum"><i class="fa fa-remove"></i></a>
+                                            <!--a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-lock"></i></a>
+                                            <a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-thumb-tack"></i></a-->
+                                    </div>
                                 </li>
                             </ul>
                         <?php endforeach; ?>
