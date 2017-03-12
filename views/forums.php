@@ -214,7 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														<ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
 																<li class="col1">
 																		<div class="caption">
-																				<i class="fa fa-thumb-tack"></i> <span class="label label-sm label-danger">pinned</span> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+																				<i class="icon-note"> </i> <span class="label label-sm label-danger"><i class="fa fa-thumb-tack"></i> pinned </span> <?php if($thread->locked): ?> <span class="label label-sm label-default"><i class="fa fa-lock"></i> locked </span><?php endif;?> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
 																		</div>
 																		<!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
 																</li>
@@ -252,7 +252,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
                                 <li class="col1">
                                     <div class="caption">
-                                        <i class="icon-note"> </i> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+                                        <i class="icon-note"> </i> <?php if($thread->locked): ?> <span class="label label-sm label-default"><i class="fa fa-lock"></i> locked </span><?php endif;?> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
                                     </div>
                                     <!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
                                 </li>

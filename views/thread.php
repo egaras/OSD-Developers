@@ -249,17 +249,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="portlet light grey-l">
                                         <div class="portlet-title tabbable-line">
                                             <div class="caption caption-md">
-                                                <i class="icon-globe theme-font hide"></i>
-                                                <span class="caption-subject font-blue-madison bold uppercase"><?=$thread->title?></span>
-                                                 <i class="fa fa-flag font-red"></i>
-                                                 <span class="caption-subject font-red ">locked</span>
+                                                <span class="caption-subject font-blue-madison bold uppercase"><?=$thread->title?></span> <span class="label label-sm label-danger"><i class="fa fa-lock"></i> LOCKED </span> 
                                             </div>
 
                                         </div>
                                         <div class="portlet-body">
                                                 <p><?=htmlspecialchars_decode($thread->content) ?></p>
                                                 <hr size="40">
-                                                <p><?=$threadUser->signature ?></p>
+                                                <p><?=@$threadUser->signature ?></p>
                                         </div>
                                     </div>
                                 </div>
