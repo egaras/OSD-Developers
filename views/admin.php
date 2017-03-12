@@ -266,6 +266,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         <span class="label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
                                                                     </td>
                                                                     <td>
+                                                                        <a href="#" class="btn default btn-circle btn-xs toggle-ban-user <?php if($user->status==2)echo " red-haze";?>"  ><i class="fa <?php if($user->status==2)echo "fa-ban"; else echo "fa-circle-o"?>  white"></i>
+                                                                        </a>
+
                                                                         <a href="#editu" id="edituser" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
                                                                             <i class="fa fa-edit"></i></a>
                                                                         <a href="#removeu" id="deleteuser" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
@@ -1025,6 +1028,38 @@ $('.toggle-lock-forum').click(function (e) {
 
 
 })
+$('.toggle-ban-user').click(function (e) {
+    e.preventDefault();
+    var userid = e.target.closest('tr').getAttribute('userid');
+    var obj=$(this).find('i');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'toggleUserBan',
+            userid: userid
+        },
+        success: function(data){
+            console.log(data);
+            var res = JSON.parse(data);
+            if(res.success){
+                console.log("success")
+                obj.toggleClass("fa-ban");
+                obj.toggleClass("fa-circle-o");
+                obj.parent().toggleClass("red-haze");
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+
 
 
 
