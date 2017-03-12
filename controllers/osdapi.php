@@ -38,6 +38,9 @@ if (isset($_POST['action'])){
         case 'deleteSection':
             $response = deleteSection();
             break;
+        case 'getsectionData':
+            $response=getsectionData();
+            break;
         case 'toggleSectionLock':
             $response = toggleSectionLock();
             break;
@@ -294,6 +297,19 @@ function deleteSection(){
         }
     }else
         $response["errors"]["sectionid"] = "Please specify section id!";
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
+function getsectionData(){
+    $response = [];
+    if(isset($_POST['sectionid'])) {
+        $forum = $GLOBALS['db']->select('sections', ['*'], ['id' => $_POST['sectionid']], 'AND');
+        if (count($forum) > 0) {
+            $response['data'] = $forum[0];
+        }else
+            $response["errors"]["sectionid"] = "Invalid sectionid";
+    }else
+        $response["errors"]["sectionid"] = "Empty sectionid";
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
