@@ -116,10 +116,10 @@
 			<input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
 		</div>
         <div class="form-group">
-            <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
-                <input type="radio" name="gender" value="m" checked/> Male
+            <label class="radio radio-inline margin-top-20 margin-bottom-20">
+                <input type="radio" name="gender" value="m" id="editmale"/> Male
             </label>
-            <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+            <label class="radio radio-inline margin-top-20 margin-bottom-20">
                 <input type="radio" name="gender" value="f"/> Female
             </label>
         </div>

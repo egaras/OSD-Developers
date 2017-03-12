@@ -239,10 +239,10 @@ License: You must have a valid license purchased only from themeforest(the above
 														</div>
 														<div class="form-group">
 															<label class="control-label">Gender: </label>
-															<label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+															<label class="radio radio-inline margin-top-20 margin-bottom-20">
 									                <input type="radio" name="gender" value="m" <?php if($user->gender == 'm') echo 'checked'; ?>/> Male
 									            </label>
-									            <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+									            <label class="radio radio-inline margin-top-20 margin-bottom-20">
 									                <input type="radio" name="gender" value="f" <?php if($user->gender == 'f') echo 'checked'; ?>/> Female
 									            </label>
 														</div>
