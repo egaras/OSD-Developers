@@ -209,11 +209,46 @@ License: You must have a valid license purchased only from themeforest(the above
                         </ul>
                     </div>
                     <div class="portlet-body grey-l padding_c">
+											<?php foreach ($threads as $thread): ?>
+													<?php if($thread->pinned): ?>
+													<ul class="topiclist thread no-padding forum lpad red" onclick="Demo">
+															<li class="col1">
+																	<div class="caption">
+																			<i class="fa fa-thumb-tack"></i> <span class="label label-sm label-danger">pinned</span> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+																	</div>
+																	<!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
+															</li>
+															<li class="col2">
+																	<p class="row">
+																	<h2 class="nooo-margin"><?= $thread->replies ?></h2>
+																	</p>
+																	<p class="row">replies</p>
+															</li>
+															<li class="col3 ">
+															<span>
+																	<img alt="" class="img-circle col-sm-4 no-padding img-responsive" style="width: 50px !important;" src="../assets/profilePics/<?= $thread->avatar ?>">
+																	<p class="col-sm-6 no-padding">by: <?= $thread->username ?><br>On: <?= $thread->postdate ?></p>
+															</span>
+															</li>
+															<li>
+																	<div>
+																					<a href="#" class="btn default btn-circle btn-xs toggle-lock-forum <?php if($forum->locked)echo "blue-ebonyclay ";?>edit-forum"  ><i class="fa <?php if($forum->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
+																					</a>
+																					<a href="#editf" data-toggle="modal" class="btn default btn-circle btn-xs green edit-forum"><i class="fa fa-edit"></i></a>
+																					<a href="#removef" data-toggle="modal" class="btn default btn-circle btn-xs red del-forum"><i class="fa fa-remove"></i></a>
+																					<!--a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-lock"></i></a>
+																					<a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-thumb-tack"></i></a-->
+																	</div>
+															</li>
+													</ul>
+													<?php endif; ?>
+												<?php endforeach; ?>
                         <?php foreach ($threads as $thread): ?>
+													<?php if(!$thread->pinned): ?>
                             <ul class="topiclist thread no-padding forum lpad " onclick="Demo">
                                 <li class="col1">
                                     <div class="caption">
-                                        <i class="fa fa-circle-o font-grey"></i><a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+                                        <i class="icon-note"> </i> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
                                     </div>
                                     <!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
                                 </li>
@@ -240,6 +275,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </li>
                             </ul>
+														<?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
