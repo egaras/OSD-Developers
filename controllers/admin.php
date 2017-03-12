@@ -8,6 +8,8 @@
 require '../vendor/autoload.php';
 require '../core/bootstrap.php';
 
+if(!isAdmin())
+    header('Location: home.php');
 $sections = Section::getSections();
 foreach ($sections as $section){
     $section->forums = Forum::getForumsBySectionId($section->id);
@@ -20,6 +22,6 @@ foreach ($sections as $section){
         }
     }
 }
-//$users = User::getAllUsersJoin();
+$users = User::getAllUsersJoin();
 
 require '../views/admin.php';
