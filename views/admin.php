@@ -252,7 +252,7 @@
                                                                     <td><?=$user->getFullName();?></td>
                                                                     <td><?=$user->username;?></td>
                                                                     <td>
-                                                                        <span class="label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
+                                                                        <span class="username label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
                                                                     </td>
                                                                     <td>
                                                                         <a href="#" class="btn default btn-circle btn-xs toggle-ban-user <?php if($user->status==2)echo " red-haze";?>"  ><i class="fa <?php if($user->status==2)echo "fa-ban"; else echo "fa-circle-o"?>  white"></i>
@@ -857,7 +857,7 @@ $('#remove-user').click(function(e){
         success: function(data){
             var res = JSON.parse(data);
             if(res.success){
-                console.log('success')
+                window.location.reload();
             }
             else{
                 console.log(res.errors)

@@ -113,7 +113,7 @@ function userLogin(){
                     $_SESSION['userrole'] = $user[0]->roleid;
                 }
             }else
-                $response["errors"]["locked"] = "Your account have been locked!";
+                $response["errors"]["locked"] = "Your account has been panned!";
         }else
             $response["errors"]["username"] = "Invalid username";
     }else{
