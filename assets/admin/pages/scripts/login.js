@@ -58,7 +58,7 @@ var Login = function() {
                         var res = JSON.parse(data);
                         console.log(res);
                         if(res.success)
-                            window.location = "test.php";
+                            window.location = "../controllers/home.php";
                         else
                             $('.login-form').validate().showErrors(res.errors);
                     },
@@ -245,8 +245,11 @@ var Login = function() {
                         $('.register-form').validate().resetForm();
                         console.log(data);
                         var res = JSON.parse(data);
-                        if(res.success)
+                        console.log(res);
+                        if(res.success  && res.redirect)
                             window.location = "../controllers/home.php";
+                        else if(res.success  && !res.redirect)
+                            window.location.reload();
                         else
                             $('.register-form').validate().showErrors(res.errors);
                     },

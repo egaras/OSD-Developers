@@ -148,7 +148,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class=" page-md  page-container-bg-solid page-sidebar-closed-hide-logo  ">
-<!-- HEADER -->    
+<!-- HEADER -->
 <?php include 'header.php' ?>
 <div class="">
 	<div class="page-container page-full-width">
@@ -173,7 +173,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="col-md-12">
 					<!-- BEGIN Portlet PORTLET-->
                     <?php foreach($sections as $section): ?>
-                    <div class="portlet box blue no_shadow">
+                    <div class="portlet box blue ">
                         <div class="portlet-title">
 							<div class="caption">
 								<!--i class="fa fa-gift"></i-->
@@ -188,6 +188,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-body grey-l padding_c">
                             <?php foreach($section->forums as $forum): ?>
 							<div class="portlet forum gren no-bpadding ">
+
                                 <!--div class="portlet-title">
                                     <div class="caption">
                                         <i class="fa fa-gift"></i>
@@ -216,6 +217,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
 									<div class="tools col-md-1">
 										<a href="javascript:;" class="expand pull-right margin-right-10"></a>
+
 									</div>
 								</div>
 								<div class="portlet-body list grey-light display-hide">
@@ -253,7 +255,18 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 	</div>
 </div>
-
+<div id="spinner-bg">
+    <div id="spinner">
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+    </div>
+</div>
 <!-- BEGIN JAVASCRIPTS(Loadjavascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
@@ -278,8 +291,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <script>
 jQuery(document).ready(function() {
    Metronic.init(); // init metronic core components
-Layout.init(); // init current layout
-Demo.init(); // init demo features
+    Layout.init(); // init current layout
+    Demo.init(); // init demo features
+    $('#spinner-bg').hide();
 });
 </script>
 <!-- END JAVASCRIPTS -->

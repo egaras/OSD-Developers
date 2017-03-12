@@ -48,6 +48,9 @@ class Thread
     public static function getThreadsByUserId($i){
         return count($GLOBALS['db']->select(self::$table,['*'],['userid'=>$i],"AND","Thread"));
     }
+    public static function countThreadsByForumId($id){
+      return count($GLOBALS['db']->select(self::$table,['*'],['forumid'=>$id],"AND","Thread"));
+    }
     public function getOwnerUsername(){
       return $GLOBALS['db']->select('users',['username'],['id'=>$this->userid])[0]->username;
     }

@@ -271,33 +271,33 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="col-md-12 blog-tag-data">
                                         <h3>REPLIES</h3>
                                         <?php foreach($replies as $reply): ?>
+                                        <div id="reply<?=$reply->id ?>">
                                           <hr>
                                         <div class="media">
                                             <a href="javascript:;" class="pull-left">
                                                 <img alt="" src="../assets/profilePics/<?=$reply->avatar ?>" class="media-object">
                                             </a>
                                             <div class="media-body">
-                                                <h4 class="media-heading"><?=$reply->userFullname ?> <span>
-                                                        <?=$reply->replydate ?>
-                                                        </span>
+                                                <h4 class="media-heading"><?=$reply->userFullname ?>
+                                                  <span><?php if($reply->editdate == $reply->replydate){echo $reply->replydate;} else{echo $reply->replydate." <strong>Edited on:</strong> ".$reply->editdate;} ?></span>
                                                 </h4>
                                                 <div class="row">
                                                   <div class="col-md-10">
-                                                    <p>
-                                                        <?=$reply->content ?>
-                                                    </p>
+                                                    <p id="<?=$reply->id ?>"> <?=$reply->content ?></p>
                                                 </div>
                                                 <?php if(isLoggedIn() && ($reply->userid == $user->id || isAdmin())): ?>
                                                 <div class="col-md-2 ">
-                                                    <a href="javascript:;" class="btn btn-circle btn-sm btn-primary">
-                                                    <i class="fa fa-pencil"></i></a>
-                                                    <a href="javascript:;" class="btn btn-circle btn-sm btn-danger">
+                                                    <a href="#editComment" data-toggle="modal" class="btn default btn-circle btn-sm green editIcon">
+                                                      <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    <a href="#deleteComment" data-toggle="modal" class="btn default btn-circle btn-sm red deleteIcon" >
                                                     <i class="fa fa-remove"></i></a>
                                                 </div>
                                               <?php endif; ?>
                                               </div>
                                             </div>
                                         </div>
+                                      </div>
                                       <?php endforeach; ?>
                                         <!--end media-->
                                         <hr>
@@ -326,7 +326,57 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--/div>
 					</div>
 				</div-->
+        <!------------------------Modals------------->
+        <div class="modal fade bs-modal-lg" id="editComment" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Edit Comment</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" action="#" id="edit-reply-form">
+                            <div class="form-group">
+                                <textarea name="replycontent" class="form-control" id="textModal" rows="4" cols="60"></textarea>
+                                <input type="hidden" name="action" value="updateReply">
+                                <input type="hidden" name="replyid" value="" id="hiddenReplyId">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancel</button>
+                        <button class="margin-top-20 btn blue" type="submit" id="submitEdit">Save</button>
+                        </form>
 
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <div class="modal fade bs-modal-lg" id="deleteComment" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                   <span></span>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Remove reply</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to remove this reply?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" id="hiddenDeleteReplyId" value="">
+                        <button type="button" class="btn default" data-dismiss="modal">NO</button>
+                        <button type="button" id="delReply" class="btn red uppercase">YES</button>
+
+                        </form>
+
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 			</div>
 		</div>
 	</div>
@@ -358,6 +408,63 @@ jQuery(document).ready(function() {
    Metronic.init(); // init metronic core components
 Layout.init(); // init current layout
 Demo.init(); // init demo features
+});
+$(".editIcon").on("click",function(e){
+  var replyContent = $(e.target).closest('.row').find('p').text();
+  var myId = $(e.target).closest('.row').find('p').attr('id');
+  console.log(replyContent);
+  $("#textModal").val(replyContent);
+  $("#hiddenReplyId").val(myId);
+});
+$("#submitEdit").on("click",function(e){
+  e.preventDefault();
+  $.ajax({
+    type: 'POST',
+    cache: false,
+    url: '../controllers/osdapi.php',
+    data:$('#edit-reply-form').serialize(),
+    success: function(data){
+        var res = JSON.parse(data);
+        console.log(res);
+        if(res.success){
+            var myId = $("#hiddenReplyId").val();
+            var myText = $("#textModal").val();
+            $("#"+myId).text(myText);
+            $("#"+myId).closest(".media-body").find("span").empty().append(res.data.replydate+" <strong>Edited on:</strong> "+res.data.editdate);
+            $("#editComment").modal('hide');
+        }else{
+            console.log("inside else");
+            //$('.login-form').validate().showErrors(res.errors);
+          }
+    }
+  });
+});
+$(".deleteIcon").on("click",function(e){
+   var myId = $(e.target).closest('.row').find('p').attr('id');
+   $("#hiddenDeleteReplyId").val(myId);
+});
+$("#delReply").on("click",function(e){
+  var replyid = $("#hiddenDeleteReplyId").val();
+  $.ajax({
+    type: 'POST',
+    cache: false,
+    url: '../controllers/osdapi.php',
+    data:{
+        action: 'deleteReply',
+        replyid: replyid
+    },
+    success: function(data){
+        var res = JSON.parse(data);
+        console.log(replyid);
+        if(res.success){
+            $("#reply"+replyid).remove();
+            $("#deleteComment").modal('hide');
+        }else{
+            console.log("inside else");
+            //$('.login-form').validate().showErrors(res.errors);
+          }
+    }
+  });
 });
 $("#submitreply").on("click",function(e){
   e.preventDefault();
