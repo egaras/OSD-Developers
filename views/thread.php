@@ -237,7 +237,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                                 <!-- END SIDEBAR USER TITLE -->
-
                             </div>
                             <!-- END PORTLET MAIN -->
 
@@ -252,6 +251,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="caption caption-md">
                                                 <i class="icon-globe theme-font hide"></i>
                                                 <span class="caption-subject font-blue-madison bold uppercase"><?=$thread->title?></span>
+                                                 <i class="fa fa-flag font-red"></i>
+                                                 <span class="caption-subject font-red ">locked</span>
                                             </div>
 
                                         </div>
@@ -260,8 +261,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <hr size="40">
                                                 <p><?=$threadUser->signature ?></p>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +300,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                       <?php endforeach; ?>
                                         <!--end media-->
                                         <hr>
-                                        <?php if(isLoggedIn()): ?>
+                                        <?php if(isLoggedIn() && !$thread->locked): ?>
                                         <div class="post-comment">
                                             <h3>Leave a reply</h3>
                                             <form role="form" action="#" id="reply-form">

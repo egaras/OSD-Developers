@@ -231,11 +231,20 @@ License: You must have a valid license purchased only from themeforest(the above
 														</div>
 														<div class="form-group">
 															<label class="control-label">Username</label>
-															<input type="text" placeholder="JohnDoe" class="form-control" name="username" value="<?=$user->username?>"/>
+															<input type="text" placeholder="JohnDoe" class="form-control" name="username" value="<?=$user->username?>" required/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">Email</label>
 															<input type="email" placeholder="example@example.com" class="form-control" name="email" value="<?=$user->email?>" required/>
+														</div>
+														<div class="form-group">
+															<label class="control-label">Gender: </label>
+															<label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+									                <input type="radio" name="gender" value="m" <?php if($user->gender == 'm') echo 'checked'; ?>/> Male
+									            </label>
+									            <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+									                <input type="radio" name="gender" value="f" <?php if($user->gender == 'f') echo 'checked'; ?>/> Female
+									            </label>
 														</div>
 														<div class="form-group">
 															<label class="control-label">Signature</label>
@@ -246,21 +255,22 @@ License: You must have a valid license purchased only from themeforest(the above
 															<textarea class="form-control" rows="3" placeholder="We are KeenThemes!!!"></textarea>
 														</div>-->
 														<div class="form-group">
-															<input type="hidden" name='action' value='edit'/>
 														</div>
 														<div class="margiv-top-10">
 															<input type="submit" name="edit" id="update" value="Save Changes" class="btn green-haze"/>
-															<a href="javascript:;" class="btn default">
+															<input type="hidden" name='action' value='edit'/>
+															<a href="profileOverview.php" class="btn default">
 															Cancel </a>
+														</div>
+														<br/>
+														<div class="for-group">
+															<label for="" id="msg" class="hide"></label>
 														</div>
 													</form>
 												</div>
 												<!-- END PERSONAL INFO TAB -->
 												<!-- CHANGE AVATAR TAB -->
 												<div class="tab-pane" id="tab_1_2">
-													<p>
-														 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-													</p>
 													<form action="../controllers/upload.php" method="post" role="form" enctype="multipart/form-data">
 														<div class="form-group">
 															<div class="fileinput fileinput-new" data-provides="fileinput">
@@ -283,13 +293,13 @@ License: You must have a valid license purchased only from themeforest(the above
 															</div>
 															<div class="clearfix margin-top-10">
 																<span class="label label-danger">NOTE! </span>
-																<span>Attached image thumbnail is supported in Latest Firefox, Chrome, Opera, Safari and Internet Explorer 10 only </span>
+																<span>Supported in Latest Firefox, Chrome, Opera, Safari and Internet Explorer 10 only </span>
 															</div>
 														</div>
 														<div class="margin-top-10">
 															<input type="submit" value="Submit" class="btn green-haze"/>
 
-															<a href="javascript:;" class="btn default">
+															<a href="profileOverview.php" class="btn default">
 															Cancel </a>
 														</div>
 													</form>
@@ -297,24 +307,28 @@ License: You must have a valid license purchased only from themeforest(the above
 												<!-- END CHANGE AVATAR TAB -->
 												<!-- CHANGE PASSWORD TAB -->
 												<div class="tab-pane" id="tab_1_3">
-													<form action="#">
+													<form action="#" id="password-form">
 														<div class="form-group">
 															<label class="control-label">Current Password</label>
-															<input type="password" class="form-control"/>
+															<input type="password" id="old" name="old" class="form-control"/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">New Password</label>
-															<input type="password" class="form-control"/>
+															<input type="password" id="new" name="new" class="form-control"/>
 														</div>
 														<div class="form-group">
 															<label class="control-label">Re-type New Password</label>
-															<input type="password" class="form-control"/>
+															<input type="password" id="renew" name="renew" class="form-control"/>
 														</div>
 														<div class="margin-top-10">
-															<a href="javascript:;" class="btn green-haze">
-															Change Password </a>
-															<a href="javascript:;" class="btn default">
+															<input type="submit" name="submit" id="passwordSubmit" value="Change Password" class="btn green-haze"/>
+															<input type="hidden" name='action' value='passwordChange'/>
+															<a href="profileOverview.php" class="btn default">
 															Cancel </a>
+														</div>
+														<br/>
+														<div class="for-group">
+															<label for="" id="pswmsg" class="hide"></label>
 														</div>
 													</form>
 												</div>
@@ -442,10 +456,40 @@ $("#edit-form").submit(function(e){
 							$("#fullname").text(res.data.fname + " " + res.data.lname);
 							$("#sig").text(res.data.signature);
 							$("#username-header").text(res.data.username);
+							$("#msg").text(" * Saved");
+							$("#msg").attr("class","");
 						}
 					else{
+						$("#msg").text(" * " + res.errors[0]);
+						$("#msg").attr("class","");
 							console.log("not valid");
 							//$('.login-form').validate().showErrors(res.errors);
+						}
+				}
+	});
+	e.preventDefault();
+});
+$("#password-form").submit(function(e){
+
+	$.ajax({
+			type: 'post',
+			cache: false,
+			url: '../controllers/editProfile.php',
+			data: $("#password-form").serialize(),
+			success: function(data){
+					console.log(data);
+					var res = JSON.parse(data);
+					console.log(res);
+					if(res.valid){
+							$("#old").val("");$("#new").val("");$("#renew").val("");
+							console.log("valid");
+							$("#pswmsg").text(" * Password Changed Successfully");
+							$("#pswmsg").attr("class","");
+						}
+					else{
+						$("#pswmsg").text(" * " + res.errors[0]);
+						$("#pswmsg").attr("class","");
+							console.log("not valid");
 						}
 				}
 	});

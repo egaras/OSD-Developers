@@ -209,11 +209,50 @@ License: You must have a valid license purchased only from themeforest(the above
                         </ul>
                     </div>
                     <div class="portlet-body grey-l padding_c">
+											<?php foreach ($threads as $thread): ?>
+													<?php if($thread->pinned): ?>
+														<ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
+																<li class="col1">
+																		<div class="caption">
+																				<i class="fa fa-thumb-tack"></i> <span class="label label-sm label-danger">pinned</span> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+																		</div>
+																		<!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
+																</li>
+																<li class="col2">
+																		<p class="row">
+																		<h2 class="nooo-margin"><?= $thread->replies ?></h2>
+																		</p>
+																		<p class="row">replies</p>
+																</li>
+																<li class="col3 ">
+																<span>
+																		<img alt="" class="img-circle col-sm-4 no-padding img-responsive" style="width: 50px !important;" src="../assets/profilePics/<?= $thread->avatar ?>">
+																		<p class="col-sm-6 no-padding">by: <?= $thread->username ?><br>On: <?= $thread->postdate ?></p>
+																</span>
+																</li>
+																<?php if(@$user->roleid==1 || @$user->id== $thread->userid): ?>
+																		<li>
+																				<div>
+																						<?php if(@$user->roleid==1):?>
+																								<a href="#" class="btn default btn-circle btn-xs toggle-lock-thread <?php if($thread->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($thread->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
+																								</a>
+																						<?php endif; ?>
+
+																						<a href="#editt" data-toggle="modal" class="btn default btn-circle btn-xs green edit-thread"><i class="fa fa-edit"></i></a>
+																								<a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red del-thread"><i class="fa fa-remove"></i></a>
+
+																				</div>
+																		</li>
+																<?php endif; ?>
+														</ul>
+													<?php endif; ?>
+												<?php endforeach; ?>
                         <?php foreach ($threads as $thread): ?>
+													<?php if(!$thread->pinned): ?>
                             <ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
                                 <li class="col1">
                                     <div class="caption">
-                                        <i class="fa fa-circle-o font-grey"></i><a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+                                        <i class="icon-note"> </i> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
                                     </div>
                                     <!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
                                 </li>
@@ -229,10 +268,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <p class="col-sm-6 no-padding">by: <?= $thread->username ?><br>On: <?= $thread->postdate ?></p>
                                 </span>
                                 </li>
-                                <?php if($user->roleid==1 || $user->id== $thread->userid): ?>
+                                <?php if(@$user->roleid==1 || @$user->id== $thread->userid): ?>
                                     <li>
                                         <div>
-                                            <?php if($user->roleid==1):?>
+                                            <?php if(@$user->roleid==1):?>
                                                 <a href="#" class="btn default btn-circle btn-xs toggle-lock-thread <?php if($thread->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($thread->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
                                                 </a>
                                             <?php endif; ?>
@@ -244,6 +283,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </li>
                                 <?php endif; ?>
                             </ul>
+														<?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>

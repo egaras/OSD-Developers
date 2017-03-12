@@ -7,6 +7,13 @@
 //
 //$DB = new DBManager();
 
+// return [
+//    'database'=>[
+//        'host'=>'172.30.55.85',
+//        'name'=>'osddevelopers',
+//        'username'=>'yasser',
+//        'password'=>'yasser',
+//        'connection' => 'mysql:host=172.30.55.85',
 /**
  * Created by PhpStorm.
  * User: ehab
@@ -40,7 +47,8 @@
 //            PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
 //        ]
 //    ]
-//];
+// ];
+
 
 return [
     'database'=>[
