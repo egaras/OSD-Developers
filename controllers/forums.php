@@ -19,7 +19,7 @@ if(isset($_GET['forumid'])){
         exit;
     }
 }
-$threads = Thread::getOrderedThreadsByForumId($forum->id);
+$threads = Thread::getOrderedThreadsByForumId($forum->id,'postdate',"DESC",$limit='ALL');
 $forum->threads = $threads;
 foreach ($threads as $thread){
     $thread->username = $thread->getOwnerUsername();

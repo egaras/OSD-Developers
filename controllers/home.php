@@ -17,6 +17,7 @@ foreach ($sections as $section){
     $forums = Forum::getForumsBySectionId($section->id);
     $section->forums = $forums;
     foreach ($forums as $forum) {
+        $forum->threadsNum = Thread::countThreadsByForumId($forum->id);
         $threads = Thread::getOrderedThreadsByForumId($forum->id);
         $forum->threads = $threads;
         foreach ($threads as $thread){
