@@ -104,7 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class=" page-md  page-container-bg-solid page-sidebar-closed-hide-logo  ">
-<!-- HEADER -->    
+<!-- HEADER -->
 <?php include 'header.php' ?>
 <div class="">
 	<div class="page-container page-full-width">
@@ -151,7 +151,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<span style="display:inline-block; width: 600px;"></span>
 										<span class="caption-helper">views:  <b><?=$forum->views?></b></span>
 										<span style="display:inline-block; width: 100px;"></span>
-										<span class="caption-helper">threads:  <b><?=count($forum->threads)?></b></span>
+										<span class="caption-helper">threads:  <b><?=$forum->threadsNum ?></b></span>
 									</div>
 									<div class="tools">
 										<a href="javascript:;" class="expand"></a>
