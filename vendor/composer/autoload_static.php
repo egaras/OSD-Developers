@@ -15,10 +15,17 @@ class ComposerStaticInit033b00148a03cf13b62a63c9fbf4e519
         'Composer\\Autoload\\ComposerStaticInit3de859d5b56fa2d82b78483df5118bf4' => __DIR__ . '/../..' . '/sendgrid-php/vendor/composer/autoload_static.php',
         'Connection' => __DIR__ . '/../..' . '/database/Connection.php',
         'DBManager' => __DIR__ . '/../..' . '/database/DBManager.php',
+        'EasyPeasyICS' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
         'Event' => __DIR__ . '/../..' . '/assets/global/plugins/fullcalendar/demos/php/utils.php',
         'Forum' => __DIR__ . '/../..' . '/model/Forum.php',
+        'League\\OAuth2\\Client\\Provider\\Google' => __DIR__ . '/..' . '/phpmailer/phpmailer/get_oauth_token.php',
+        'PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
+        'PHPMailerOAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauth.php',
+        'PHPMailerOAuthGoogle' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauthgoogle.php',
+        'POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.pop3.php',
         'QueryBuilder' => __DIR__ . '/../..' . '/database/QueryBuilder.php',
         'Reply' => __DIR__ . '/../..' . '/model/Reply.php',
+        'SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.smtp.php',
         'SSP' => __DIR__ . '/../..' . '/assets/global/plugins/datatables/examples/server_side/scripts/ssp.class.php',
         'Section' => __DIR__ . '/../..' . '/model/Section.php',
         'SendGrid' => __DIR__ . '/../..' . '/sendgrid-php/lib/SendGrid.php',
@@ -44,6 +51,8 @@ class ComposerStaticInit033b00148a03cf13b62a63c9fbf4e519
         'SendGrid\\TrackingSettings' => __DIR__ . '/../..' . '/sendgrid-php/lib/helpers/mail/Mail.php',
         'Thread' => __DIR__ . '/../..' . '/model/Thread.php',
         'User' => __DIR__ . '/../..' . '/model/User.php',
+        'ntlm_sasl_client_class' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/ntlm_sasl_client.php',
+        'phpmailerException' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
