@@ -573,10 +573,70 @@
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
+                <div class="modal fade bs-modal-lg" id="editu" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">edit user</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="admin.php" method="post" id="edituser-form">
+                                    <input type="hidden" name="action" value="updateUser">
+                                    <input type="hidden" name="userid">
+                                    <p class="hint">
+                                        personal details :
+                                    </p>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">First Name</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="First Name" name="fname"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Last Name</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Last Name" name="lname"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                                        <label class="control-label visible-ie8 visible-ie9">Email</label>
+                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                                            <input type="radio" name="gender" value="m" id="editmale"/> Male
+                                        </label>
+                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                                            <input type="radio" name="gender" value="f" id="editfemale"/> Female
+                                        </label>
+                                    </div>
+                                    <p class="hint">
+                                        account below:
+                                    </p>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Username</label>
+                                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Password</label>
+                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword"/>
+                                    </div>
+                                    <div class="form-group margin-top-20 margin-bottom-20">
 
+                                        <div id="register_tnc_error">
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
+                                <button type="submit" id="edituser" class="btn margin-top-20  blue uppercase">save</button>
 
+                                </form>
 
-
+                            </div>
+                        </div>
 
                 <!------------------ modals end ----------------->
 		</div>
@@ -656,7 +716,6 @@ $('.edit-user').on('click',function(e){
 $('#editu #edituser').on('click',function(e){
     var userid = e.target.getAttribute('userid');
     e.preventDefault();
-    console.log(userid);
     //$('#spinner-bg').show();
     $.ajax({
         type: 'POST',
@@ -668,7 +727,7 @@ $('#editu #edituser').on('click',function(e){
             var res = JSON.parse(data);
             console.log(res);
             if(res.success)
-                console.log(res);
+                window.location.reload();
             else
                 console.log(res.errors)
         },
@@ -1048,14 +1107,6 @@ $('.toggle-ban-user').click(function (e) {
 
 
 })
-
-
-
-
-
-
-
-
 
 function loadUserData(data){
     $('#editu input[name="userid"]').val(data.id);

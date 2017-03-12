@@ -104,13 +104,16 @@ function userLogin(){
     if(isset($_POST['username']) && isset($_POST['password'])) {
         $user = $GLOBALS['db']->select('users', ['*'], ['username' => $_POST['username']], 'AND');
         if (count($user) > 0) {
-            if (!password_verify($_POST['password'], $user[0]->password))
-                $response["errors"]["password"] = "Invalid password";
-            else{
-                $_SESSION['username'] = $user[0]->username;
-                $_SESSION['userid'] = $user[0]->id;
-                $_SESSION['userrole'] = $user[0]->roleid;
-            }
+            if($user[0]->status != 2){
+                if (!password_verify($_POST['password'], $user[0]->password))
+                    $response["errors"]["password"] = "Invalid password";
+                else{
+                    $_SESSION['username'] = $user[0]->username;
+                    $_SESSION['userid'] = $user[0]->id;
+                    $_SESSION['userrole'] = $user[0]->roleid;
+                }
+            }else
+                $response["errors"]["locked"] = "Your account have been locked!";
         }else
             $response["errors"]["username"] = "Invalid username";
     }else{
@@ -196,7 +199,7 @@ function updateUser(){
         $user->username = $_POST['username'];
         $user = $user->loadByUsername();
     }else if(!empty($_POST['userid'])){
-        $user->userid = $_POST['userid'];
+        $user->id = $_POST['userid'];
         $user = $user->loadById();
     }else
         $response["errors"]["username"] = "Please specify username!";
@@ -231,7 +234,7 @@ function updateUser(){
     }
 
     if(count(@$response["errors"])==0){
-        if(count($GLOBALS['db']->select('users',['*'],["userid"=>$_POST['userid']])) == 0){
+        if(count($GLOBALS['db']->select('users',['*'],["id"=>$_POST['userid']])) == 0){
             $response["errors"]["username"] = "Userid does not exist!";
         }else{
             $user->update();

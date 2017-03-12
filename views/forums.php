@@ -234,6 +234,8 @@ License: You must have a valid license purchased only from themeforest(the above
 																		<li>
 																				<div>
 																						<?php if(@$user->roleid==1):?>
+                                                                                            <a href="#" class="btn default btn-circle btn-xs toggle-pin-thread yellow-lemon"  ><i class="fa fa-thumb-tack  white"></i>
+                                                                                            </a>
 																								<a href="#" class="btn default btn-circle btn-xs toggle-lock-thread <?php if($thread->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($thread->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
 																								</a>
 																						<?php endif; ?>
@@ -272,6 +274,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <li>
                                         <div>
                                             <?php if(@$user->roleid==1):?>
+                                                <a href="#" class="btn default btn-circle btn-xs toggle-pin-thread"  ><i class="fa fa-thumb-tack  white"></i>
+                                                </a>
                                                 <a href="#" class="btn default btn-circle btn-xs toggle-lock-thread <?php if($thread->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($thread->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
                                                 </a>
                                             <?php endif; ?>
@@ -420,6 +424,37 @@ $('.toggle-lock-thread').click(function (e) {
 
 
 })
+$('.toggle-pin-thread').click(function (e) {
+    e.preventDefault();
+    var threadid=e.target.closest('ul').getAttribute('thread_id');
+    var forumid=$('div.portlet').attr('forum_id');
+    var obj=$(this).find('i');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'toggleThreadPin',
+            threadid: threadid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success){
+                console.log("success")
+                window.location.href = "forums.php?forumid="+forumid;
+
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+
 
 
 
