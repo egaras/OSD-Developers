@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
-Version: 3.7.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -18,7 +7,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Metronic | Portlets - General Portlets</title>
+    <title>OSD | Admin Panel</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -228,7 +217,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="portlet-body">
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="portlet_tab1">
+                                    <div class="tab-pane <?php if($content);else echo "active"; ?>" id="portlet_tab1">
                                         <div >
                                             <div class="portlet light no_shadow">
                                                 <div class="portlet-title">
@@ -258,21 +247,21 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </thead>
                                                             <tbody>
                                                             <?php foreach($users as $index=>$user): ?>
-                                                            <tr userid="<?=$user->id?>">
-                                                                <td><?=$index+1;?></td>
-                                                                <td><?=$user->getFullName();?></td>
-                                                                <td><?=$user->username;?></td>
-                                                                <td>
-                                                                    <span class="label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="#editu" id="edituser" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
-                                                                        <i class="fa fa-edit"></i></a>
-                                                                    <a href="#removeu" id="deleteuser" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
-                                                                        <i class="fa fa-remove"></i></a>
+                                                                <tr userid="<?=$user->id?>">
+                                                                    <td><?=$index+1;?></td>
+                                                                    <td><?=$user->getFullName();?></td>
+                                                                    <td><?=$user->username;?></td>
+                                                                    <td>
+                                                                        <span class="label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="#editu" id="edituser" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
+                                                                            <i class="fa fa-edit"></i></a>
+                                                                        <a href="#removeu" id="deleteuser" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
+                                                                            <i class="fa fa-remove"></i></a>
 
-                                                                </td>
-                                                            </tr>
+                                                                    </td>
+                                                                </tr>
                                                             <?php endforeach; ?>
                                                             </tbody>
                                                         </table>
@@ -282,7 +271,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="portlet_tab2">
+                                    <div class="tab-pane <?php if($content) echo "active"; ?>" id="portlet_tab2">
                                         <div >
                                             <div class="portlet light no_shadow">
                                                 <div class="portlet-title">
@@ -291,7 +280,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <span class="caption-subject bold uppercase"> Content</span>
                                                         <span class="caption-helper"></span>
                                                     </div>
-                                                    <div class="actions not-s-form">
+                                                    <div class="actions ">
 
                                                         <a href="#adds" data-toggle="modal" class="btn  blue btn-sm add-section">
                                                             <i class="fa fa-plus"></i> section</a>
@@ -308,24 +297,31 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <span class="caption-helper white"><?=$section->desc?></span>
                                                             </div>
                                                             <div class="tools">
+                                                                <a href="#" data-toggle="modal" class="toggle-lock-section " ><i class="fa <?php if($section->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
+                                                                </a>
                                                                 <a href="#edits" data-toggle="modal" class="edit-section " ><i class="fa fa-edit white"></i>
                                                                 </a>
                                                                 <a href="javascript:;" class="collapse">
                                                                 </a>
                                                                 <a href="javascript:;" class="fullscreen ">
                                                                 </a>
+                                                                <a href="#removes" data-toggle="modal" class="del-section " ><i class="fa fa-remove white"></i>
+                                                                </a>
 
                                                             </div>
                                                         </div>
                                                         <div class="portlet-body grey-l padding_c">
                                                             <a href="#addf" data-toggle="modal" class="btn  blue btn-sm add-forum pull-right margin-top-10 " >
-                                                                <i class="fa fa-plus"></i> Forum</a><br><br><br>
-                                                            <?php foreach($section->forums as $forum): ?>
+                                                                <i class="fa fa-plus"></i> Forum</a>
+                                                            <br><br><br>
+
                                                                 <div class=" no-padding" >
                                                                     <div class="table-responsive  noo-margin">
-                                                                        <table class="table table-hover table-striped table-light" forum_id="<?=$forum->id?>">
-                                                                            <tbody >
-                                                                            <tr>
+                                                                        <table class="table table-hover table-striped table-light" >
+
+                                                                            <tbody id="forums">
+                                                                            <?php foreach($section->forums as $forum): ?>
+                                                                            <tr forum_id="<?=$forum->id?>">
                                                                                 <td>
                                                                                     <a href="javascript:;">
                                                                                         <?=$forum->name?> </a>
@@ -341,6 +337,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                     <?=$forum->createdate?>
                                                                                 </td>
                                                                                 <td>
+                                                                                    <a href="#" class="btn default btn-circle btn-xs toggle-lock-forum <?php if($forum->locked)echo "blue-ebonyclay ";?>edit-forum"  ><i class="fa <?php if($forum->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
+                                                                                    </a>
                                                                                     <a href="#editf" data-toggle="modal" class="btn default btn-circle btn-xs green edit-forum"><i class="fa fa-edit"></i></a>
                                                                                     <a href="#removef" data-toggle="modal" class="btn default btn-circle btn-xs red del-forum"><i class="fa fa-remove"></i></a>
                                                                                     <!--a href="#removet" data-toggle="modal" class="btn default btn-circle btn-xs red t-del"><i class="fa fa-lock"></i></a>
@@ -348,13 +346,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 </td>
                                                                             </tr>
 
-
+                                                                            <?php endforeach; ?>
 
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
                                                                 </div>
-                                                            <?php endforeach; ?>
+
 
 
                                                         </div>
@@ -384,18 +382,18 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="form-group">
                                         <label class="control-label">Title
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input name="title" type="text" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">description
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input name="desc" type="text" class="form-control">
                                     </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
-                                <button class="margin-top-20 btn blue" type="submit">add section</button>
+                                <button class="margin-top-20 btn blue" type="submit" id="add-section">add section</button>
                                 </form>
 
                             </div>
@@ -416,18 +414,18 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="form-group">
                                         <label class="control-label">Title
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="title" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">description
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="desc" class="form-control">
                                     </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
-                                <button class="margin-top-20 btn blue" type="submit">add forum</button>
+                                <button class="margin-top-20 btn blue" type="submit" id="add-forum">add forum</button>
                                 </form>
 
                             </div>
@@ -436,172 +434,11 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
-                <div class="modal fade bs-modal-lg" id="addu" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                <h4 class="modal-title">add new user</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form action="admin.php" method="post" class="register-form">
-                                    <input type="hidden" name="action" value="addUser">
-                                    <input type="hidden" name="redirect" value="false">
-                                    <p class="hint">
-                                        Enter personal details below:
-                                    </p>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">First Name</label>
-                                        <input class="form-control placeholder-no-fix" type="text" placeholder="First Name" name="fname"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">Last Name</label>
-                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Last Name" name="lname"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                                        <label class="control-label visible-ie8 visible-ie9">Email</label>
-                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
-                                            <input type="radio" name="gender" value="m" checked/> Male
-                                        </label>
-                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
-                                            <input type="radio" name="gender" value="f"/> Female
-                                        </label>
-                                    </div>
-                                    <p class="hint">
-                                        Enter account details below:
-                                    </p>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">Username</label>
-                                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">Password</label>
-                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword"/>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class=" btn default" data-dismiss="modal">Cancle</button>
-                                <button type="submit" id="register-submit-btn" class="btn  blue uppercase">Add user</button>
-                                </form>
 
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <div class="modal fade bs-modal-lg" id="editu" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                <h4 class="modal-title">edit user</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form action="admin.php" method="post" id="edituser-form">
-                                    <input type="hidden" name="action" value="updateUser">
-                                    <input type="hidden" name="userid">
-                                    <p class="hint">
-                                        personal details :
-                                    </p>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">First Name</label>
-                                        <input class="form-control placeholder-no-fix" type="text" placeholder="First Name" name="fname"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">Last Name</label>
-                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Last Name" name="lname"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                                        <label class="control-label visible-ie8 visible-ie9">Email</label>
-                                        <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
-                                            <input type="radio" name="gender" value="m" id="editmale"/> Male
-                                        </label>
-                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
-                                            <input type="radio" name="gender" value="f" id="editfemale"/> Female
-                                        </label>
-                                    </div>
-                                    <p class="hint">
-                                        account below:
-                                    </p>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">Username</label>
-                                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">Password</label>
-                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword"/>
-                                    </div>
-                                    <div class="form-group margin-top-20 margin-bottom-20">
-
-                                        <div id="register_tnc_error">
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
-                                <button type="submit" id="edituser" class="btn margin-top-20  blue uppercase">save</button>
-
-                                </form>
-
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <div class="modal fade bs-modal-lg" id="removeu" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                <h4 class="modal-title">remove user</h4>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="text-center font-red-thunderbird">
-                                        <i class="fa fa-trash" style="font-size: 130px; margin-top: 60px"></i>
-                                        <h2>Are you sure you wanna delete <span class="username">User</span>?</h2>
-                                        <h4>This action will delete all threads<br/>and replies of this user and it can <b>NOT</b> be reversed</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class=" btn default" data-dismiss="modal">NO</button>
-                                <button type="button" id="remove-user" class="btn red uppercase" userid="">yes</button>
-
-                                </form>
-
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
                 <div class="modal fade bs-modal-lg" id="removef" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                            <span></span>
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                <h4 class="modal-title">remove forum</h4>
-                            </div>
                             <div class="modal-body">
                                 <p>are you sure you want to remove forum</p>
                             </div>
@@ -617,6 +454,27 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
+                <div class="modal fade bs-modal-lg" id="removes" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <span></span>
+                            <div class="modal-body">
+                                <p>are you sure you want to remove this section</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" btn default" data-dismiss="modal">NO</button>
+                                <button type="button" id="del-section" class="btn red uppercase">yes</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+
+
                 <div class="modal fade bs-modal-lg" id="editf" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -664,18 +522,46 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="form-group">
                                         <label class="control-label">Title
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="title" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">description
                                         </label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="desc" class="form-control">
                                     </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class=" margin-top-20 btn default" data-dismiss="modal">Cancle</button>
-                                <button class="margin-top-20 btn blue" type="submit">save</button>
+                                <button class="margin-top-20 btn blue" type="submit" id="edit-section">save</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <div class="modal fade bs-modal-lg" id="removeu" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">remove user</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center font-red-thunderbird">
+                                        <i class="fa fa-trash" style="font-size: 130px; margin-top: 60px"></i>
+                                        <h2>Are you sure you wanna delete <span class="username">User</span>?</h2>
+                                        <h4>This action will delete all threads<br/>and replies of this user and it can <b>NOT</b> be reversed</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class=" btn default" data-dismiss="modal">NO</button>
+                                <button type="button" id="remove-user" class="btn red uppercase" userid="">yes</button>
+
                                 </form>
 
                             </div>
@@ -688,22 +574,24 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
+
                 <!------------------ modals end ----------------->
 		</div>
 	</div>
 </div>
-    <div id="spinner-bg">
-        <div id="spinner">
-            <div class="cssload-dot"></div>
-            <div class="cssload-dot"></div>
-            <div class="cssload-dot"></div>
-            <div class="cssload-dot"></div>
-            <div class="cssload-dot"></div>
-            <div class="cssload-dot"></div>
-            <div class="cssload-dot"></div>
-            <div class="cssload-dot"></div>
-        </div>
+<div id="spinner-bg">
+    <div id="spinner">
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
     </div>
+</div>
+
 <!-- BEGIN JAVASCRIPTS(Loadjavascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
@@ -729,10 +617,10 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/admin/pages/scripts/login.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {
-    Metronic.init(); // init metronic core components
-    Layout.init(); // init current layout
+   Metronic.init(); // init metronic core components
+Layout.init(); // init current layout
     Login.init();
-    Demo.init(); // init demo features
+Demo.init(); // init demo features
     $('#spinner-bg').hide();
 });
 ///////mu script///////////////
@@ -788,7 +676,7 @@ $('#editu #edituser').on('click',function(e){
     //$('#spinner-bg').hide();
 });
 $('.edit-forum').click(function (e) {
-    var forumid=e.target.closest('table').getAttribute('forum_id');
+    var forumid=e.target.closest('tr').getAttribute('forum_id');
     $.ajax({
         type: 'POST',
         cache: false,
@@ -814,36 +702,36 @@ $('.edit-forum').click(function (e) {
 
 })
 $('.del-forum').click(function (e) {
-    var forumid=e.target.closest('table').getAttribute('forum_id');
+    var forumid=e.target.closest('tr').getAttribute('forum_id');
+    console.log(e.target);
    $('#removef #del-forum').attr('forumid',forumid);
 })
 $('.u-del').click(function (e) {
     var userid = e.target.closest('tr').getAttribute('userid');
     $('#removeu #remove-user').attr('userid',userid);
 })
-
-$('#edit-forum').click(function (e) {
-    e.preventDefault();
-    var forumid=$('#editf input[name="forumid"]').val();
-    var sectionid=$('#editf input[name="sectionid"]').val();
-    var title =$('#editf input[name="title"]').val();
-    var desc= $('#editf input[name="desc"]').val();
-
+$('.add-forum').click(function (e) {
+     var sectionid=e.target.closest('div.portlet').getAttribute('section_id');
+     console.log(e.target)
+    $('#addf #add-forum').attr('sectionid',sectionid);
+})
+$('.edit-section').click(function (e) {
+    var sectionid=e.target.closest('div.portlet').getAttribute('section_id');
+    $('#edits #edit-section').attr('sectionid',sectionid);
     $.ajax({
         type: 'POST',
         cache: false,
         url: '../controllers/osdapi.php',
         data:{
-            action: 'updateForum',
-            forumid: forumid,
-            forumname:title,
-            forumdesc:desc,
-            sectionid:sectionid
+            action: 'getsectionData',
+            sectionid: sectionid
         },
         success: function(data){
             var res = JSON.parse(data);
+            console.log(res);
             if(res.success)
-                window.location.href = "admin.php";
+
+                loadSectionData(res.data);
             else
                 console.log(res.errors)
         },
@@ -852,24 +740,36 @@ $('#edit-forum').click(function (e) {
         }
     });
 
-
 })
-$('#del-forum').click(function (e) {
+$('.del-section').click(function (e) {
+    var sectionid=e.target.closest('div.portlet').getAttribute('section_id');
+    $('#removes #del-section').attr('sectionid',sectionid);
+})
+
+
+
+$('#edit-section').click(function (e) {
     e.preventDefault();
-    var forumid=e.target.getAttribute('forumid');
+    var sectionid=e.target.getAttribute('sectionid');
+    var title =$('#edits input[name="title"]').val();
+    var desc= $('#edits input[name="desc"]').val();
+    console.log(sectionid+"section")
+
     $.ajax({
         type: 'POST',
         cache: false,
         url: '../controllers/osdapi.php',
         data:{
-            action: 'deleteForum',
-            forumid: forumid
+            action: 'updateSection',
+            sectionid: sectionid,
+            sectionname:title,
+            sectiondesc:desc
         },
         success: function(data){
             var res = JSON.parse(data);
+            console.log(res);
             if(res.success)
-                console.log('success')
-               // window.location.href = "admin.php";
+                window.location.href = "admin.php?content=yes";
             else
                 console.log(res.errors)
         },
@@ -908,6 +808,219 @@ $('#remove-user').click(function(e){
         }
     });
 })
+$('#edit-forum').click(function (e) {
+    e.preventDefault();
+    var forumid=$('#editf input[name="forumid"]').val();
+    var sectionid=$('#editf input[name="sectionid"]').val();
+    var title =$('#editf input[name="title"]').val();
+    var desc= $('#editf input[name="desc"]').val();
+
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'updateForum',
+            forumid: forumid,
+            forumname:title,
+            forumdesc:desc,
+            sectionid:sectionid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success)
+                window.location.href = "admin.php?content=yes";
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+$('#del-forum').click(function (e) {
+    e.preventDefault();
+    var forumid=e.target.getAttribute('forumid');
+    var obj=$(this);
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'deleteForum',
+            forumid: forumid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success){
+                $( "[forum_id="+forumid+"]" ).remove();
+                obj.prev().trigger('click');
+
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+$('#add-forum').click(function (e) {
+    e.preventDefault();
+    var sectionid=e.target.getAttribute('sectionid');
+    var title =$('#addf input[name="title"]').val();
+    var desc= $('#addf input[name="desc"]').val();
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'addForum',
+            sectionid: sectionid,
+            forumname:title,
+            forumdesc:desc
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success)
+                window.location.href = "admin.php?content=yes";
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+$('#add-section').click(function (e) {
+    e.preventDefault();
+    var title =$('#adds input[name="title"]').val();
+    var desc= $('#adds input[name="desc"]').val();
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'addSection',
+            sectionname:title,
+            sectiondesc:desc
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success)
+                window.location.href = "admin.php?content=yes";
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+$('#del-section').click(function (e) {
+    e.preventDefault();
+    var sectionid=e.target.getAttribute('sectionid');
+    var obj=$(this);
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'deleteSection',
+            sectionid: sectionid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success)
+            {
+                console.log($( "[section_id="+sectionid+"]" ));
+                $( "[section_id="+sectionid+"]" ).remove();
+                obj.prev().trigger('click');}
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+$('.toggle-lock-section').click(function (e) {
+    e.preventDefault();
+    var sectionid=e.target.closest('div.portlet').getAttribute('section_id');
+    var obj=$(this).find('i');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'toggleSectionLock',
+            sectionid: sectionid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success){
+                console.log("success")
+                obj.toggleClass("fa-lock");
+                obj.toggleClass("fa-unlock");
+
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+$('.toggle-lock-forum').click(function (e) {
+    e.preventDefault();
+    var forumid=e.target.closest('table').getAttribute('forum_id');
+    var obj=$(this).find('i');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'toggleForumLock',
+            forumid: forumid
+        },
+        success: function(data){
+            var res = JSON.parse(data);
+            if(res.success){
+                console.log("success")
+                obj.toggleClass("fa-lock");
+                obj.toggleClass("fa-unlock");
+                obj.parent().toggleClass("blue-ebonyclay");
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+
+
+
+
+
+
+
 
 function loadUserData(data){
     $('#editu input[name="userid"]').val(data.id);
@@ -919,7 +1032,6 @@ function loadUserData(data){
         $('#editu #male').prop('checked',true);
     else
         $('#editu #female').prop('checked',true);
-
 }
 function loadForumData(data){
     $('#editf input[name="title"]').val(data.name);
@@ -927,6 +1039,11 @@ function loadForumData(data){
     $('#editf input[name="forumid"]').val(data.id);
     $('#editf input[name="sectionid"]').val(data.sectionid);
 }
+function loadSectionData(data){
+    $('#edits input[name="title"]').val(data.name);
+    $('#edits input[name="desc"]').val(data.desc);
+}
+
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
