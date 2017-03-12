@@ -1,4 +1,13 @@
 {
+  "require": {
+    "php":"~7.0@beta",
+    "ext-PDO": "*",
+    "ext-fileinfo":"*",
+    "ext-gettext": "*",
+    "ext-mbstring": "*",
+    "ext-json": "*",
+    "phpmailer/phpmailer": "^5.2"
+  },
   "autoload": {
     "classmap": [
       "./"
