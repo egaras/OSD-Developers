@@ -64,25 +64,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-md page-boxed page-header-fixed page-container-bg-solid page-sidebar-closed page-sidebar-closed-hide-logo">
 	<!-- BEGIN HEADER -->
-
-	    <div class="page-header md-shadow-z-1-i navbar ">
-	    <!-- BEGIN HEADER INNER -->
-	    <div class="page-header-inner">
-	    	<!-- BEGIN LOGO -->
-	    	<div class="page-logo ">
-	    		<a href="index.html">
-	    			<img src="../assets/admin/layout2/img/logo-default.png" alt="logo" class="logo-default fit"/>
-	    		</a>
-
-	    	</div>
-	    	<!-- END LOGO -->
-				<div class="page-top">
-	    	<?php include 'header.php'; ?>
-				</div>
-	    </div>
-	    <!-- END HEADER INNER -->
-	    </div>
-	    <!-- END HEADER -->
+<?php include 'header.php'; ?>
 	<!-- BEGIN CONTAINER -->
 	<div class="">
 		<div class="page-container page-full-width">
@@ -232,7 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												<i class="fa fa-globe"> </i>
 												<span class="profile-desc-text"> <?=$user->email ?> </span>
 												<h4 class="profile-desc-title">Gender:</h4>
-												<span class="profile-desc-text"> <?=$user->gender ?> </span>
+												<span class="profile-desc-text"> <?php if($user->gender == "m") {echo 'Male';} else {echo 'Female';} ?> </span>
 												<h4 class="profile-desc-title">Signature:</h4>
 												<span class="profile-desc-text"> <?=$user->signature ?> </span>
 												<h4 class="profile-desc-title">Registration Date:</h4>

@@ -7,7 +7,7 @@ if(!isLoggedIn()){
   exit;
 }
 $user = new User();
-$user->id = $_SESSION['userId'];
+$user->id = $_SESSION['userid'];
 $user = $user->loadById();
 
 $targetDir = "../assets/profilePics/";
@@ -19,5 +19,5 @@ if(move_uploaded_file($_FILES["myImage"]["tmp_name"], $targetFile)){
   $user->avatar = $targetName;
   $user->update();
 }
-header("location: ../controllers/profile.php");
+header("location: ../controllers/profileOverview.php");
  ?>

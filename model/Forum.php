@@ -37,6 +37,9 @@ class Forum
       $forums = $GLOBALS['db']->select(self::$table,['*'],['sectionid'=>$id],"AND","Forum");
       return $forums;
     }
+    public static function getForumNameById($id){
+      return $GLOBALS['db']->select(self::$table,['name'],['id'=>$id])[0]->name;
+    }
     public function insert(){
         $values = array('name'=>$this->name,'desc'=>$this->desc,'locked'=>$this->locked,'createdate'=>$this->createdate,'views'=>$this->views,'sectionid'=>$this->sectionid);
         $GLOBALS['db']->insert(self::$table,$values);

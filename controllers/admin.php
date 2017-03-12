@@ -16,10 +16,10 @@ foreach ($sections as $section){
         foreach ($forum->threads as $thread){
 
             $thread->username = $thread->getOwnerUsername();
-            $thread->replies = count($db->select('replies',['threadid'=>$thread->id]));
+            $thread->replies = Reply::countRepliesByThreadId($thread->id);
         }
     }
 }
-$users = User::getAllUsersJoin();
+//$users = User::getAllUsersJoin();
 
 require '../views/admin.php';

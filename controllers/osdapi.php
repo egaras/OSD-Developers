@@ -47,6 +47,9 @@ if (isset($_POST['action'])){
         case 'updateForum':
             $response =updateForum();
             break;
+        case 'getforumData':
+            $response=getforumData();
+            break;
         case 'deleteForum':
             $response = deleteForum();
             break;
@@ -200,7 +203,7 @@ function updateUser(){
             $user->gender = $_POST['gender'];
     }
     if(!empty($_POST['password'])){
-        if(!empty(!empty($_POST['rpassword']))){
+        if(!empty($_POST['rpassword'])){
             //$values['password'] = $_POST['password'];
             if($_POST['password'] == $_POST['rpassword']){
                 $user->password = password_hash($_POST['password'],PASSWORD_BCRYPT);
@@ -373,6 +376,19 @@ function deleteForum(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+function getforumData(){
+    $response = [];
+    if(isset($_POST['forumid'])) {
+        $forum = $GLOBALS['db']->select('forums', ['*'], ['id' => $_POST['forumid']], 'AND');
+        if (count($forum) > 0) {
+            $response['data'] = $forum[0];
+        }else
+            $response["errors"]["forumid"] = "Invalid forumid";
+    }else
+        $response["errors"]["forumid"] = "Empty forumid";
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
 function toggleForumLock(){
     $response = [];
     $forum = new Forum();
@@ -414,8 +430,7 @@ function addThread(){
         $response["errors"]["forumid"] = "Empty forum id not allowd!";
     if(count(@$response["errors"])==0){
         $thread = new Thread();
-        //$thread->userid = $_SESSION['userid'];
-        $thread->userid = 1; //to be changed with session
+        $thread->userid = $_SESSION['userid'];
         $thread->forumid = $_POST['forumid'];
         $thread->title = $_POST['threadtitle'];
         $thread->content = htmlspecialchars($_POST['threadcontent']);
@@ -527,8 +542,7 @@ function addReply(){
         $response["errors"]["replycontent"] = "Empty reply content not allowd!";
     if(count(@$response["errors"])==0){
         $reply = new Reply();
-        //$reply->userid = $_SESSION['userid'];
-        $reply->userid = 1; //to be changed with session
+        $reply->userid = $_SESSION['userid'];
         $reply->threadid = $_POST['threadid'];
         $reply->content = $_POST['replycontent'];
         $reply->replydate = date("Y-m-d H:i:s");

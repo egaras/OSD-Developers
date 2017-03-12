@@ -166,39 +166,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class=" page-md  page-container-bg-solid page-sidebar-closed-hide-logo  ">
 <!-- BEGIN HEADER -->
-<div class="page-header md-shadow-z-1-i navbar ">
-<!-- BEGIN HEADER INNER -->
-<div class="page-header-inner">
-	<!-- BEGIN LOGO -->
-	<div class="page-logo ">
-		<a href="index.html">
-			<img src="../assets/admin/layout2/img/logo-default.png" alt="logo" class="logo-default fit"/>
-		</a>
-
-	</div>
-	<!-- END LOGO -->
-	<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-
-	<!-- END RESPONSIVE MENU TOGGLER -->
-	<!-- BEGIN PAGE ACTIONS -->
-	<!-- DOC: Remove "hide" class to enable the page header actions -->
-	<div class="page-actions hide">
-
-
-	</div>
-	<!-- END PAGE ACTIONS -->
-	<!-- BEGIN PAGE TOP -->
-	<div class="page-top">
-		<!-- BEGIN HEADER SEARCH BOX -->
-		<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-		<!-- END HEADER SEARCH BOX -->
-		<!-- BEGIN TOP NAVIGATION MENU -->
-		<?php include 'header.php' ?>
-	</div>
-	<!-- END PAGE TOP -->
-</div>
-<!-- END HEADER INNER -->
-</div>
+<?php include 'header.php' ?>
 <!-- END HEADER -->
 <div class="">
 	<div class="page-container page-full-width">
@@ -215,20 +183,20 @@ License: You must have a valid license purchased only from themeforest(the above
 													<i class="fa fa-angle-right"></i>
 												</li>
 												<li>
-													<i class="icon-section"></i>
+													<i class="icon-list"></i>
 													<a href="home.php"><?=Section::getSectionNameById($forum->sectionid) ?></a>
 													<i class="fa fa-angle-right"></i>
 												</li>
 												<li>
-													<i class="fa fa-forum"></i>
+													<i class="icon-layers"></i>
 													<a href="#"><?=$forum->name ?></a>
 											</li>
                     </ul>
 
                 </div>
-                <a href="add-thread.php" class="btn blue pull-right">
+                <button class="btn blue pull-right add-thread " forum-id="<?=$forum->id ?>" >
                      <i class="fa fa-plus"></i>ADD New Thread
-                </a>
+                </button>
                 <br><br><br>
 
                 <div class="portlet box blue no_shadow">
@@ -301,6 +269,10 @@ jQuery(document).ready(function() {
 Layout.init(); // init current layout
 Demo.init(); // init demo features
 });
+$(".add-thread").click(function (e) {
+
+    window.location.href = "add-thread.php?forum-id="+e.target.getAttribute('forum-id');
+})
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

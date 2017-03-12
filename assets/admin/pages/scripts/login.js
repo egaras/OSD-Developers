@@ -246,7 +246,7 @@ var Login = function() {
                         console.log(data);
                         var res = JSON.parse(data);
                         if(res.success  && res.redirect)
-                            window.location = "controllers/home.php";
+                            window.location = "../controllers/home.php";
                         else if(res.success  && !res.redirect)
                             window.location.reload();
                         else

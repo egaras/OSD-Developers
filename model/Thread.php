@@ -29,8 +29,9 @@ class Thread
         $this->$name = $value;
     }
     public function loadById(){
-        $thread = $GLOBALS['db']->select(self::$table,['*'],['id'=>$this->id],"AND",'Thread')[0];
-        return $thread;
+        $thread = $GLOBALS['db']->select(self::$table,['*'],['id'=>$this->id],"AND",'Thread');
+        if($thread){return $thread[0];}
+        else {return new Thread();}
     }
     public static function getThreads(){
       $threads = $GLOBALS['db']->select(self::$table,['*'],["1"=>"1"],"AND","Thread");
