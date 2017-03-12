@@ -245,6 +245,7 @@ var Login = function() {
                         $('.register-form').validate().resetForm();
                         console.log(data);
                         var res = JSON.parse(data);
+                        console.log(res);
                         if(res.success  && res.redirect)
                             window.location = "../controllers/home.php";
                         else if(res.success  && !res.redirect)
