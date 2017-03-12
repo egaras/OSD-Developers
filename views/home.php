@@ -191,8 +191,8 @@
                                                 <i class="fa fa-circle-o font-grey">  </i>
                                                  <a href="forums.php?forumid=<?=$forum->id ?>"><span class="ftitle font-blue"><?=$forum->name?></span></a>
                                             </li>
-                                            <li class="col4 finfo" >views:  <b><?=$forum->views?></b></li>
-                                            <li class="finfo">threads:  <b><?=$forum->threadsNum?></b></li>
+                                            <li class="col4 finfo" ><i class="fa fa-eye"></i>  <b><?=$forum->views?></b></li>
+                                            <li class="finfo"><i class="fa fa-list-alt"></i>  <b><?=$forum->threadsNum?></b></li>
 
                                         </ul>
                                     </div>
@@ -214,7 +214,7 @@
                                                         <td>
                                                             <i class="fa fa-user"> by: <?=$thread->username?></i>
                                                         </td>
-                                                        <td>Replies: <?=$thread->replies?> Views: <?=$thread->views?></td>
+                                                        <td><i class="fa fa-comments"></i> <?=$thread->replies?> <i class="fa fa-eye"></i> <?=$thread->views?></td>
                                                         <td><?=$thread->postdate?></td>
 												    </tr>
                                                     <?php endforeach; ?>

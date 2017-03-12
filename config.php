@@ -21,19 +21,20 @@
  * Time: 2:36 PM
  */
 
-//return [
-//   'database'=>[
-//       'host'=>'172.30.55.85',
-//       'name'=>'osddevelopers',
-//       'username'=>'yasser',
-//       'password'=>'yasser',
-//       'connection' => 'mysql:host=172.30.55.85',
-//       'charset' => 'utf8',
-//       'collation' => 'utf8_unicode_ci',
-//       'options'=>[
-//           PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
-//       ]
-//   ]
+return [
+  'database'=>[
+      'host'=>'172.30.55.85',
+      'name'=>'osddevelopers',
+      'username'=>'yasser',
+      'password'=>'yasser',
+      'connection' => 'mysql:host=172.30.55.85',
+      'charset' => 'utf8',
+      'collation' => 'utf8_unicode_ci',
+      'options'=>[
+          PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
+      ]
+  ]
+];
 //$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 //return [
 //    'database'=>[
@@ -50,17 +51,17 @@
 // ];
 
 
-return [
-    'database'=>[
-        'host'=>'127.0.0.1',
-        'name'=>'osddevelopers',
-        'username'=>'yasser',
-        'password'=>'',
-        'connection' => 'mysql:host=127.0.0.1',
-        'charset' => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'options'=>[
-            PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
-        ]
-    ]
-];
+// return [
+//     'database'=>[
+//         'host'=>'127.0.0.1',
+//         'name'=>'osddevelopers',
+//         'username'=>'yasser',
+//         'password'=>'',
+//         'connection' => 'mysql:host=127.0.0.1',
+//         'charset' => 'utf8',
+//         'collation' => 'utf8_unicode_ci',
+//         'options'=>[
+//             PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
+//         ]
+//     ]
+// ];

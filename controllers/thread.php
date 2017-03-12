@@ -18,6 +18,7 @@ if(isset($_GET['threadid'])){
         header("location: home.php");
         exit;
     }
+    $thread->addView();
 }
 $forum = new Forum();
 $forum->id = $thread->forumid;

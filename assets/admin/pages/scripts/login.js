@@ -61,12 +61,7 @@ var Login = function() {
                         if(res.success)
                             window.location = "../controllers/home.php";
                         else{
-                            if(res.errors.username)
-                                $('#login-error').html(res.errors.username);
-                            else if(res.errors.password)
-                                $('#login-error').html(res.errors.password);
-                            else if(res.errors.locked)
-                                $('#login-error').html(res.errors.locked);
+                            $('#login-error').html(res.errors.msg);
                             $('.alert-danger', $('.login-form')).show();
                         }
                     },

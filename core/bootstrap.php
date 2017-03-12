@@ -7,7 +7,7 @@
  */
 //require 'vendor/autoload.php';
 session_start();
-App::bind('config', require $_SERVER['DOCUMENT_ROOT']."/OSD-Developers/config.php");
+App::bind('config', require $_SERVER['DOCUMENT_ROOT']."/config.php");
 
 App::bind('database', new QueryBuilder(
     Connection::open(App::get('config')['database'])

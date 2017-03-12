@@ -3,7 +3,7 @@
 <div class="page-header-inner">
   <!-- BEGIN LOGO -->
   <div class="page-logo ">
-    <a href="index.html">
+    <a href="../controllers/home.php">
       <img src="../assets/admin/layout2/img/logo-default.png" alt="logo" class="logo-default fit"/>
     </a>
 
