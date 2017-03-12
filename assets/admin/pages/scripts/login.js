@@ -65,6 +65,8 @@ var Login = function() {
                                 $('#login-error').html(res.errors.username);
                             else if(res.errors.password)
                                 $('#login-error').html(res.errors.password);
+                            else if(res.errors.locked)
+                                $('#login-error').html(res.errors.locked);
                             $('.alert-danger', $('.login-form')).show();
                         }
                     },
