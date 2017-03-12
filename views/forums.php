@@ -194,8 +194,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     </ul>
 
                 </div>
-                <button class="btn blue pull-right add-thread " forum-id="<?=$forum->id ?>" >
-                     <i class="fa fa-plus"></i>ADD New Thread
+                <button class="btn <?php echo $isLocked ?'grey':'blue'; ?> pull-right add-thread" forum-lock ="<?=$isLocked ?>" forum-id="<?=$forum->id ?>">
+                     <i class="fa fa-<?php echo $isLocked ?'lock':'plus'; ?>"></i>ADD New Thread
                 </button>
                 <br><br><br>
 
@@ -214,7 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														<ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
 																<li class="col1">
 																		<div class="caption">
-																				<i class="icon-note"> </i> <span class="label label-sm label-danger"><i class="fa fa-thumb-tack"></i> pinned </span> <?php if($thread->locked): ?> <span class="label label-sm label-default"><i class="fa fa-lock"></i> locked </span><?php endif;?> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+																				<i class="icon-note"> </i> <span class="label label-danger"><i class="fa fa-thumb-tack"></i> pinned </span> <?php if($thread->locked): ?> <span class="label" style="background-color:black"><i class="fa fa-lock"></i> locked </span><?php endif;?> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
 																		</div>
 																		<!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
 																</li>
@@ -254,7 +254,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <ul class="topiclist thread no-padding forum lpad " onclick="Demo" thread_id="<?=$thread->id ?>">
                                 <li class="col1">
                                     <div class="caption">
-                                        <i class="icon-note"> </i> <?php if($thread->locked): ?> <span class="label label-sm label-default"><i class="fa fa-lock"></i> locked </span><?php endif;?> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
+                                        <i class="icon-note"> </i> <?php if($thread->locked): ?> <span class="label" style="background-color:black"><i class="fa fa-lock"></i> locked </span><?php endif;?> <a href="thread.php?threadid=<?= $thread->id ?>"><?= $thread->title ?></a>
                                     </div>
                                     <!-- <div class="caption-helper">descerption mfkefkremfkmfrks</div> -->
                                 </li>
@@ -349,7 +349,8 @@ Demo.init(); // init demo features
 });
 /////////////////
 $(".add-thread").click(function (e) {
-
+		var isLocked = e.target.getAttribute('forum-lock');
+		if(!isLocked)
     window.location.href = "add-thread.php?forum-id="+e.target.getAttribute('forum-id');
 })
 $('#del-thread').click(function (e) {

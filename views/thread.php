@@ -249,7 +249,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="portlet light grey-l">
                                         <div class="portlet-title tabbable-line">
                                             <div class="caption caption-md">
-                                                <span class="caption-subject font-blue-madison bold uppercase"><?=$thread->title?></span> <span class="label label-sm label-danger"><i class="fa fa-lock"></i> LOCKED </span> 
+                                                <span class="caption-subject font-blue-madison bold uppercase"><?=$thread->title?></span> <?php if($thread->locked): ?><span class="label label-sm label-danger"><i class="fa fa-lock"></i> LOCKED </span><?php endif; ?> 
                                             </div>
 
                                         </div>

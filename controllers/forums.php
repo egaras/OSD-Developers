@@ -26,6 +26,19 @@ foreach ($threads as $thread){
     $thread->avatar = $thread->getOwnerPic();
     $thread->replies = Reply::countRepliesByThreadId($thread->id);
 }
+#####locked check
+$isLocked = false;
+if($forum->locked){
+  $isLocked = true;
+}else{
+  $section = new Section();
+  $section->id = $forum->sectionid;
+  $section = $section->loadById();
+  if($section->locked){
+    $isLocked = true;
+  }
+}
+
 
 require '../views/forums.php';
 ?>
