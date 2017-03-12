@@ -924,7 +924,7 @@ function loadUserData(data){
 function loadForumData(data){
     $('#editf input[name="title"]').val(data.name);
     $('#editf input[name="desc"]').val(data.desc);
-   $('#editf input[name="forumid"]').val(data.id);
+    $('#editf input[name="forumid"]').val(data.id);
     $('#editf input[name="sectionid"]').val(data.sectionid);
 }
 </script>
