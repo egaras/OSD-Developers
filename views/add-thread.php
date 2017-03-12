@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
-Version: 3.7.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -18,7 +7,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Metronic | Portlets - General Portlets</title>
+<title>OSD | Add Thread</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -206,7 +195,8 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="form-group">
                             <label class="control-label">Title
                             </label>
-                            <input name="title" id="title" type="text" class="form-control">
+                            <input name="title" id="title" type="text" class="form-control"  ?>
+                            <?php if(isset($thread_id)) echo "<input id=\"threadid\" type=\"hidden\"  name=\'threadid\' value=\"$thread_id\" ?>";?>
                         </div>
 
                         <div class="form-group">
@@ -247,15 +237,57 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../templates/ckeditor/ckeditor.js"></script>
 <script>
 jQuery(document).ready(function() {
-   Metronic.init(); // init metronic core components
-Layout.init(); // init current layout
-Demo.init(); // init demo features
-    CKEDITOR.replace( 'ckeditor' );
-function submitThread(){
-    var data = CKEDITOR.instances.ckeditor.getData();
-    $('body').appendChild(data);
-    alert("The form was submitted");
-}
+    Metronic.init(); // init metronic core components
+    Layout.init(); // init current layout
+    Demo.init(); // init demo features
+        CKEDITOR.replace( 'ckeditor' );
+    function submitThread(){
+        var data = CKEDITOR.instances.ckeditor.getData();
+        $('body').appendChild(data);
+        alert("The form was submitted");
+
+
+    }
+    function loadTreadData(data){
+        console.log("data:"+data);
+            $('form input[name="title"]').val(data.title);
+            $('form input[name="threadid"]').val(data.id);
+        CKEDITOR.instances.ckeditor.setData(data.content)
+
+
+
+        }
+
+
+    if($('#threadid').length!=0){
+    console.log('if cond')
+            var threadid=$('#threadid').val();
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '../controllers/osdapi.php',
+                data:{
+                    action: 'getThreadData',
+                    threadid: threadid
+                },
+                success: function(data){
+                    console.log(data);
+                    var res = JSON.parse(data);
+
+                    if(res.success)
+
+                        loadTreadData(res.data);
+                    else
+                        console.log(res.errors)
+                },
+                error: function(){
+                    $('#connectionModal').modal('show');
+                }
+            });
+
+
+
+        }
 
 });
 $("#add-thread").click(function (e) {
@@ -263,8 +295,36 @@ $("#add-thread").click(function (e) {
     var forum_id=e.target.getAttribute("forum-id") ;
     var title =$("#title").val();
     var body=CKEDITOR.instances.ckeditor.getData();
+    var threadid=$('#threadid').val();
 
-    $.ajax({
+    if($('#threadid').length!=0)
+        $.ajax({
+            type: 'POST',
+            cache: false,
+            url: '../controllers/osdapi.php',
+            data:{
+                action: 'updateThread',
+                threadid: threadid,
+                forumid: forum_id,
+                threadtitle:title,
+                threadcontent:body
+            },
+            success: function(data){
+                console.log(data);
+                var res = JSON.parse(data);
+                console.log(res);
+                if(res.success)
+                {window.location.href = "forums.php?forumid="+forum_id;
+                    console.log("success")}
+                else
+                    console.log(res.errors)
+            },
+            error: function(){
+                $('#connectionModal').modal('show');
+            }
+        });
+    else
+        $.ajax({
         type: 'POST',
         cache: false,
         url: '../controllers/osdapi.php',
@@ -290,6 +350,7 @@ $("#add-thread").click(function (e) {
 
 
 })
+
 
 
 </script>

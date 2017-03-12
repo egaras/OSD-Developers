@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
-Version: 3.7.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -18,7 +7,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Metronic | Portlets - General Portlets</title>
+    <title>OSD | Admin Panel</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -266,6 +255,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         <span class="label label-sm label-<?=$user->cssclass?>"><?=$user->name?></span>
                                                                     </td>
                                                                     <td>
+                                                                        <a href="#" class="btn default btn-circle btn-xs toggle-ban-user <?php if($user->status==2)echo " red-haze";?>"  ><i class="fa <?php if($user->status==2)echo "fa-ban"; else echo "fa-circle-o"?>  white"></i>
+                                                                        </a>
+
                                                                         <a href="#editu" id="edituser" data-toggle="modal" class="btn default btn-circle btn-xs green edit-user">
                                                                             <i class="fa fa-edit"></i></a>
                                                                         <a href="#removeu" id="deleteuser" data-toggle="modal" class="btn default btn-circle btn-xs red u-del">
@@ -348,7 +340,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                     <?=$forum->createdate?>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <a href="#" class="btn default btn-circle btn-xs toggle-lock-forum <?php if($forum->locked)echo "blue-ebonyclay ";?>edit-forum"  ><i class="fa <?php if($forum->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
+                                                                                    <a href="#" class="btn default btn-circle btn-xs toggle-lock-forum <?php if($forum->locked)echo "blue-ebonyclay ";?>"  ><i class="fa <?php if($forum->locked)echo "fa-lock"; else echo "fa-unlock"?>  white"></i>
                                                                                     </a>
                                                                                     <a href="#editf" data-toggle="modal" class="btn default btn-circle btn-xs green edit-forum"><i class="fa fa-edit"></i></a>
                                                                                     <a href="#removef" data-toggle="modal" class="btn default btn-circle btn-xs red del-forum"><i class="fa fa-remove"></i></a>
@@ -997,7 +989,7 @@ $('.toggle-lock-section').click(function (e) {
 })
 $('.toggle-lock-forum').click(function (e) {
     e.preventDefault();
-    var forumid=e.target.closest('table').getAttribute('forum_id');
+    var forumid=e.target.closest('tr').getAttribute('forum_id');
     var obj=$(this).find('i');
     $.ajax({
         type: 'POST',
@@ -1025,6 +1017,38 @@ $('.toggle-lock-forum').click(function (e) {
 
 
 })
+$('.toggle-ban-user').click(function (e) {
+    e.preventDefault();
+    var userid = e.target.closest('tr').getAttribute('userid');
+    var obj=$(this).find('i');
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../controllers/osdapi.php',
+        data:{
+            action: 'toggleUserBan',
+            userid: userid
+        },
+        success: function(data){
+            console.log(data);
+            var res = JSON.parse(data);
+            if(res.success){
+                console.log("success")
+                obj.toggleClass("fa-ban");
+                obj.toggleClass("fa-circle-o");
+                obj.parent().toggleClass("red-haze");
+            }
+            else
+                console.log(res.errors)
+        },
+        error: function(){
+            $('#connectionModal').modal('show');
+        }
+    });
+
+
+})
+
 
 
 

@@ -32,14 +32,14 @@
               <i class="icon-user"></i> My Profile </a>
           </li>
           <li>
-            <a href="../views/login.php">
+            <a href="../controllers/login.php">
               <i class="icon-key"></i> Log Out </a>
           </li>
         </ul>
       </li>
     <?php else: ?>
-      <li class="btn">
-        <a href="../views/login.php">
+      <li>
+        <a href="../views/login.php" class="btn">
           <span class="bold"> Login </span>
         </a>
       </li>

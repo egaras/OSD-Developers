@@ -26,6 +26,9 @@ if (isset($_POST['action'])){
         case 'updateUser':
             $response = updateUser();
             break;
+        case 'toggleUserBan':
+            $response=toggleUserBan();
+            break;
         case 'deleteUser':
             $response = deleteUser();
             break;
@@ -67,6 +70,9 @@ if (isset($_POST['action'])){
             break;
         case 'updateThread':
             $response =updateThread();
+            break;
+        case 'getThreadData':
+            $response=getThreadData();
             break;
         case 'deleteThread':
             $response = deleteThread();
@@ -250,6 +256,25 @@ function deleteUser(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+function toggleUserBan(){
+    $response = [];
+    $user = new User();
+    if(!empty($_POST['userid'])){
+        if(count($GLOBALS['db']->select('users',['*'],['id'=>$_POST['userid']]))==0)
+            $response["errors"]["userid"] = "user does not exist!";
+        else{
+            $user->id = $_POST['userid'];
+            $user= $user->loadById();
+            if($user->status==1)$user->status=2;
+            else $user->status=1;
+            $user->update();
+        }
+    }else
+        $response["errors"]["forumid"] = "Please specify forum id!";
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
+
 
 function addSection(){
     $response = [];
@@ -483,7 +508,7 @@ function updateThread(){
     if(!empty($_POST['threadtitle']))
         $thread->title = $_POST['threadtitle'];
     if(!empty($_POST['threadcontent']))
-        $thread->content = $_POST['threadcontent'];
+        $thread->content =htmlspecialchars( $_POST['threadcontent']);
     if(!empty($_POST['forumid']))
         $thread->forumid = $_POST['forumid'];
     if(count(@$response["errors"])==0){
@@ -509,6 +534,19 @@ function deleteThread(){
         }
     }else
         $response["errors"]["threadid"] = "Please specify thread id!";
+    $response["success"] = count(@$response["errors"]) ? false : true;
+    return $response;
+}
+function getThreadData(){
+    $response = [];
+    if(isset($_POST['threadid'])) {
+        $thread = $GLOBALS['db']->select('threads', ['*'], ['id' => $_POST['threadid']], 'AND');
+        if (count($thread) > 0) {
+            $response['data'] = array("id"=>$thread[0]->id,'title'=>$thread[0]->title,'content'=>htmlspecialchars_decode($thread[0]->content)) ;
+        }else
+            $response["errors"]["threadid"] = "Invalid threadid";
+    }else
+        $response["errors"]["threadid"] = "Empty threadid";
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
@@ -542,6 +580,7 @@ function toggleThreadPin(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
+
 function incrementThreadViews(){
     $response = [];
     $thread = new Thread();

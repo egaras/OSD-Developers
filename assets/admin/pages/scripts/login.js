@@ -60,8 +60,13 @@ var Login = function() {
                         console.log(res);
                         if(res.success)
                             window.location = "../controllers/home.php";
-                        else
-                            $('.login-form').validate().showErrors(res.errors);
+                        else{
+                            if(res.errors.username)
+                                $('#login-error').html(res.errors.username);
+                            else if(res.errors.password)
+                                $('#login-error').html(res.errors.password);
+                            $('.alert-danger', $('.login-form')).show();
+                        }
                     },
                     error: function(){
                         $('#connectionModal').modal('show');
@@ -79,75 +84,6 @@ var Login = function() {
                 return false;
             }
         });
-    }
-
-    var handleForgetPassword = function() {
-        $('.forget-form').validate({
-            errorElement: 'span', //default input error message container
-            errorClass: 'help-block', // default input error message class
-            focusInvalid: false, // do not focus the last invalid input
-            ignore: "",
-            rules: {
-                email: {
-                    required: true,
-                    email: true
-                }
-            },
-
-            messages: {
-                email: {
-                    required: "Email is required."
-                }
-            },
-
-            invalidHandler: function(event, validator) { //display error alert on form submit
-
-            },
-
-            highlight: function(element) { // hightlight error inputs
-                $(element)
-                    .closest('.form-group').addClass('has-error'); // set error class to the control group
-            },
-
-            success: function(label) {
-                label.closest('.form-group').removeClass('has-error');
-                label.remove();
-            },
-
-            errorPlacement: function(error, element) {
-                error.insertAfter(element.closest('.input-icon'));
-            },
-
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
-
-        $('.forget-form input').keypress(function(e) {
-            if (e.which == 13) {
-                if ($('.forget-form').validate().form()) {
-                    $('.forget-form').submit();
-                }
-                return false;
-            }
-        });
-
-        jQuery('#forget-password').click(function() {
-            //jQuery('.login-form').hide();
-            //jQuery('.forget-form').show();
-            jQuery('.login-form').effect('blind','swing',500,function(){
-                jQuery('.forget-form').toggle('blind');
-            });
-        });
-
-        jQuery('#back-btn').click(function() {
-            //jQuery('.login-form').show();
-            //jQuery('.forget-form').hide();
-            jQuery('.forget-form').effect('blind','swing',500,function(){
-                jQuery('.login-form').toggle('blind');
-            });
-        });
-
     }
 
     var handleRegister = function() {
@@ -189,6 +125,9 @@ var Login = function() {
                 email: {
                     required: true,
                     email: true
+                },
+                gender: {
+                    required: true
                 },
                 username: {
                     required: true
@@ -294,7 +233,6 @@ var Login = function() {
         init: function() {
 
             handleLogin();
-            handleForgetPassword();
             handleRegister();
 
         }
