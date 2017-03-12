@@ -8,6 +8,9 @@
     "ext-json": "*",
     "phpmailer/phpmailer": "^5.2"
   },
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "*"
+  },
   "autoload": {
     "classmap": [
       "./"
