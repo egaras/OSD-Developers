@@ -18,6 +18,7 @@ if(isset($_GET['forumid'])){
         header("location: home.php");
         exit;
     }
+    $forum->addView();
 }
 $threads = Thread::getOrderedThreadsByForumId($forum->id,'postdate',"DESC",$limit='ALL');
 $forum->threads = $threads;

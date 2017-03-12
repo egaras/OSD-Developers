@@ -106,16 +106,16 @@ function userLogin(){
         if (count($user) > 0) {
             if($user[0]->status != 2){
                 if (!password_verify($_POST['password'], $user[0]->password))
-                    $response["errors"]["password"] = "Invalid password";
+                    $response["errors"]["msg"] = "Invalid password";
                 else{
                     $_SESSION['username'] = $user[0]->username;
                     $_SESSION['userid'] = $user[0]->id;
                     $_SESSION['userrole'] = $user[0]->roleid;
                 }
             }else
-                $response["errors"]["locked"] = "Your account has been panned!";
+                $response["errors"]["msg"] = "Your account has been panned!";
         }else
-            $response["errors"]["username"] = "Invalid username";
+            $response["errors"]["msg"] = "Invalid username";
     }else{
         $response["errors"]["username"] = "Empty username";
         $response["errors"]["password"] = "Empty password";
@@ -217,8 +217,8 @@ function updateUser(){
     if(!empty($_POST['avatar']))
         $user->avatar = $_POST['avatar'];
     if(!empty($_POST['gender'])){
-        if($_POST['gender'] != 'm' || $_POST['gender'] != 'f')
-            $response["errors"]["gender"] = "Invalid gender!";
+        if($_POST['gender'] != 'm' && $_POST['gender'] != 'f')
+            $response["errors"]["gender"] = "Invalid gender!".$_POST['gender'];
         else
             $user->gender = $_POST['gender'];
     }
