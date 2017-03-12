@@ -28,9 +28,7 @@ foreach ($sections as $section){
     }
 }
 $users = User::getAllUsersJoin();
-<<<<<<< HEAD
 $content=$_GET['content'];
-=======
->>>>>>> 0f4ab524dc929606f1734f32c7c3b4fb5e6e1605
+
 
 require '../views/admin.php';
