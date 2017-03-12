@@ -565,11 +565,15 @@ function updateReply(){
         $response["errors"]["replyid"] = "Please specify reply id!";
     if(!empty($_POST['replycontent']))
         $reply->content = $_POST['replycontent'];
+    else
+      $response["errors"]["replycontent"] = "Empty reply content not allowd!";
     if(count(@$response["errors"])==0){
         $reply->editdate = date("Y-m-d H:i:s");
         $reply->update();
     }
     $response["success"] = count(@$response["errors"]) ? false : true;
+    $response["data"]["editdate"] = $reply->editdate;
+    $response["data"]["replydate"] = $reply->replydate;
     return $response;
 }
 function deleteReply(){
