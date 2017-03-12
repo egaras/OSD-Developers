@@ -169,6 +169,7 @@ function addUser(){
             $user->roleid = $GLOBALS['db']->select('roles',['*'],['role'=>"User"])[0]->id;
             $user->status = $GLOBALS['db']->select('userstatus',['*'],['name'=>"Pending"])[0]->id;
             $user->insert();
+            $response['redirect'] = $_POST['redirect'];
         }
     }
     $response["success"] = count(@$response["errors"]) ? false : true;

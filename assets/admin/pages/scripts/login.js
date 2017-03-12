@@ -245,8 +245,10 @@ var Login = function() {
                         $('.register-form').validate().resetForm();
                         console.log(data);
                         var res = JSON.parse(data);
-                        if(res.success)
+                        if(res.success  && res.redirect)
                             window.location = "../controllers/home.php";
+                        else if(res.success  && !res.redirect)
+                            window.location.reload();
                         else
                             $('.register-form').validate().showErrors(res.errors);
                     },

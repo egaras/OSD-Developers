@@ -446,6 +446,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="modal-body">
                                 <form action="admin.php" method="post" class="register-form">
                                     <input type="hidden" name="action" value="addUser">
+                                    <input type="redirect" name="action" value="false">
                                     <p class="hint">
                                         Enter personal details below:
                                     </p>
@@ -461,6 +462,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                                         <label class="control-label visible-ie8 visible-ie9">Email</label>
                                         <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                                            <input type="radio" name="gender" value="m" checked/> Male
+                                        </label>
+                                        <label for="" class="radio radio-inline margin-top-20 margin-bottom-20">
+                                            <input type="radio" name="gender" value="f"/> Female
+                                        </label>
                                     </div>
                                     <p class="hint">
                                         Enter account details below:

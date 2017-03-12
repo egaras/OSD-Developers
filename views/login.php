@@ -127,6 +127,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- BEGIN REGISTRATION FORM -->
 	<form class="register-form" action="index.html" method="post">
         <input type="hidden" name="action" value="addUser">
+        <input type="hidden" name="redirect" value="true">
 		<h3>Sign Up</h3>
 		<p class="hint">
 			 Enter your personal details below:
