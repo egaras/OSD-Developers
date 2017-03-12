@@ -13,6 +13,7 @@
  * Date: 3/4/17
  * Time: 2:36 PM
  */
+
 //$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 //return [
 //    'database'=>[
@@ -42,3 +43,4 @@ return [
         ]
     ]
 ];
+
