@@ -15,9 +15,17 @@ App::bind('database', new QueryBuilder(
 $db = App::get('database');
 
 function isLoggedIn(){
-    return isset($_SESSION['userid']);
+    if(isset($_SESSION['userid'])){
+        $res = $GLOBALS['db']->select('users',['*'],['id'=>$_SESSION['userid']]);
+        return count($res)==1 && $res[0]->status==1;
+    }
+    return false;
 }
 
 function isAdmin(){
-    return isLoggedIn() && $_SESSION['userrole'] == 1;
+    if(isLoggedIn()){
+        $res = $GLOBALS['db']->select('users',['*'],['id'=>$_SESSION['userid']]);
+        return $res[0]->roleid==1;
+    }
+    return false;
 }

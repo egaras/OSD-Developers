@@ -21,9 +21,17 @@ if(isset($_GET['forum-id'])){
     $forum = new Forum();
     $forum->id = $forum_id;
     $forum = $forum->loadById();
-    if(!$forum->id){
+    if(!$forum->id || $forum->locked){
         header("location: home.php");
         exit;
+    }else{
+        $section = new Section();
+        $section->id = $forum->sectionid;
+        $section = $section->loadById();
+        if(!$section->id || $section->locked) {
+            header("location: home.php");
+            exit;
+        }
     }
 }
 @$thread_id=$_GET['thread-id'];

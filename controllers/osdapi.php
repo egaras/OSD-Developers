@@ -583,7 +583,6 @@ function toggleThreadPin(){
     $response["success"] = count(@$response["errors"]) ? false : true;
     return $response;
 }
-
 function incrementThreadViews(){
     $response = [];
     $thread = new Thread();
